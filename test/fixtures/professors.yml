@@ -1,0 +1,28 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: John
+  last_name: Doe
+  full_name: John Doe
+  display_name: John Doe
+  tamu_dir_title:
+  tamu_dir_dept:
+  tamu_dir_email:
+
+two:
+  first_name: Jane
+  last_name: Doe
+  full_name: Jane Doe
+  display_name: Jane Doe
+  tamu_dir_title: President
+  tamu_dir_dept: All
+  tamu_dir_email: janedoe@tamu.edu
+
+three:
+  first_name: Jonathan
+  last_name: Doe
+  full_name: Jonathan Doe
+  display_name: Jonathan Doe
+  tamu_dir_title: Vice President
+  tamu_dir_dept: All
+  tamu_dir_email: jonathandoe@tamu.edu

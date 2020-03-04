@@ -12,6 +12,7 @@ jobs:
           ruby-version: 2.7.0
       - name: Build and run tests
         run: |
+          sudo apt-get install libsqlite3-dev
           gem install bundler
           bundle install --jobs 4 --retry 3
           bundle exec rails db:prepare

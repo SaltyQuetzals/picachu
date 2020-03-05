@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Prerequisites:
+1. [Ruby 2.7.0](https://www.ruby-lang.org/en/downloads/)
+2. [Bundler](https://bundler.io/)
 
-Things you may want to cover:
+1. `bundler install`
+1. `gem install rubocop`
+1. `rails server`
 
-* Ruby version
+Branches must be named in the following format:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+<STORY_ID>-<HELPFUL_NAME_FOR_REVIEWERS>
+```

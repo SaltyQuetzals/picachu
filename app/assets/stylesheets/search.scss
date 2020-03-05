@@ -1,3 +1,18 @@
 // Place all the styles related to the search controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+input[type=text] {
+    border-radius: 5px;
+    border: 1px solid #777;
+    padding: 15px;
+    font-size: 16px;
+    width: 75%;
+}
+
+.flex-container > .search-container {
+    width: 50%;
+    h1 {
+        text-align: left;
+    }
+}

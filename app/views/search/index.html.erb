@@ -1,12 +1,23 @@
 <div class="flex-container">
-  <div class="search-container">
+  <div class="search-pg-container">
     <h1>Search by Course</h1>
-    <input type="text" id="courseID" name="courseID" placeholder="John"><br>
-    <input class="btn btn-primary w-25" type="submit" value="search">
+    <div class="search-container">
+      <form>
+        <input type="text" placeholder="ex. CSCE 431, Parallel Computing" name="courseID" class="w-50">
+        <button type="submit" class="btn btn-primary w-25 d-inline">Search</button>
+      </form>
+    </div>
+
+    <h4>or</h4>
 
     <h1>Search by Professor</h1>
-    <input type="text" id="profName" name="profName" placeholder="John"><br>
-    <input class="btn btn-secondary w-25" type="submit" value="search">
-
+    <div class="search-container">
+      <form>
+        <input type="text" placeholder="ex. John Doe" name="courseID" class="w-50">
+        <button type="submit" class="btn btn-secondary w-25 d-inline">Search</button>
+      </form>
+    </div>
   </div>
 </div>
+
+<%= render "partials/footer" %>

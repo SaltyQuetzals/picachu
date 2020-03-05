@@ -1,0 +1,104 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+$colour-primary: #00817E;
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+}
+  
+.flex-container > div {
+    width: 25%;
+    min-width: 300px;
+    margin: 16vh 10px 10px 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+}
+
+h1, h2, h3, h4, h5, h6, p, a {
+    font-family: sans-serif;
+}
+
+h1 {
+    font-size: 24px;
+    line-height: 30px;
+    margin-bottom: 30px;
+}
+
+h3 {
+    font-size: 16px; 
+    margin-bottom: 30px;
+    line-height: 20px;
+}
+
+.btn {
+    display: block;
+    margin: auto;
+    padding: 15px;
+    border-radius: 50px;
+    width: 100%;
+    text-transform: capitalize;
+    font-weight: 600;
+    font-size: 18px;
+}
+.btn-primary {
+    color: white;
+    background-color: $colour-primary;
+    border: 0;
+    &:hover {
+        background-color: #006F6C;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+}
+.btn-secondary {
+    color: $colour-primary;
+    background-color: white;
+    border: 3px solid $colour-primary;
+    &:hover {
+        background-color: $colour-primary;
+        color: white;
+        transition: 0.3s;
+        cursor:pointer;
+    }
+}
+
+.signup-block {
+    border-top: 1px solid #DEDEDE;
+    border-bottom: 1px solid #DEDEDE;
+    margin-top: 30px;
+    padding: 20px 0 40px 0;
+}
+
+.div-netid {
+    .p-caption {
+        font-size: 14px; 
+        text-align: left;
+        color: #777;
+        margin: 20px auto;
+        padding: 0 0 0 5px;
+        line-height: 20px;
+        .img-tamu {
+            max-width: 30px;
+            margin-right: 20px;
+        }
+    }
+}
+
+.img-logo {
+    max-width: 100px;
+}
+
+footer {
+    background-color: $colour-primary;
+    padding: 0px 80px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    color: white;
+    width: 100%;
+    font-size: 12px;
+}

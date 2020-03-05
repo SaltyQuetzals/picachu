@@ -36,7 +36,8 @@ rubocop_excluded_cops:
 # Valid options: 'refactor', 'convention', 'warning', 'error', or 'fatal'.
 # Default: 'warning'
 # Resource: https://rubocop.readthedocs.io/en/stable/configuration/#severity
-rubocop_fail_level: 'warning'
+
+rubocop_fail_level: 'error'
 
 # Instead of installing gems from rubygems, we can run `bundle install` on your project,
 # you would need to do this if you are using something like 'rubocop-github' or if you don't

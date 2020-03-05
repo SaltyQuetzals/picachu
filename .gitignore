@@ -21,6 +21,11 @@
 # Ignore uploaded files in development.
 /storage/*
 !/storage/.keep
+<<<<<<< HEAD
+=======
+
+/public/assets
+>>>>>>> Welcome page.
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.

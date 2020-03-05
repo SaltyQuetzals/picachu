@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reviews
   get 'login' => 'login#index'
   get 'search' => 'search#index'
   get 'home' => 'home/index'

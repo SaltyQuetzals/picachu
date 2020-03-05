@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 class SearchController < ApplicationController
-  def index
-  end
+  def index; end
 
   def professors
     @search = ransack_params

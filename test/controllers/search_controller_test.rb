@@ -9,7 +9,7 @@ class SearchControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'search should fetch only relevant results' do
-    get search_professors_url, params: {q: {display_name_cont: 'John'}}
+    get search_professors_url, params: { q: { display_name_cont: 'John' } }
     json_response = JSON.parse(@response.body)
     assert_equal json_response.length, 1
   end

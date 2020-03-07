@@ -1,0 +1,150 @@
+// Place all the styles related to the professor controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.flex-container > .row-container {
+    
+}
+
+.column-container{
+    flex-direction: column;
+    width: 50%;
+    margin: 20vh 10px 10px 10px;
+}
+
+.user-agree-container{
+    h4{
+        display: inline;
+        color: #777777;
+        display: inline;
+        font-size: 12px;
+        line-height: 14px;
+        
+    }
+    h5{
+        display: inline;
+        color: #00817E;
+        display: inline;
+        font-size: 12px;
+        line-height: 14px;
+    }
+}
+
+.rating-image {
+    max-width: 30px;
+    
+}
+
+.professor-general-container{
+    display:inline-block;
+    h1{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 32px;
+        line-height: 14px;
+        text-align: left;
+        color: #00817E;
+    }
+    p{
+        
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 14px;
+        text-align: left;
+        color: #000000;
+    }
+}
+
+.write-review-container{
+    display:inline-block;
+}
+
+.review-level-container{
+    text-align: left;
+    div{
+        display: inline;
+    }
+    h3{
+        display: inline;
+        color: #00817E;
+        line-height: 14px;
+        line-height: 14px;
+    }
+    h4{
+        color: #777777;
+        display: inline;
+        font-size: 12px;
+        line-height: 14px;
+    }
+}
+
+.tag-block-container{
+    text-align: left;
+    h2{
+        font-size: 18px;
+        line-height: 14px;
+        color: #000000;
+    }
+    
+}
+
+.tag-group-container { 
+    
+    div{
+        display: inline;
+        border: 2px solid #00817E;
+        border-radius: 25px;
+        line-height: 14px;
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+    
+    p {
+        font-size: 14px;
+        display: inline;
+        line-height: 14px;
+    }
+   
+}
+
+.review-container{
+    text-align: left;
+    line-height: 14px;
+    h2{
+        margin-top: 40px;
+        font-size: 18px;
+        color: #000000;
+    }
+    h3{
+        display: inline;
+        color: #00817E;
+        text-decoration: underline;
+        font-size: 14px;
+    }
+    div{
+        margin-top: 20px;
+    }
+    h6{
+        margin-top: 10px;
+        font-size: 10px;
+        font-weight: normal;
+        color: #777777;
+    }
+    p{
+        margin: 40px 5px 40px 5px;
+        font-size: 14px;
+        font-style: italic
+    }
+    
+}
+
+.all-course-container{
+    text-align: left;
+    line-height: 14px;
+    h2{
+        margin-top: 40px;
+        font-size: 18px;
+        color: #000000;
+    }
+}

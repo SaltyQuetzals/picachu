@@ -12,11 +12,10 @@ jobs:
           ruby-version: '2.6.0'
       - uses: borales/actions-yarn@v2.0.0
         with:
-          cmd: install
+          cmd: install --check-files
       - name: Build and run tests
         run: |
           sudo apt-get -yqq install libsqlite3-dev
-          yarn install --check-files
           gem install bundler
           bundle install --jobs 4 --retry 3
           bundle exec rails db:prepare

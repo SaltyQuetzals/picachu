@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'professor/index'
   get 'login' => 'login#index'
   get 'search' => 'search#index'
   get 'search/professors' => 'search#professors', as: :search_professors

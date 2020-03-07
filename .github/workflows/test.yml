@@ -26,8 +26,8 @@ jobs:
           node-version: '10.16.0'
       - run: npm i -g yarn
       - name: Install PostgreSQL 11 client
-          run: |
-            sudo apt-get -yqq install libpq-dev
+        run: |
+          sudo apt-get -yqq install libpq-dev
       - name: Build app
         env:
           PGHOST: localhost

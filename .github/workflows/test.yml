@@ -16,6 +16,7 @@ jobs:
       - name: Build and run tests
         run: |
           sudo apt-get -yqq install libsqlite3-dev
+          yarn install --check-files
           gem install bundler
           bundle install --jobs 4 --retry 3
           bundle exec rails db:prepare

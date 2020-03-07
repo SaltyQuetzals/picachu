@@ -8,6 +8,6 @@ jobs:
       - name: Build the stack
         run: docker-compose up -d
       - name: Prepare database
-        run: docker-compose run web rake db:prepare
+        run: docker-compose run web rake db:create
       - name: Test
         run: docker-compose run web rake test

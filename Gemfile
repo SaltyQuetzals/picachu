@@ -55,3 +55,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'rubocop'
+
+gem 'wdm', '>= 0.1.0'

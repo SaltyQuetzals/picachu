@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @professor.full_name %>
+</p>
+
+<%=link_to "Write a Review", new_professor_review_path(@professor)%>
+
+<% if(@professor.reviews.blank?)%>
+  <h3> No Reviews </h3>
+  <%= @professor.full_name %>
+  <%= @professor.id %>
+  
+<% else %>
+  <br>
+  <strong>Average Review:</strong>
+  <%= @avg_review%>
+
+  <% @professor.reviews.each do |review| %>
+    <p>
+      <%= review.overall_rating%> 
+    </p>
+  <%end%>
+<%end%>
+
+
+<%= link_to 'Edit', edit_professor_path(@professor) %> |
+<%= link_to 'Back', professors_path %>

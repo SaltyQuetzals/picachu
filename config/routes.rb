@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :reviews
+  resources :professors do
+    resources :reviews, except: [:show, :index]
+  end
   get 'login' => 'login#index'
   get 'search' => 'search#index'
   get 'search/professors' => 'search#professors', as: :search_professors

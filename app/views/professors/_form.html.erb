@@ -1,0 +1,57 @@
+<%= form_with(model: professor, local: true) do |form| %>
+  <% if professor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(professor.errors.count, "error") %> prohibited this professor from being saved:</h2>
+
+      <ul>
+        <% professor.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :first_name %>
+    <%= form.text_area :first_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name %>
+    <%= form.text_area :last_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :full_name %>
+    <%= form.text_area :full_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :display_name %>
+    <%= form.text_area :display_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cv_url %>
+    <%= form.text_area :cv_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tamu_dir_title %>
+    <%= form.text_area :tamu_dir_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tamu_dir_dept %>
+    <%= form.text_area :tamu_dir_dept %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tamu_dir_email %>
+    <%= form.text_area :tamu_dir_email %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

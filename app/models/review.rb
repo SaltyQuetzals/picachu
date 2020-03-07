@@ -4,7 +4,7 @@ class Review < ApplicationRecord
     #belongs_to :user
     #has_many :tag
 
-    validates_presence_of :overall_rating, :letter_grade, :semester,
-    :year, on: :create, message: "can't be blank"
+    # validates_presence_of :overall_rating, :letter_grade, :semester,
+    # :year, on: :create, message: "can't be blank"
 
 end

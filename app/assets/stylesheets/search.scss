@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+$colour-primary: #00817E;
+
 input[type=text] {
     border-radius: 5px;
     border: 1px solid #777;
@@ -15,7 +17,7 @@ input[type=text] {
 
 .flex-container > .search-pg-container {
     width: 50%;
-    margin: 20vh 10px 10px 10px;
+    margin: 15vh 10px 10px 10px;
     h1 {
         text-align: left;
         margin-bottom: 10px;
@@ -38,9 +40,6 @@ input[type=text] {
     }
 }
 
-
-
-/*the container must be positioned relative:*/
 .autocomplete {
     position: relative;
   }
@@ -51,10 +50,16 @@ input[type=text] {
     border-bottom: none;
     border-top: none;
     z-index: 99;
-    /*position the autocomplete items to be the same width as the container:*/
-    top: 100%;
-    left: 0;
+    width: 70%;
+    top: 93%;
+    left: 2px;
     right: 0;
+    font-size: 16px;
+    font-family: sans-serif;
+    line-height: 20px;
+    &:last-child {
+        border-bottom: 5px solid $colour-primary;
+    }
 }
   
 .autocomplete-items div {
@@ -64,13 +69,10 @@ input[type=text] {
     border-bottom: 1px solid #d4d4d4; 
 }
 
-/*when hovering an item:*/
 .autocomplete-items div:hover {
     background-color: #e9e9e9; 
 }
 
-/*when navigating through the items using the arrow keys:*/
 .autocomplete-active {
-    background-color: DodgerBlue !important; 
-    color: #ffffff; 
+    background-color: #dedede !important; 
 }

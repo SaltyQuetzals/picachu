@@ -3,41 +3,11 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:11
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: postgres
-        ports:
-          - 5432:5432
-        # needed because the postgres container does not provide a healthcheck
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-
     steps:
-      - uses: actions/checkout@master
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '2.6.0'
-      - uses: actions/setup-node@master
-        with:
-          node-version: '10.16.0'
-      - run: npm i -g yarn
-      - name: Install PostgreSQL 11 client
-        run: |
-          sudo apt-get -yqq install libpq-dev
-      - name: Build app
-        env:
-          PGHOST: localhost
-          PGUSER: postgres
-          RAILS_ENV: test
-        run: |
-          gem install bundler
-          bundle install --jobs 4 --retry 3
-          yarn install --check-files
-          bundle exec rails db:prepare
-      - name: Run Tests
-        run: |
-          bundle exec rails test
+      - uses: actions/checkout@v2
+      - name: Build the stack
+        run: docker-compose up -d
+      - name: Prepare database
+        run: docker-compose run web rake db:prepare
+      - name: Test
+        run: docker-compose run web rake test

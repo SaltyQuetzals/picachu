@@ -70,6 +70,7 @@
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.10.9, ruby-2.6.0-p0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="parallel (v1.19.1, ruby-2.6.0-p0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="parser (v2.7.0.4, ruby-2.6.0-p0) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="pg (v0.21.0, ruby-2.6.0-p0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="polyamorous (v2.3.2@aee2d9, ruby-2.6.0-p0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="public_suffix (v4.0.3, ruby-2.6.0-p0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="puma (v4.3.3, ruby-2.6.0-p0) [gem]" level="application" />

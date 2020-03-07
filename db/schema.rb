@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_05_182904) do
+
+ActiveRecord::Schema.define(version: 2020_03_05_175938) do
 
   create_table "professors", force: :cascade do |t|
     t.string "first_name"
@@ -21,11 +22,6 @@ ActiveRecord::Schema.define(version: 2020_03_05_182904) do
     t.string "tamu_dir_title"
     t.string "tamu_dir_dept"
     t.string "tamu_dir_email"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "reviews", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

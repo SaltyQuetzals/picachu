@@ -1,0 +1,136 @@
+<%= render "partials/nav" %>
+
+<div class="flex-container">
+<div class="column-container">
+  
+  <div class = "row-container">
+    
+  <!--professer general-->
+  <div class="professor-general-container">
+    <h1>Professor Name</h1>
+    <p>Professor in <> Department</p>
+    <div class = "review-level-container">
+        <h3># of rating</h3>
+        <div class = "rating-star">
+          <%= image_tag 'rating-star.png', class: 'rating-image'%>
+          <%= image_tag 'rating-star.png', class: 'rating-image'%>
+          <%= image_tag 'rating-star.png', class: 'rating-image'%>
+          <%= image_tag 'rating-star.png', class: 'rating-image'%>
+          <%= image_tag 'rating-star.png', class: 'rating-image'%>
+        </div>
+        <h4>(# of reviews)</h4>
+    </div>
+  </div>
+  
+  <div class = "write-review-container">
+    <button class="btn btn-primary w-100">Write a Review</button>
+  </div>
+  
+  </div>
+  
+  
+  
+  <!--tags-->
+  <div class = "tag-block-container">
+    <h2>Top Tags</h2>
+    <div class = "tag-group-container">
+      <div class = "border-container">
+        <p>tag1</p>
+      </div>
+      <div class = "border-container">
+        <p>tag22</p>
+      </div>
+      <div class = "border-container">
+        <p>tag333</p>
+      </div>
+      <div class = "border-container">
+        <p>tag4444</p>
+      </div>
+      <div class = "border-container">
+        <p>tag55555</p>
+      </div>
+      <div class = "border-container">
+        <p>tag666666</p>
+      </div>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <!--highest rated-->
+  <div class = "rating-block-container">
+    <div class = "review-container">
+      <h2>Highest Rating Course</h2>
+      <h3>DEPT course# course-name</h3>
+      <div class = "rating-star">
+          <%= image_tag 'rating-star.png', class: 'rating-image'%>
+          <%= image_tag 'rating-star.png', class: 'rating-image'%>
+          <%= image_tag 'rating-star.png', class: 'rating-image'%>
+          <%= image_tag 'rating-star.png', class: 'rating-image'%>
+          <%= image_tag 'rating-star.png', class: 'rating-image'%>
+      </div>
+      <h6>MM/DD/YYYY</h6>
+      <p>example review paragraphs testttttt tttttttt tttttttttt ttttttttttttttt ttttttttttttt tttttttttttttt tttttttttttt tttttttttttttt ttttttttttttttttttttt tttttttttttttttttttttttt ttttt ttttttttttt tttttttt ttttttttttttttttttttttt</p>
+      <div class = "user-agree-container">
+        <h5># of #</h5>
+        <h4>users agree with this review</h4>
+      </div>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <!--lowest rated-->
+  <div class = "rating-block-container">
+    <div class = "review-container">
+      <h2>Lowest Rating Course</h2>
+      <h3>DEPT course# course-name</h3>
+      <div class = "rating-star">
+          <%= image_tag 'rating-star.png', class: 'rating-image'%>
+          <%= image_tag 'rating-star.png', class: 'rating-image'%>
+          <%= image_tag 'rating-star.png', class: 'rating-image'%>
+          <%= image_tag 'rating-star.png', class: 'rating-image'%>
+          <%= image_tag 'rating-star.png', class: 'rating-image'%>
+      </div>
+      <h6>MM/DD/YYYY</h6>
+      <p>example review paragraphs</p>
+      <div class = "user-agree-container">
+        <h5># of #</h5>
+        <h4>users agree with this review</h4>
+      </div>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <!--all course-->
+  <div class = "all-course-container">
+    <h2>All Courses</h2>
+    <table class = "course-table-container">
+      <tr>
+        <th>Name</th>
+        <th>Rating</th>
+      </tr>
+      <tr>
+        <td>
+          course 1
+        </td>
+        <td>
+          <div class = "review-level-container">
+            <h3># of rating</h3>
+            <div class = "rating-star">
+              <%= image_tag 'rating-star.png', class: 'rating-image'%>
+              <%= image_tag 'rating-star.png', class: 'rating-image'%>
+              <%= image_tag 'rating-star.png', class: 'rating-image'%>
+              <%= image_tag 'rating-star.png', class: 'rating-image'%>
+              <%= image_tag 'rating-star.png', class: 'rating-image'%>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  
+</div>
+</div>
+

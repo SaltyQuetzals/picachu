@@ -3,6 +3,17 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:10.8
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        # needed because the postgres container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
       - uses: actions/checkout@master
@@ -14,11 +25,19 @@ jobs:
         with:
           node-version: '10.16.0'
       - run: npm i -g yarn
-      - name: Build and run tests
+      - name: Install PostgreSQL 11 client
+          run: |
+            sudo apt-get -yqq install libpq-dev
+      - name: Build app
+        env:
+          PGHOST: localhost
+          PGUSER: postgres
+          RAILS_ENV: test
         run: |
-          sudo apt-get -yqq install libsqlite3-dev
-          yarn install --check-files
           gem install bundler
           bundle install --jobs 4 --retry 3
+          yarn install --check-files
           bundle exec rails db:prepare
+      - name: Run Tests
+        run: |
           bundle exec rails test

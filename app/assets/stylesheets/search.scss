@@ -2,12 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+$colour-primary: #00817E;
+
 input[type=text] {
     border-radius: 5px;
     border: 1px solid #777;
     padding: 15px;
     font-size: 16px;
-    width: 65%;
 }
 
 .d-inline {
@@ -16,7 +17,7 @@ input[type=text] {
 
 .flex-container > .search-pg-container {
     width: 50%;
-    margin: 20vh 10px 10px 10px;
+    margin: 15vh 10px 10px 10px;
     h1 {
         text-align: left;
         margin-bottom: 10px;
@@ -26,6 +27,9 @@ input[type=text] {
         font-size: 24px;
         color: #777;
     }
+    input[type=text] {
+        width: 65%;
+    }
 }
 
 .search-container {
@@ -34,4 +38,41 @@ input[type=text] {
     input[type=text] {
         margin-right: 3%;
     }
+}
+
+.autocomplete {
+    position: relative;
+  }
+ 
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    width: 70%;
+    top: 93%;
+    left: 2px;
+    right: 0;
+    font-size: 16px;
+    font-family: sans-serif;
+    line-height: 20px;
+    &:last-child {
+        border-bottom: 5px solid $colour-primary;
+    }
+}
+  
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff; 
+    border-bottom: 1px solid #d4d4d4; 
+}
+
+.autocomplete-items div:hover {
+    background-color: #e9e9e9; 
+}
+
+.autocomplete-active {
+    background-color: #dedede !important; 
 }

@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   end
   get 'login' => 'login#index'
   get 'search' => 'search#index'
+  get 'reviews' => 'reviews#index'
+  get 'professors' => 'professors#index'
+  
   get 'search/professors' => 'search#professors', as: :search_professors
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -4,8 +4,38 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+one: 
 # column: value
 #
-two: {}
+  overall_rating: 5
+  letter_grade: A
+  semester: spring
+  year: 2019
+  used_textbook: true
+  course_format: project
+  cared_about_material: 5
+  open_to_questions: 5
+  cared_about_students: 5
+  clear_grading: 5
+  homework_heavy: 5
+  clear_explanations: 3
+  fast_grading: 2
+  professor_other_thoughts: great professor
+
+two: 
+  overall_rating: 4
+  letter_grade: B
+  semester: fall
+  year: 2019
+  used_textbook: true
+  course_format: exams
+  cared_about_material: 5
+  open_to_questions: 2
+  cared_about_students: 5
+  clear_grading: 5
+  homework_heavy: 5
+  clear_explanations: 3
+  fast_grading: 5
+  professor_other_thoughts: great professor
+
 # column: value

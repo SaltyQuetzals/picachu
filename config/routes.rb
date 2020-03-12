@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :courses
+  resources :courses do
+    collection { get 'search' }
+  end
   get 'professor/index'
   get 'login' => 'login#index'
   get 'search' => 'search#index'

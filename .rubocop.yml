@@ -4,6 +4,7 @@ AllCops:
     - 'config/**/*'
     - 'script/**/*'
     - 'bin/{rails,rake,bundle}'
+    - 'node_modules/**/*'
     - !ruby/regexp /old_and_unused\.rb$/
     - 'Gemfile*'
     - 'Rakefile'

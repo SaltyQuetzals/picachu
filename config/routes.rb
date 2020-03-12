@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :courses
   get 'professor/index'
   get 'login' => 'login#index'
   get 'search' => 'search#index'

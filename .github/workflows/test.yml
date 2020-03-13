@@ -3,22 +3,11 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@master
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '2.6.0'
-      - uses: actions/setup-node@master
-        with:
-          node-version: '10.16.0'
-      - run: npm i -g yarn
-      - name: Build and run tests
-        run: |
-          sudo apt-get -yqq install libsqlite3-dev
-          yarn install --check-files
-          gem install bundler
-          bundle install --jobs 4 --retry 3
-          bundle exec rails db:prepare
-          bundle exec rails test
+      - uses: actions/checkout@v2
+      - name: Build the stack
+        run: docker-compose up -d
+      - name: Prepare database
+        run: docker-compose run web rake db:create
+      - name: Test
+        run: docker-compose run web rake test

@@ -15,7 +15,4 @@ test:
   database: picachu_test
 
 production:
-  <<: *default
-  database: picachu_production
-  username: picachu
-  password: <%= ENV.fetch("POSTGRES_PASSWORD") %>
+  url: <%= ENV.fetch("DATABASE_URL") %>

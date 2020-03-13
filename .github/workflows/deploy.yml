@@ -1,0 +1,14 @@
+# From https://dev.to/heroku/deploying-to-heroku-from-github-actions-29ej
+name: Push Container to Heroku
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Login to Heroku Container registry
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku container:login

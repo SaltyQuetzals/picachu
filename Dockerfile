@@ -8,11 +8,8 @@ COPY Gemfile.lock /picachu/Gemfile.lock
 COPY package.json yarn.lock ./
 RUN npm install --global yarn
 RUN yarn install --check-files
-RUN bundle install --jobs 20 --without development test
+RUN bundle install --jobs 20
 COPY . /picachu
-
-ENV RAILS_ENV production
-ENV RACK_ENV production
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
@@ -20,7 +17,7 @@ RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 
 # Precompile assets
-#RUN bundle exec rake assets:precompile
+RUN bundle exec rake assets:precompile
 
 # Start the main process.
-CMD bundle exec puma -C config/puma.rb
+CMD bin/rails server -b 0.0.0.0 -p $PORT

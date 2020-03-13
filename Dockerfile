@@ -20,7 +20,7 @@ RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 
 # Precompile assets
-RUN bundle exec rake assets:precompile
+#RUN bundle exec rake assets:precompile
 
 # Start the main process.
 CMD bundle exec puma -C config/puma.rb

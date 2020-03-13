@@ -16,4 +16,4 @@ test:
   database: picachu_test
 
 production:
-  url: <%= ENV.fetch("DATABASE_URL") %>
+  url: <%= ENV.fetch("DATABASE_URL") { "no_url_provided" } %>

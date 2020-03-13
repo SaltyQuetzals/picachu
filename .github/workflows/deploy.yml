@@ -1,7 +1,10 @@
 # From https://dev.to/heroku/deploying-to-heroku-from-github-actions-29ej
 name: Push Container to Heroku
 
-on: [push]
+on: 
+  push:
+    branches:
+      - master
 
 env:
   HEROKU_APP_NAME: picachu-csce431

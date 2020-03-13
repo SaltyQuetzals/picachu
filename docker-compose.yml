@@ -18,3 +18,4 @@ services:
       - db
     environment:
       POSTGRES_PASSWORD: "dev_password"
+      PORT: 3000

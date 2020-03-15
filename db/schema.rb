@@ -15,18 +15,20 @@ ActiveRecord::Schema.define(version: 2020_03_15_013753) do
   enable_extension 'plpgsql'
 
   create_table 'courses', force: :cascade do |t|
-    t.string 'dept'
-    t.string 'course_num'
-    t.string 'name'
+    t.string 'dept', null: false
+    t.string 'course_num', null: false
+    t.string 'name', null: false
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
+    t.index %w[dept course_num],
+            name: 'index_courses_on_dept_and_course_num', unique: true
   end
 
   create_table 'professors', force: :cascade do |t|
-    t.string 'first_name'
-    t.string 'last_name'
-    t.string 'full_name'
-    t.string 'display_name'
+    t.string 'first_name', null: false
+    t.string 'last_name', null: false
+    t.string 'full_name', null: false
+    t.string 'display_name', null: false
     t.string 'cv_url'
     t.string 'tamu_dir_title'
     t.string 'tamu_dir_dept'
@@ -36,10 +38,10 @@ ActiveRecord::Schema.define(version: 2020_03_15_013753) do
   end
 
   create_table 'reviews', force: :cascade do |t|
-    t.integer 'overall_rating'
-    t.string 'letter_grade'
-    t.string 'semester'
-    t.integer 'year'
+    t.integer 'overall_rating', null: false
+    t.string 'letter_grade', null: false
+    t.string 'semester', null: false
+    t.integer 'year', null: false
     t.boolean 'course_required'
     t.integer 'interesting'
     t.integer 'difficult'
@@ -70,7 +72,7 @@ ActiveRecord::Schema.define(version: 2020_03_15_013753) do
   end
 
   create_table 'tags', force: :cascade do |t|
-    t.string 'name'
+    t.string 'name', null: false
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
   end

@@ -8,7 +8,7 @@ one:
   cv_url:
   tamu_dir_title: Professor of Practice
   tamu_dir_dept: Computer Science
-  tamu_dir_email: john@tamu.edu
+  tamu_dir_email: johndoe@tamu.edu
 
 two:
   first_name: Jane
@@ -16,6 +16,6 @@ two:
   full_name: Jane Doe
   display_name: Jane Doe
   cv_url:
-  tamu_dir_title: Professor of Practice
+  tamu_dir_title: Adjunct Professor
   tamu_dir_dept: Computer Science
-  tamu_dir_email: jane@tamu.edu
+  tamu_dir_email: janedoe@tamu.edu

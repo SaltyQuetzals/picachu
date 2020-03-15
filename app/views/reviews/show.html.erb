@@ -21,8 +21,8 @@
 </p>
 
 <p>
-  <strong>Course specific:</strong>
-  <%= @review.course_specific %>
+  <strong>Course required:</strong>
+  <%= @review.course_required %>
 </p>
 
 <p>
@@ -108,11 +108,6 @@
 <p>
   <strong>Course:</strong>
   <%= @review.course_id %>
-</p>
-
-<p>
-  <strong>Tag:</strong>
-  <%= @review.tag %>
 </p>
 
 <%= link_to 'Edit', edit_review_path(@review) %> |

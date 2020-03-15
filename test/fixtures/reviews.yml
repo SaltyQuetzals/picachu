@@ -5,7 +5,7 @@ one:
   letter_grade: MyString
   semester: MyString
   year: 1
-  course_specific: false
+  course_required: false
   interesting: 1
   difficult: 1
   standardized_course: false
@@ -23,14 +23,13 @@ one:
   professor_other_thoughts: MyString
   professor: one
   course: one
-  tag: 
 
 two:
   overall_rating: 1
   letter_grade: MyString
   semester: MyString
   year: 1
-  course_specific: false
+  course_required: false
   interesting: 1
   difficult: 1
   standardized_course: false
@@ -48,4 +47,3 @@ two:
   professor_other_thoughts: MyString
   professor: two
   course: two
-  tag: 

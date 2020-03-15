@@ -1,21 +1,15 @@
 class CreateReviews < ActiveRecord::Migration[6.0]
   def change
     create_table :reviews do |t|
-      # Review-specific
-      t.integer :overall_rating,
-                                 null: false
-      t.string :letter_grade, null: false
-      t.string :semester, null: false
-      t.integer :year, null: false
-
-      # Course-specific
+      t.integer :overall_rating
+      t.string :letter_grade
+      t.string :semester
+      t.integer :year
       t.boolean :course_required
       t.integer :interesting
       t.integer :difficult
       t.boolean :standardized_course
       t.string :course_other_thoughts
-
-      # Professor-specific
       t.boolean :used_textbook
       t.boolean :attendance_mandatory
       t.string :course_format
@@ -27,10 +21,8 @@ class CreateReviews < ActiveRecord::Migration[6.0]
       t.integer :clear_explanations
       t.integer :fast_grading
       t.string :professor_other_thoughts
-
-      # Relations
-      t.belongs_to :professor, null: false, foreign_key: true
-      t.belongs_to :course, null: false, foreign_key: true
+      t.references :professor, foreign_key: {on_delete: :cascade}
+      t.references :course, foreign_key: {on_delete: :cascade}
 
       t.timestamps
     end

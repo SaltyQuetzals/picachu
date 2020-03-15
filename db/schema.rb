@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_15_010716) do
+ActiveRecord::Schema.define(version: 2020_03_15_013753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,10 +37,10 @@ ActiveRecord::Schema.define(version: 2020_03_15_010716) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "overall_rating", null: false
-    t.string "letter_grade", null: false
-    t.string "semester", null: false
-    t.integer "year", null: false
+    t.integer "overall_rating"
+    t.string "letter_grade"
+    t.string "semester"
+    t.integer "year"
     t.boolean "course_required"
     t.integer "interesting"
     t.integer "difficult"
@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(version: 2020_03_15_010716) do
     t.integer "clear_explanations"
     t.integer "fast_grading"
     t.string "professor_other_thoughts"
-    t.bigint "professor_id", null: false
-    t.bigint "course_id", null: false
+    t.bigint "professor_id"
+    t.bigint "course_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["course_id"], name: "index_reviews_on_course_id"
@@ -76,6 +76,6 @@ ActiveRecord::Schema.define(version: 2020_03_15_010716) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "reviews", "courses"
-  add_foreign_key "reviews", "professors"
+  add_foreign_key "reviews", "courses", on_delete: :cascade
+  add_foreign_key "reviews", "professors", on_delete: :cascade
 end

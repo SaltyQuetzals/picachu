@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2020_03_15_013753) do
     t.string 'name', null: false
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
+    t.index %w[dept course_num],
+            name: 'index_courses_on_dept_and_course_num', unique: true
   end
 
   create_table 'professors', force: :cascade do |t|

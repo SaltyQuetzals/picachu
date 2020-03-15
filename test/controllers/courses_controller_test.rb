@@ -16,14 +16,13 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create course' do
+    dept = 'TEST'
+    course_num = '221'
+    name = 'Name 121'
     assert_difference('Course.count') do
       post courses_url,
            params: {
-             course: {
-               course_num: @course.course_num,
-               dept: @course.dept,
-               name: @course.name
-             }
+             course: { course_num: course_num, dept: dept, name: name }
            }
     end
 
@@ -59,13 +58,14 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'search should fetch only relevant results' do
-    get search_courses_url, params: { q: { full_name_cont: 'PRIN' } }
+    get search_courses_url, params: { q: { full_name_cont: @course.name } }
     json_response = JSON.parse(@response.body)
     assert_equal json_response.length, 1
   end
 
   test 'search should be case-insensitive' do
-    get search_courses_url, params: { q: { full_name_cont: 'prin' } }
+    get search_courses_url,
+        params: { q: { full_name_cont: @course.name.downcase } }
     json_response = JSON.parse(@response.body)
     assert_equal json_response.length, 1
   end

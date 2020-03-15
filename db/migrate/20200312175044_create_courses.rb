@@ -7,5 +7,6 @@ class CreateCourses < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+    add_index :courses, %i[dept course_num], unique: true
   end
 end

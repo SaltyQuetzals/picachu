@@ -1,0 +1,26 @@
+# NOTE: This is the production configuration, but not the production settings.
+
+version: '3'
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: "prod_password"
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/picachu
+      - /picachu/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://postgres:prod_password@db:5432/picachu_prod
+      PORT: 3000
+      RAILS_ENV: production
+      RAKE_ENV: production

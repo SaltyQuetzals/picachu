@@ -3,13 +3,17 @@ default: &default
   encoding: unicode
   host: db
   username: postgres
-  password: <%= ENV.fetch("POSTGRES_PASSWORD") %>
+  password: <%= ENV.fetch("POSTGRES_PASSWORD") { "dev_password" } %>
   pool: 5
 
 development:
   <<: *default
   database: picachu_development
 
+
 test:
   <<: *default
   database: picachu_test
+
+production:
+  url: <%= ENV.fetch("DATABASE_URL") { "no_url_provided" } %>

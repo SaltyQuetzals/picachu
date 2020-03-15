@@ -1,10 +1,10 @@
 class CreateReviews < ActiveRecord::Migration[6.0]
   def change
     create_table :reviews do |t|
-      t.integer :overall_rating
-      t.string :letter_grade
-      t.string :semester
-      t.integer :year
+      t.integer :overall_rating, null: false
+      t.string :letter_grade, null: false
+      t.string :semester, null: false
+      t.integer :year, null: false
       t.boolean :course_required
       t.integer :interesting
       t.integer :difficult

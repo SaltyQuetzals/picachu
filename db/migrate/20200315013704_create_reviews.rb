@@ -21,8 +21,8 @@ class CreateReviews < ActiveRecord::Migration[6.0]
       t.integer :clear_explanations
       t.integer :fast_grading
       t.string :professor_other_thoughts
-      t.references :professor, foreign_key: {on_delete: :cascade}
-      t.references :course, foreign_key: {on_delete: :cascade}
+      t.references :professor, foreign_key: { on_delete: :cascade }
+      t.references :course, foreign_key: { on_delete: :cascade }
 
       t.timestamps
     end

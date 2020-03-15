@@ -322,3 +322,4 @@ fabric.properties
 
 .idea/*
 coverage
+/config/master.key

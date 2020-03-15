@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     collection { get 'search' }
   end
 
-  resources :reviews
+  get 'reviews/index'
 
   get 'professor/index'
   get 'login' => 'login#index'

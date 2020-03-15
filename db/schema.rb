@@ -23,25 +23,22 @@ ActiveRecord::Schema.define(version: 2020_03_12_175044) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-
-  create_table 'courses', force: :cascade do |t|
-    t.string 'dept'
-    t.string 'course_num'
-    t.string 'name'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
+  create_table "professors", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "full_name"
+    t.string "display_name"
+    t.string "cv_url"
+    t.string "tamu_dir_title"
+    t.string "tamu_dir_dept"
+    t.string "tamu_dir_email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table 'professors', force: :cascade do |t|
-    t.string 'first_name'
-    t.string 'last_name'
-    t.string 'full_name'
-    t.string 'display_name'
-    t.string 'cv_url'
-    t.string 'tamu_dir_title'
-    t.string 'tamu_dir_dept'
-    t.string 'tamu_dir_email'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
+  create_table "reviews", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
+
 end

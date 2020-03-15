@@ -1,9 +1,8 @@
 <%= render "partials/nav" %>
-<div>
-  <div>
-    
-    <h1>Review</h1>
-    
+
+<p id="notice"><%= notice %></p>
+
+<h1>Reviews</h1>
     <button class="btn btn-primary" id="myBtn">Report Review</button>
 
     <div id="myModal" class="modal">
@@ -29,8 +28,70 @@
             <button class="btn btn-primary w-80" id="submitReview">Submit Report</button>
         </div>
     </div>
-  
-  </div>  
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Overall rating</th>
+      <th>Letter grade</th>
+      <th>Semester</th>
+      <th>Year</th>
+      <th>Course required</th>
+      <th>Interesting</th>
+      <th>Difficult</th>
+      <th>Standardized course</th>
+      <th>Course other thoughts</th>
+      <th>Used textbook</th>
+      <th>Attendance mandatory</th>
+      <th>Course format</th>
+      <th>Cared about material</th>
+      <th>Open to questions</th>
+      <th>Cared about students</th>
+      <th>Clear grading</th>
+      <th>Homework heavy</th>
+      <th>Clear explanations</th>
+      <th>Fast grading</th>
+      <th>Professor other thoughts</th>
+      <th>Professor</th>
+      <th>Course</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reviews.each do |review| %>
+      <tr>
+        <td><%= review.overall_rating %></td>
+        <td><%= review.letter_grade %></td>
+        <td><%= review.semester %></td>
+        <td><%= review.year %></td>
+        <td><%= review.course_required %></td>
+        <td><%= review.interesting %></td>
+        <td><%= review.difficult %></td>
+        <td><%= review.standardized_course %></td>
+        <td><%= review.course_other_thoughts %></td>
+        <td><%= review.used_textbook %></td>
+        <td><%= review.attendance_mandatory %></td>
+        <td><%= review.course_format %></td>
+        <td><%= review.cared_about_material %></td>
+        <td><%= review.open_to_questions %></td>
+        <td><%= review.cared_about_students %></td>
+        <td><%= review.clear_grading %></td>
+        <td><%= review.homework_heavy %></td>
+        <td><%= review.clear_explanations %></td>
+        <td><%= review.fast_grading %></td>
+        <td><%= review.professor_other_thoughts %></td>
+        <td><%= review.professor_id %></td>
+        <td><%= review.course_id %></td>
+        <td><%= link_to 'Show', review %></td>
+        <td><%= link_to 'Edit', edit_review_path(review) %></td>
+        <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Review', new_review_path %>
 <%= javascript_include_tag "index"%>
 <%= render "partials/footer" %>

@@ -11,8 +11,9 @@ PROFESSOR_FILE_PATH = 'db/professors.json'
 
 professor_file = File.read(PROFESSOR_FILE_PATH)
 professor_data = JSON.parse(professor_file)
-records_to_insert = professor_data.map do |_key, summary|
-  {
+records_to_insert =
+  professor_data.map do |_key, summary|
+    {
       first_name: summary['firstName'],
       last_name: summary['lastName'],
       full_name: summary['fullName'],
@@ -21,6 +22,6 @@ records_to_insert = professor_data.map do |_key, summary|
       tamu_dir_email: summary['tamuDirEmail'],
       tamu_dir_title: summary['tamuDirTitle'],
       tamu_dir_dept: summary['tamuDirDept']
-  }
-end
+    }
+  end
 Professor.create(records_to_insert)

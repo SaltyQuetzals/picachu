@@ -1,3 +1,4 @@
+name: Lint Rails Code
 on: [push]
 
 jobs:

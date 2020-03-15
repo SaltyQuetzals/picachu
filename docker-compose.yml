@@ -5,7 +5,9 @@ services:
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
     environment:
-      POSTGRES_PASSWORD: "dev_password"
+      POSTGRES_PASSWORD: dev_password
+    ports:
+      - "5432:5432"
   web:
     build:
       context: .

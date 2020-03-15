@@ -320,7 +320,6 @@ fabric.properties
 .idea/**/markdown-navigator.xml
 .idea/**/markdown-navigator/
 
-# End of https://www.gitignore.io/api/node,code,ruby,rails,rubymine
 .idea/*
-
+coverage
 /config/master.key

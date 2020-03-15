@@ -17,8 +17,8 @@ jobs:
         with:
           ruby-version: 2.6.0
       - run: |
-          gem install prettier
           gem install bundle
+          bundle install --without production test
           bundle exec rbprettier --check 'app/**/*.rb'
           bundle exec rbprettier --check 'db/**/*.rb'
           bundle exec rbprettier --check 'config/**/*.rb'

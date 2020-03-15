@@ -3,9 +3,7 @@
 require 'application_system_test_case'
 
 class CoursesTest < ApplicationSystemTestCase
-  setup do
-    @course = courses(:one)
-  end
+  setup { @course = courses(:one) }
 
   test 'visiting the index' do
     visit courses_url
@@ -40,9 +38,7 @@ class CoursesTest < ApplicationSystemTestCase
 
   test 'destroying a Course' do
     visit courses_url
-    page.accept_confirm do
-      click_on 'Destroy', match: :first
-    end
+    page.accept_confirm { click_on 'Destroy', match: :first }
 
     assert_text 'Course was successfully destroyed'
   end

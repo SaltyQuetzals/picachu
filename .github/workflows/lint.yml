@@ -9,3 +9,17 @@ jobs:
         uses: andrewmcodes/rubocop-linter-action@v3.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: ruby/setup-ruby@master
+        with:
+          ruby-version: 2.6.0
+      - run: |
+          gem install prettier
+          gem install bundle
+          bundle exec rbprettier --check 'app/**/*.rb'
+          bundle exec rbprettier --check 'db/**/*.rb'
+          bundle exec rbprettier --check 'config/**/*.rb'
+          bundle exec rbprettier --check 'test/**/*.rb'

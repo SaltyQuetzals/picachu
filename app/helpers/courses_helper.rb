@@ -1,2 +1,3 @@
-module CoursesHelper
-end
+# frozen_string_literal: true
+
+module CoursesHelper; end

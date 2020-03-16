@@ -1,5 +1,4 @@
 class ReviewsController < ApplicationController
-
   before_action :set_review, only: %i[show edit update destroy]
 
   # GET /reviews

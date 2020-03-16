@@ -7,7 +7,6 @@ Rails.application.routes.draw do
     collection { get 'search' }
   end
 
-
   get 'reviews/index'
 
   get 'professor/index'

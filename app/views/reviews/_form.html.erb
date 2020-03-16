@@ -1,0 +1,127 @@
+<%= form_with(model: review, local: true) do |form| %>
+  <% if review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <ul>
+        <% review.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :overall_rating %>
+    <%= form.number_field :overall_rating %>
+  </div>
+
+  <div class="field">
+    <%= form.label :letter_grade %>
+    <%= form.text_field :letter_grade %>
+  </div>
+
+  <div class="field">
+    <%= form.label :semester %>
+    <%= form.text_field :semester %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year %>
+    <%= form.number_field :year %>
+  </div>
+
+  <div class="field">
+    <%= form.label :course_required %>
+    <%= form.check_box :course_required %>
+  </div>
+
+  <div class="field">
+    <%= form.label :interesting %>
+    <%= form.number_field :interesting %>
+  </div>
+
+  <div class="field">
+    <%= form.label :difficult %>
+    <%= form.number_field :difficult %>
+  </div>
+
+  <div class="field">
+    <%= form.label :standardized_course %>
+    <%= form.check_box :standardized_course %>
+  </div>
+
+  <div class="field">
+    <%= form.label :course_other_thoughts %>
+    <%= form.text_field :course_other_thoughts %>
+  </div>
+
+  <div class="field">
+    <%= form.label :used_textbook %>
+    <%= form.check_box :used_textbook %>
+  </div>
+
+  <div class="field">
+    <%= form.label :attendance_mandatory %>
+    <%= form.check_box :attendance_mandatory %>
+  </div>
+
+  <div class="field">
+    <%= form.label :course_format %>
+    <%= form.text_field :course_format %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cared_about_material %>
+    <%= form.number_field :cared_about_material %>
+  </div>
+
+  <div class="field">
+    <%= form.label :open_to_questions %>
+    <%= form.number_field :open_to_questions %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cared_about_students %>
+    <%= form.number_field :cared_about_students %>
+  </div>
+
+  <div class="field">
+    <%= form.label :clear_grading %>
+    <%= form.number_field :clear_grading %>
+  </div>
+
+  <div class="field">
+    <%= form.label :homework_heavy %>
+    <%= form.number_field :homework_heavy %>
+  </div>
+
+  <div class="field">
+    <%= form.label :clear_explanations %>
+    <%= form.number_field :clear_explanations %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fast_grading %>
+    <%= form.number_field :fast_grading %>
+  </div>
+
+  <div class="field">
+    <%= form.label :professor_other_thoughts %>
+    <%= form.text_field :professor_other_thoughts %>
+  </div>
+
+  <div class="field">
+    <%= form.label :professor_id %>
+    <%= form.text_field :professor_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :course_id %>
+    <%= form.text_field :course_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

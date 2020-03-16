@@ -11,9 +11,15 @@ Prerequisites:
     - [For Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 - [Docker Compose](https://docs.docker.com/compose/install/#install-compose)
 
-To get your environment set up, all you need is one command:
+To set up your environment, run the following commands:
 ```shell script
-docker-compose up
+docker-compose up -d
+docker-compose run web rake db:setup
+```
+
+To start the server, all you need is one command:
+```shell script
+docker-compose up -d
 ```
 
 This will create a PostgreSQL database and package the Rails server code into a container called `web`, accessible at `http://localhost:3000`.
@@ -24,19 +30,16 @@ When you're done running the server, just do
 docker-compose down
 ```
 
-#### Rails Commands
-All of the commands that you run with Rails ordinarily are runnable with Docker Compose too!
+#### Testing
+
+To run tests, simply run
 
 ```shell script
-# To prepare the database for interaction
-docker-compose run web rake db:prepare
-
-# To migrate the database
-docker-compose run web rake db:migrate
-
-# To run tests
 docker-compose run web rake test
 ```
+
+This will run all of the tests, and generate a code coverage report that can be found at `coverage/index.html`. 
+Open this file with your web browser to see your code coverage.
 
 ### Branching
 The master branch is protected, meaning that pushing directly to it is not possible.

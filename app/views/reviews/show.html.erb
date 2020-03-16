@@ -1,0 +1,114 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Overall rating:</strong>
+  <%= @review.overall_rating %>
+</p>
+
+<p>
+  <strong>Letter grade:</strong>
+  <%= @review.letter_grade %>
+</p>
+
+<p>
+  <strong>Semester:</strong>
+  <%= @review.semester %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @review.year %>
+</p>
+
+<p>
+  <strong>Course required:</strong>
+  <%= @review.course_required %>
+</p>
+
+<p>
+  <strong>Interesting:</strong>
+  <%= @review.interesting %>
+</p>
+
+<p>
+  <strong>Difficult:</strong>
+  <%= @review.difficult %>
+</p>
+
+<p>
+  <strong>Standardized course:</strong>
+  <%= @review.standardized_course %>
+</p>
+
+<p>
+  <strong>Course other thoughts:</strong>
+  <%= @review.course_other_thoughts %>
+</p>
+
+<p>
+  <strong>Used textbook:</strong>
+  <%= @review.used_textbook %>
+</p>
+
+<p>
+  <strong>Attendance mandatory:</strong>
+  <%= @review.attendance_mandatory %>
+</p>
+
+<p>
+  <strong>Course format:</strong>
+  <%= @review.course_format %>
+</p>
+
+<p>
+  <strong>Cared about material:</strong>
+  <%= @review.cared_about_material %>
+</p>
+
+<p>
+  <strong>Open to questions:</strong>
+  <%= @review.open_to_questions %>
+</p>
+
+<p>
+  <strong>Cared about students:</strong>
+  <%= @review.cared_about_students %>
+</p>
+
+<p>
+  <strong>Clear grading:</strong>
+  <%= @review.clear_grading %>
+</p>
+
+<p>
+  <strong>Homework heavy:</strong>
+  <%= @review.homework_heavy %>
+</p>
+
+<p>
+  <strong>Clear explanations:</strong>
+  <%= @review.clear_explanations %>
+</p>
+
+<p>
+  <strong>Fast grading:</strong>
+  <%= @review.fast_grading %>
+</p>
+
+<p>
+  <strong>Professor other thoughts:</strong>
+  <%= @review.professor_other_thoughts %>
+</p>
+
+<p>
+  <strong>Professor:</strong>
+  <%= @review.professor_id %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @review.course_id %>
+</p>
+
+<%= link_to 'Edit', edit_review_path(@review) %> |
+<%= link_to 'Back', reviews_path %>

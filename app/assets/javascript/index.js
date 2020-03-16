@@ -48,9 +48,6 @@ otherInput.onclick = function() {
   rad3_selected = true;
 }
 
-function keypressed(event){
-   otherReportValue = otherInput.value;
-}
 
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
@@ -72,16 +69,19 @@ window.onclick = function(event) {
 submit_review.onclick = function() {
   //logic to save record.
   //other test condition
-  if(otherInput.value == "")
+  if(otherInput.value == "" && rad3_selected == true)
   {
   	alert("Please Specify for 'Other' Option.")
   	return;
   }
-  alert("Thank you for the report!!!") 
+
+  otherReportValue = otherInput.value;
+  otherInput.value = "";
   modal.style.display = "none";
+
 }
 
 
 
 
-otherInput.addEventListener("input",keypressed);
+

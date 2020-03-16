@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_professor
+  before_action :set_course
   before_action :set_review, only: %i[show edit update destroy]
 
   # GET /reviews
@@ -23,15 +24,19 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.professor_id = @professor.id
-    @review.course_id = 5
+    @review.course_id = @course.id
+
+    # puts @review.inspect
+
 
     respond_to do |format|
       if @review.save
         format.html do
           redirect_to professor_path(@professor), notice: 'Review was successfully created.'
         end
-        # format.json { render :show, status: :created, location: @review }
+        format.json { render :show, status: :created, location: @review }
       else
+        # puts @review.errors.full_messages
         format.html { render :new }
         format.json do
           render json: @review.errors, status: :unprocessable_entity
@@ -107,5 +112,9 @@ class ReviewsController < ApplicationController
 
   def set_professor
     @professor = Professor.find(params[:professor_id])
+  end
+
+  def set_course
+    @course = Course.first
   end
 end

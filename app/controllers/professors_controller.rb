@@ -9,7 +9,13 @@ class ProfessorsController < ApplicationController
 
   # GET /professors/1
   # GET /professors/1.json
-  def show; end
+  def show; 
+    @avg_review = if @professor.reviews.blank? 
+                    0
+                  else
+                    @professor.reviews.average(:overall_rating)
+                  end
+  end
 
   # GET /professors/new
   def new

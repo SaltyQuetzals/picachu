@@ -20,14 +20,14 @@
   <tbody>
     <% @professors.each do |professor| %>
       <tr>
-        <td><%= professor.first_name %></td>
+        <!-- <td><%= professor.first_name %></td>
         <td><%= professor.last_name %></td>
-        <td><%= professor.full_name %></td>
+        <td><%= professor.full_name %></td> -->
         <td><%= professor.display_name %></td>
-        <td><%= professor.cv_url %></td>
+        <!-- <td><%= professor.cv_url %></td>
         <td><%= professor.tamu_dir_title %></td>
         <td><%= professor.tamu_dir_dept %></td>
-        <td><%= professor.tamu_dir_email %></td>
+        <td><%= professor.tamu_dir_email %></td> -->
         <td><%= link_to 'Show', professor %></td>
         <td><%= link_to 'Edit', edit_professor_path(professor) %></td>
         <td><%= link_to 'Destroy', professor, method: :delete, data: { confirm: 'Are you sure?' } %></td>

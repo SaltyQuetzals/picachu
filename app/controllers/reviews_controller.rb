@@ -1,10 +1,10 @@
 class ReviewsController < ApplicationController
+  before_action :set_professor
   before_action :set_review, only: %i[show edit update destroy]
 
   # GET /reviews
   # GET /reviews.json
   def index
-    @reviews = Review.all
   end
 
   # GET /reviews/1
@@ -23,13 +23,15 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
+    @review.professor_id = @professor.id
+    @review.course_id = 5
 
     respond_to do |format|
       if @review.save
         format.html do
-          redirect_to @review, notice: 'Review was successfully created.'
+          redirect_to professor_path(@professor), notice: 'Review was successfully created.'
         end
-        format.json { render :show, status: :created, location: @review }
+        # format.json { render :show, status: :created, location: @review }
       else
         format.html { render :new }
         format.json do
@@ -45,7 +47,7 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.update(review_params)
         format.html do
-          redirect_to @review, notice: 'Review was successfully updated.'
+          redirect_to professor_path(@professor), notice: 'Review was successfully updated.'
         end
         format.json { render :show, status: :ok, location: @review }
       else
@@ -73,7 +75,7 @@ class ReviewsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_review
-    @review = Review.find(params[:id])
+    @review = picture.reviews.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
@@ -99,8 +101,12 @@ class ReviewsController < ApplicationController
       :clear_explanations,
       :fast_grading,
       :professor_other_thoughts,
-      :professor_id,
-      :course_id
+      # :professor_id,
+      # :course_id
     )
+  end
+
+  def set_professor
+    @professor = Professor.find(params[:professor_id])
   end
 end

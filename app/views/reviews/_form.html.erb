@@ -1,4 +1,4 @@
-<%= form_with(model: review, local: true) do |form| %>
+<%= form_for ([@professor, @review]) do |form|%>
   <% if review.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
@@ -109,16 +109,6 @@
   <div class="field">
     <%= form.label :professor_other_thoughts %>
     <%= form.text_field :professor_other_thoughts %>
-  </div>
-
-  <div class="field">
-    <%= form.label :professor_id %>
-    <%= form.text_field :professor_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :course_id %>
-    <%= form.text_field :course_id %>
   </div>
 
   <div class="actions">

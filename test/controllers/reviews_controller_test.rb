@@ -1,21 +1,22 @@
 require 'test_helper'
 
 class ReviewsControllerTest < ActionDispatch::IntegrationTest
-  setup { @review = reviews(:one) }
+  setup { 
+    @review = reviews(:one),
+    @professor = professors(:one)
+  }
 
-  test 'should get index' do
-    get reviews_url
-    assert_response :success
-  end
+  
 
   test 'should get new' do
-    get new_review_url
+    get new_professor_review_url(professor_id: @professor.id)
     assert_response :success
   end
 
   test 'should create review' do
-    assert_difference('Review.count') do
-      post reviews_url,
+
+    assert_difference('Review.count', 1) do
+      post professor_reviews_url(professor_id: @professor.id),
            params: {
              review: {
                attendance_mandatory: @review.attendance_mandatory,
@@ -24,7 +25,7 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
                clear_explanations: @review.clear_explanations,
                clear_grading: @review.clear_grading,
                course_format: @review.course_format,
-               course_id: @review.course_id,
+               course_id: 5,
                course_other_thoughts: @review.course_other_thoughts,
                course_required: @review.course_required,
                difficult: @review.difficult,
@@ -34,7 +35,7 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
                letter_grade: @review.letter_grade,
                open_to_questions: @review.open_to_questions,
                overall_rating: @review.overall_rating,
-               professor_id: @review.professor_id,
+               # professor_id: @review.professor_id,
                professor_other_thoughts: @review.professor_other_thoughts,
                semester: @review.semester,
                standardized_course: @review.standardized_course,
@@ -44,30 +45,23 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
            }
     end
 
-    assert_redirected_to review_url(Review.last)
+    assert_redirected_to professor_path(@professor)
   end
 
-  test 'should show review' do
-    get review_url(@review)
-    assert_response :success
-  end
 
-  test 'should get edit' do
-    get edit_review_url(@review)
-    assert_response :success
-  end
 
   test 'should update review' do
-    patch review_url(@review),
+    patch professor_review_url(@review, professor_id: @professor.id),
           params: {
             review: {
-              attendance_mandatory: @review.attendance_mandatory,
+              # attendance_mandatory: @review.attendance_mandatory,
               cared_about_material: @review.cared_about_material,
               cared_about_students: @review.cared_about_students,
+              attendance_mandatory: @review.attendance_mandatory,
               clear_explanations: @review.clear_explanations,
               clear_grading: @review.clear_grading,
               course_format: @review.course_format,
-              course_id: @review.course_id,
+              # course_id: @review.course_id,
               course_other_thoughts: @review.course_other_thoughts,
               course_required: @review.course_required,
               difficult: @review.difficult,
@@ -77,7 +71,7 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
               letter_grade: @review.letter_grade,
               open_to_questions: @review.open_to_questions,
               overall_rating: @review.overall_rating,
-              professor_id: @review.professor_id,
+              professor_id: @professor.id,
               professor_other_thoughts: @review.professor_other_thoughts,
               semester: @review.semester,
               standardized_course: @review.standardized_course,
@@ -85,12 +79,12 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
               year: @review.year
             }
           }
-    assert_redirected_to review_url(@review)
+    assert_redirected_to professor_path(@professor)
   end
 
   test 'should destroy review' do
-    assert_difference('Review.count', -1) { delete review_url(@review) }
 
-    assert_redirected_to reviews_url
+    assert_difference('Review.count', -1) { delete professor_review_url(@review, professor_id: @professor.id) }
+    assert_redirected_to professor_path(@professor)
   end
 end

@@ -4,8 +4,7 @@ class ReviewsController < ApplicationController
 
   # GET /reviews
   # GET /reviews.json
-  def index
-  end
+  def index;end
 
   # GET /reviews/1
   # GET /reviews/1.json
@@ -65,7 +64,7 @@ class ReviewsController < ApplicationController
     @review.destroy
     respond_to do |format|
       format.html do
-        redirect_to reviews_url, notice: 'Review was successfully destroyed.'
+        redirect_to professor_path(@professor), notice: 'Review was successfully destroyed.'
       end
       format.json { head :no_content }
     end
@@ -75,7 +74,7 @@ class ReviewsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_review
-    @review = picture.reviews.find(params[:id])
+    @review = @professor.reviews.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
@@ -100,7 +99,7 @@ class ReviewsController < ApplicationController
       :homework_heavy,
       :clear_explanations,
       :fast_grading,
-      :professor_other_thoughts,
+      :professor_other_thoughts
       # :professor_id,
       # :course_id
     )

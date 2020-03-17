@@ -3,6 +3,12 @@
 class Course < ApplicationRecord
   has_many :reviews
 
+
+
+  def full_course_name
+    "#{dept}, #{course_num}, #{name}"
+  end
+
   def self.ransortable_attributes(_auth_object = nil)
     column_names
   end

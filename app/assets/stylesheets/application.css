@@ -14,9 +14,13 @@
  *= require_self
  */
 
+ body {
+     margin: 0;
+ }
+
 .navbar {
     margin: 0 -8px;
-    padding: 10px 80px;
+    padding: 20px 80px 10px;
     border-bottom: 1px solid #DEDEDE;
 }
 .nav-user {
@@ -34,3 +38,11 @@
  .down-arrow {
      width: 20px;
  }
+
+footer {
+    background-color: #00817E;
+    color: white;
+    width: calc(100%-160px);
+    padding: 2px 80px;
+    font-size: 12px;
+}

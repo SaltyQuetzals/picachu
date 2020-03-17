@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :professors do
     collection { get 'search' }
-    resources :reviews, except: [:show, :index]
+    resources :reviews, except: %i[show index]
   end
   # resources :reviews
   resources :courses do

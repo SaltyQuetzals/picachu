@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
 
   # GET /reviews
   # GET /reviews.json
-  def index;end
+  def index; end
 
   # GET /reviews/1
   # GET /reviews/1.json
@@ -28,11 +28,11 @@ class ReviewsController < ApplicationController
 
     # puts @review.inspect
 
-
     respond_to do |format|
       if @review.save
         format.html do
-          redirect_to professor_path(@professor), notice: 'Review was successfully created.'
+          redirect_to professor_path(@professor),
+                      notice: 'Review was successfully created.'
         end
         format.json { render :show, status: :created, location: @review }
       else
@@ -51,7 +51,8 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.update(review_params)
         format.html do
-          redirect_to professor_path(@professor), notice: 'Review was successfully updated.'
+          redirect_to professor_path(@professor),
+                      notice: 'Review was successfully updated.'
         end
         format.json { render :show, status: :ok, location: @review }
       else
@@ -69,7 +70,8 @@ class ReviewsController < ApplicationController
     @review.destroy
     respond_to do |format|
       format.html do
-        redirect_to professor_path(@professor), notice: 'Review was successfully destroyed.'
+        redirect_to professor_path(@professor),
+                    notice: 'Review was successfully destroyed.'
       end
       format.json { head :no_content }
     end
@@ -105,9 +107,9 @@ class ReviewsController < ApplicationController
       :clear_explanations,
       :fast_grading,
       :professor_other_thoughts
-      # :professor_id,
-      # :course_id
     )
+    # :professor_id,
+    # :course_id
   end
 
   def set_professor

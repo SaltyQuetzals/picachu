@@ -13,16 +13,44 @@
  *= require_tree .
  *= require_self
  */
+ @import url('https://fonts.googleapis.com/css?family=Roboto');
+ 
 
  body {
      margin: 0;
  }
+
+ h1, h2, h3, h4, h5, h6, p, a {
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    font-size: 32px;
+    line-height: 36px;
+    font-weight: 400;
+}
+
+h2 {
+    font-size: 24px;
+    line-height: 30px;
+    margin-bottom: 30px;
+}
+
+h4 {
+    font-size: 16px; 
+    margin-bottom: 30px;
+    line-height: 20px;
+}
 
 .navbar {
     margin: 0 -8px;
     padding: 20px 80px 10px;
     border-bottom: 1px solid #DEDEDE;
 }
+.navbar a:hover {
+    background-color: transparent;
+}
+
 .nav-user {
     float: right;
     text-decoration: none;
@@ -40,6 +68,7 @@
  }
 
 footer {
+    margin-top: 80px;
     background-color: #00817E;
     color: white;
     width: calc(100%-160px);

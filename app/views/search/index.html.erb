@@ -2,8 +2,20 @@
 
 <div class="flex-container">
   <div class="search-pg-container">
-    <h2>Search by Professor</h2>
-    <div class="search-container">
+    <h2>Search by Professor or Course</h2>
+
+    <div class="radio-container">
+      <div class="radio-elem">
+        <input type="radio" id="radioProfessor" name="searchby" value="professor" onclick="showSearch('searchProfessor');" checked>
+        <label for="professor">Professor</label>
+      </div>
+      <div class="radio-elem">
+        <input type="radio" id="radioCourse" name="searchby" value="course" onclick="showSearch('searchCourse');">
+        <label for="course">Course</label>
+      </div>
+    </div>
+    
+    <div class="search-container" id="searchProfessor">
       <form autocomplete="off" method="get" action="<%= search_professors_path %>">
         <div class="autocomplete">
           <input type="text" placeholder="John Doe" name="q[full_name_cont]" class="w-50" id="profName">
@@ -12,10 +24,7 @@
       </form>
     </div>
 
-    <h4>or</h4>
-
-    <h2>Search by Course</h2>
-    <div class="search-container">
+    <div class="search-container" id="searchCourse" style="display:none">
       <form autocomplete="off" method="get" action="<%= search_courses_path %>">
         <input type="text" placeholder="CSCE 431 Parallel Computing" name="q[full_name_cont]" class="w-50" id="courseID">
         <button type="submit" class="btn btn-secondary w-25 d-inline">Search</button>
@@ -26,6 +35,16 @@
 </div>
 
 <script>
+  function showSearch(selectedElem) {
+    var containers = document.getElementsByClassName("search-container");
+    for (i = 0; i < containers.length; i++) {
+      containers[i].style.display = "none";
+    }
+
+    document.getElementById(selectedElem).style.display = "block";
+  }
+
+
     // From: https://davidwalsh.name/javascript-debounce-function
     function debounce(func, wait, immediate) {
         var timeout;

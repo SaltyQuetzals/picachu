@@ -11,16 +11,20 @@ input[type=text] {
     font-size: 16px;
 }
 
+input[type=radio], input[type=radio] ~ label {
+    display: inline;
+}
+
 .d-inline {
     display: inline;
 }
 
 .flex-container > .search-pg-container {
     width: 50%;
-    margin: 15vh 10px 10px 10px;
+    margin: 23vh 10px 10px 10px;
     h1 {
         text-align: left;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
     }
     h4 {
         font-weight: 300;
@@ -30,6 +34,12 @@ input[type=text] {
     input[type=text] {
         width: 65%;
     }
+    @media (max-width: 991.98px) { 
+        width: 75%;
+    }
+    @media (max-width: 767.98px) { 
+        width: 90%;
+    }
 }
 
 .search-container {
@@ -37,6 +47,14 @@ input[type=text] {
     margin-bottom: 20px;
     input[type=text] {
         margin-right: 3%;
+    }
+}
+
+.radio-container {
+    margin-bottom: 20px;
+    .radio-elem {
+        margin-right: 20px;
+        display: inline;
     }
 }
 

@@ -38,7 +38,7 @@ $colour-primary: #00817E;
 .btn {
     display: block;
     margin: auto;
-    padding: 15px;
+    padding: 12px;
     border-radius: 50px;
     text-transform: capitalize;
     font-weight: 600;
@@ -47,9 +47,10 @@ $colour-primary: #00817E;
 .btn-primary {
     color: white;
     background-color: $colour-primary;
-    border: 0;
+    border: 3px solid $colour-primary;
     &:hover {
         background-color: #006F6C;
+        border: 3px solid #006F6C;
         transition: 0.3s;
         cursor: pointer;
     }

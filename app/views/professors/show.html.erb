@@ -43,7 +43,7 @@
 <%= link_to 'Edit', edit_professor_path(@professor) %> |
 <%= link_to 'Back', professors_path %>
 
-<%= link_to 'Write a Review', new_professor_review_path(@professor)%>
+<%= link_to 'Write a Review', new_professor_course_review_path(@professor, @course)%>
 <%if(@professor.reviews.blank?)%>
   <h3> No Reviews </h3>
 <%else%>
@@ -53,7 +53,8 @@
 
   <% @professor.reviews.each do |review| %>
     <p>
-      <%= review.overall_rating %>
+      Overall Rating: <%= review.overall_rating %>, 
+      Course: <%= Course.find(review.course_id).full_course_name%>
     </p>
   <%end%>
 <%end%>

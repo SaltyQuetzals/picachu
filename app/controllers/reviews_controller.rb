@@ -14,10 +14,11 @@ class ReviewsController < ApplicationController
   def select
     @courses = Course.all.order(:dept, :course_num)
     @professors = Professor.all.order(:full_name)
-    @prof_id = params[:professor_id]
+    @professor_id = params[:professor_id]
+    @course_id = params[:course_id]
 
-    if(@prof_id)
-      redirect_to new_professor_review_path(@prof_id)
+    if(@professor_id && @course_id)
+      redirect_to new_professor_course_review_path(@professor_id, @course_id)
     end
   end
 
@@ -129,6 +130,8 @@ class ReviewsController < ApplicationController
   end
 
   def set_course
-    @course = Course.first
+    if(params[:professor_id])
+      @course = Course.find(params[:course_id])
+    end
   end
 end

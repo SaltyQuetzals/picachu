@@ -1,6 +1,6 @@
 class ProfessorsController < ApplicationController
   before_action :set_professor, only: %i[show edit update destroy]
-
+  before_action :set_course
   # GET /professors
   # GET /professors.json
   def index
@@ -97,6 +97,10 @@ class ProfessorsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_professor
     @professor = Professor.find(params[:id])
+  end
+
+  def set_course
+    @course = Course.first
   end
 
   # Only allow a list of trusted parameters through.

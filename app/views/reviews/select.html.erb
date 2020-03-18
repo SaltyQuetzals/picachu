@@ -1,0 +1,18 @@
+<h1>New Review</h1>
+
+
+
+<%= form_tag reviews_new_path, id: "professor_form", method: :get do%>
+	<h2>Professors</h2>
+
+	<%= select_tag(:professor_id, options_from_collection_for_select(@professors, :id, :full_name), :required => true, :include_blank => true)%>
+
+	<h2>Courses</h2>
+
+	<%= select_tag(:course_id, options_from_collection_for_select(@courses, :id, :full_course_name), :required => true, :include_blank => true)%>
+
+
+	<%= submit_tag "Write a Reivew" %>
+
+<%end%> 
+

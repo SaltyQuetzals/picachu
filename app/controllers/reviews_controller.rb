@@ -11,11 +11,19 @@ class ReviewsController < ApplicationController
   # GET /reviews/1.json
   def show; end
 
+  def select
+    @courses = Course.all.order(:dept, :course_num)
+    @professors = Professor.all.order(:full_name)
+    @prof_id = params[:professor_id]
+
+    if(@prof_id)
+      redirect_to new_professor_review_path(@prof_id)
+    end
+  end
+
   # GET /reviews/new
   def new
     @review = Review.new
-    @courses = Course.all.order(:dept, :course_num)
-    @professors = Professor.all.order(:full_name)
   end
 
   # GET /reviews/1/edit
@@ -28,7 +36,7 @@ class ReviewsController < ApplicationController
     @review.professor_id = @professor.id
     @review.course_id = @course.id
 
-    # puts @review.inspect
+    puts @review.inspect
 
     respond_to do |format|
       if @review.save
@@ -108,14 +116,16 @@ class ReviewsController < ApplicationController
       :homework_heavy,
       :clear_explanations,
       :fast_grading,
-      :professor_other_thoughts
+      :professor_other_thoughts,
+      :professor_id,
+      :course_id
     )
-    # :professor_id,
-    # :course_id
   end
 
   def set_professor
-    @professor = Professor.find(params[:professor_id])
+    if(params[:professor_id])
+      @professor = Professor.find(params[:professor_id])
+    end
   end
 
   def set_course

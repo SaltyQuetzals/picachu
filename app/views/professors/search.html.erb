@@ -1,39 +1,54 @@
+<%= render 'partials/nav' %>
+
 <p id="notice"><%= notice %></p>
 
-<h1>Professors</h1>
+<div class="flex-container">
+  <div class="courses-search">  
+    <%= render 'partials/searchcontainers' %>
 
-<table>
-  <thead>
-  <tr>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Full name</th>
-    <th>Display name</th>
-    <th>Cv url</th>
-    <th>Tamu dir title</th>
-    <th>Tamu dir dept</th>
-    <th>Tamu dir email</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
+    <table class="search-results">
+      <thead>
+      <tr>
+    <!--    
+        <th>First name</th>
+        <th>Last name</th> 
+        <th>Full name</th>
+        <th>Cv url</th>
+        <th>Tamu dir title</th>
+        <th>Tamu dir email</th>
+      -->
+        <th>Name</th>
+        <th colspan=2>Department</th>
+      </tr>
+      </thead>
 
-  <tbody>
-  <% @professors.each do |professor| %>
-    <tr>
-      <td><%= professor.first_name %></td>
-      <td><%= professor.last_name %></td>
-      <td><%= professor.full_name %></td>
-      <td><%= professor.display_name %></td>
-      <td><%= professor.cv_url %></td>
-      <td><%= professor.tamu_dir_title %></td>
-      <td><%= professor.tamu_dir_dept %></td>
-      <td><%= professor.tamu_dir_email %></td>
-      <td><%= link_to 'Show', professor %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+      <tbody>
+      <% @professors.each do |professor| %>
+        <tr>
 
-<br>
+    <!--
+          <td><%= professor.first_name %></td>
+          <td><%= professor.last_name %></td>
+          <td><%= professor.full_name %></td>
+          <td><%= professor.tamu_dir_title %></td>
+          <td><%= professor.cv_url %></td>
+          <td><%= professor.tamu_dir_email %></td>
+    -->
+          <td><%= professor.display_name %></td>
+          <td><%= professor.tamu_dir_dept %></td>
+          <td class="view-btn"><%= link_to 'Show', professor %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
 
-<%= link_to 'New Professor', new_professor_path %>
+    <div class="add-new">
+      <p>Don't see the professor you're looking for?</p>
+      <%= link_to 'Add New Professor', new_professor_path, :class => "a-btn" %>
+    </div>
+
+  </div>
+</div>
+
+<%= render "partials/footer" %>
+

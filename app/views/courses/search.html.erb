@@ -3,13 +3,7 @@
 <p id="notice"><%= notice %></p>
 <div class="flex-container">
   <div class="courses-search">
-
-    <div class="searchbar-container">
-      <form autocomplete="off" method="get" action="<%= search_courses_path %>">
-        <input type="text" placeholder="<%= search_courses_path %>" name="q[full_name_cont]" style="width:67%" id="courseID">
-        <button type="submit" class="btn btn-secondary w-25 d-inline">Search</button>
-      </form>
-    </div>
+  <%= render 'partials/searchcontainers' %>
 
     <table class="search-results">
       <thead>

@@ -1,0 +1,32 @@
+<br>
+
+<div class="radio-container">
+    <div class="radio-elem">
+        <input type="radio" id="radioProfessor" name="searchby" value="professor" onclick="showSearch('searchProfessor');" checked>
+        <label for="professor">Professor</label>
+    </div>
+    <div class="radio-elem">
+        <input type="radio" id="radioCourse" name="searchby" value="course" onclick="showSearch('searchCourse');">
+        <label for="course">Course</label>
+    </div>
+</div>
+
+<div class="search-container" id="searchProfessor">
+    <form autocomplete="off" method="get" action="<%= search_professors_path %>">
+        <div class="autocomplete">
+            <input type="text" placeholder="John Doe" name="q[full_name_cont]" class="w-50" id="profName">
+            <button type="submit" class="btn btn-primary w-25 d-inline">Search</button>
+        </div>
+    </form>
+</div>
+
+<div class="search-container" id="searchCourse" style="display:none">
+    <form autocomplete="off" method="get" action="<%= search_courses_path %>">
+        <input type="text" placeholder="CSCE 431 Parallel Computing" name="q[full_name_cont]" class="w-50" id="courseID">
+        <button type="submit" class="btn btn-secondary w-25 d-inline">Search</button>
+    </form>
+</div>
+
+<br>
+
+<%= javascript_include_tag "showSearch", "data-turbolinks-track" => true %>

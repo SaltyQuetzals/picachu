@@ -23,7 +23,9 @@ class ReviewsController < ApplicationController
   # GET /reviews/1/edit
   def edit
     @courses = Course.all.order(:dept, :course_num)
+    @course_id = @review.course_id
     @professors = Professor.all.order(:full_name)
+    @professor_id = @review.professor_id
   end
 
   # POST /reviews

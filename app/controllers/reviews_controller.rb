@@ -37,7 +37,6 @@ class ReviewsController < ApplicationController
     @review.professor_id = @professor.id
     @review.course_id = @course.id
 
-    puts @review.inspect
 
     respond_to do |format|
       if @review.save
@@ -78,10 +77,11 @@ class ReviewsController < ApplicationController
   # DELETE /reviews/1
   # DELETE /reviews/1.json
   def destroy
+    prof_id = @review.professor_id
     @review.destroy
     respond_to do |format|
       format.html do
-        redirect_to professor_path(@professor),
+        redirect_to professor_path(prof_id),
                     notice: 'Review was successfully destroyed.'
       end
       format.json { head :no_content }
@@ -92,7 +92,7 @@ class ReviewsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_review
-    @review = @professor.reviews.find(params[:id])
+    @review = Review.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
@@ -130,7 +130,7 @@ class ReviewsController < ApplicationController
   end
 
   def set_course
-    if(params[:professor_id])
+    if(params[:course_id])
       @course = Course.find(params[:course_id])
     end
   end

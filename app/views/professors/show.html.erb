@@ -55,6 +55,10 @@
     <p>
       Overall Rating: <%= review.overall_rating %>, 
       Course: <%= Course.find(review.course_id).full_course_name%>
+      <%= link_to 'Show', review %> |
+      <%= link_to 'Edit', edit_professor_course_review_path(:id => review.id, :professor_id => @professor.id, :course_id => review.course_id) %> |
+      <%= link_to 'Delete', review, method: :delete, data: { confirm: 'Are you sure?' } %>
+
     </p>
   <%end%>
 <%end%>

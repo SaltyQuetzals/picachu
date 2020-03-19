@@ -102,13 +102,15 @@
 
 <p>
   <strong>Professor:</strong>
-  <%= @review.professor_id %>
+  <%= Professor.find(@review.professor_id).display_name %>
 </p>
 
 <p>
   <strong>Course:</strong>
-  <%= @review.course_id %>
+  <%= Course.find(@review.course_id).full_course_name %>
 </p>
 
-<%= link_to 'Edit', edit_review_path(@review) %> |
-<%= link_to 'Back', reviews_path %>
+<%= link_to 'Edit', edit_professor_course_review_path(@review, :course_id => @review.course_id) %> |
+<%= link_to 'Back', professor_path(@review.professor_id) %>
+
+

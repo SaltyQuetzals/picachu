@@ -8,14 +8,18 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get new' do
-    get new_professor_course_review_url(professor_id: @professor.id, course_id: @course.id)
+    get new_professor_course_review_url(
+          professor_id: @professor.id, course_id: @course.id
+        )
     assert_response :success
   end
 
   test 'should create review' do
     assert_difference('Review.count', 1) do
       # puts Review.count
-      post professor_course_reviews_url(professor_id: @professor.id, course_id: @course.id),
+      post professor_course_reviews_url(
+             professor_id: @professor.id, course_id: @course.id
+           ),
            params: {
              review: {
                attendance_mandatory: @review.attendance_mandatory,
@@ -48,8 +52,10 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update review' do
-
-    patch professor_course_review_url(@review, professor_id: @professor.id, course_id: @course.id),
+    patch professor_course_review_url(
+            @review,
+            professor_id: @professor.id, course_id: @course.id
+          ),
           params: {
             review: {
               attendance_mandatory: @review.attendance_mandatory,
@@ -70,20 +76,22 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
               overall_rating: @review.overall_rating,
               professor_id: @professor.id,
               professor_other_thoughts: @review.professor_other_thoughts,
-              semester: "test",
+              semester: 'test',
               standardized_course: @review.standardized_course,
               used_textbook: @review.used_textbook,
               year: @review.year
             }
           }
     assert_redirected_to professor_path(@professor)
-
   end
 
   test 'should destroy review' do
     # puts Review.count
     assert_difference('Review.count', -1) do
-      delete professor_course_review_url(@review, professor_id: @professor.id, course_id: @course.id)
+      delete professor_course_review_url(
+               @review,
+               professor_id: @professor.id, course_id: @course.id
+             )
     end
     # puts Review.count
     assert_redirected_to professor_path(@professor)

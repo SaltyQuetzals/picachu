@@ -94,7 +94,6 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
   end
 
-
   def set_professor
     @professor = Professor.first
   end

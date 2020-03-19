@@ -3,8 +3,6 @@
 class Course < ApplicationRecord
   has_many :reviews
 
-
-
   def full_course_name
     "#{dept}, #{course_num}, #{name}"
   end

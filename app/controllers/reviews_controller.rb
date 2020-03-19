@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
     @professor_id = params[:professor_id]
     @course_id = params[:course_id]
 
-    if(@professor_id && @course_id)
+    if (@professor_id && @course_id)
       redirect_to new_professor_course_review_path(@professor_id, @course_id)
     end
   end
@@ -36,7 +36,6 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.professor_id = @professor.id
     @review.course_id = @course.id
-
 
     respond_to do |format|
       if @review.save
@@ -125,14 +124,12 @@ class ReviewsController < ApplicationController
   end
 
   def set_professor
-    if(params[:professor_id])
+    if (params[:professor_id])
       @professor = Professor.find(params[:professor_id])
     end
   end
 
   def set_course
-    if(params[:course_id])
-      @course = Course.find(params[:course_id])
-    end
+    @course = Course.find(params[:course_id]) if (params[:course_id])
   end
 end

@@ -1,4 +1,4 @@
-<%= form_with(model: review, local: true) do |form| %>
+<%= form_for ([@professor, @course, @review]) do |form| %>
   <% if review.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
@@ -10,6 +10,25 @@
       </ul>
     </div>
   <% end %>
+
+
+  <div class="field">
+    <%= form.label :professor_id %>
+    <% unless @professor_id.nil? %>
+      <%= select_tag(:professor_id, options_from_collection_for_select(@professors, :id, :full_name, :selected => @professor_id), :required => true) %>
+    <% else %>
+      <%= select_tag(:professor_id, options_from_collection_for_select(@professors, :id, :full_name), :required => true, :prompt => 'Select a Professor') %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :course_id %>
+    <% unless @course_id.nil? %>
+      <%= select_tag(:course_id, options_from_collection_for_select(@courses, :id, :full_course_name, :selected => @course_id), :required => true) %>
+    <% else %>
+      <%= select_tag(:course_id, options_from_collection_for_select(@courses, :id, :full_course_name), :required => true, :prompt => 'Select a Course') %>
+    <% end %>
+  </div>
 
   <div class="field">
     <%= form.label :overall_rating %>
@@ -109,16 +128,6 @@
   <div class="field">
     <%= form.label :professor_other_thoughts %>
     <%= form.text_field :professor_other_thoughts %>
-  </div>
-
-  <div class="field">
-    <%= form.label :professor_id %>
-    <%= form.text_field :professor_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :course_id %>
-    <%= form.text_field :course_id %>
   </div>
 
   <div class="actions">

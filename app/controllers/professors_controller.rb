@@ -1,15 +1,24 @@
+# frozen_string_literal: true
+
 class ProfessorsController < ApplicationController
   before_action :set_professor, only: %i[show edit update destroy]
-
+  before_action :set_course
   # GET /professors
   # GET /professors.json
   def index
-    @professors = Professor.all
+    @professors = Professor.all.order(:full_name)
   end
 
   # GET /professors/1
   # GET /professors/1.json
-  def show; end
+  def show
+    @avg_review =
+      if @professor.reviews.blank?
+        0
+      else
+        @professor.reviews.average(:overall_rating)
+      end
+  end
 
   # GET /professors/new
   def new
@@ -90,6 +99,10 @@ class ProfessorsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_professor
     @professor = Professor.find(params[:id])
+  end
+
+  def set_course
+    @course = Course.first
   end
 
   # Only allow a list of trusted parameters through.

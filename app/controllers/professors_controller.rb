@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProfessorsController < ApplicationController
   before_action :set_professor, only: %i[show edit update destroy]
   before_action :set_course

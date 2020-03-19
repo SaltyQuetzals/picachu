@@ -21,7 +21,7 @@ class ReviewsController < ApplicationController
   end
 
   # GET /reviews/1/edit
-  def edit; 
+  def edit
     @courses = Course.all.order(:dept, :course_num)
     @professors = Professor.all.order(:full_name)
   end

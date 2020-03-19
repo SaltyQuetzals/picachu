@@ -46,7 +46,7 @@ class ReviewsController < ApplicationController
         end
         format.json { render :show, status: :created, location: @review }
       else
-        # puts @review.errors.full_messages
+        puts @review.errors.full_messages
         format.html { render :new }
         format.json do
           render json: @review.errors, status: :unprocessable_entity
@@ -66,6 +66,7 @@ class ReviewsController < ApplicationController
         end
         format.json { render :show, status: :ok, location: @review }
       else
+        puts @review.errors.full_messages
         format.html { render :edit }
         format.json do
           render json: @review.errors, status: :unprocessable_entity

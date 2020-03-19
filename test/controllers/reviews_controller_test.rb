@@ -42,13 +42,13 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
                year: @review.year
              }
            }
-      # puts Review.count
     end
 
     assert_redirected_to professor_path(@professor)
   end
 
   test 'should update review' do
+
     patch professor_course_review_url(@review, professor_id: @professor.id, course_id: @course.id),
           params: {
             review: {
@@ -58,7 +58,7 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
               clear_explanations: @review.clear_explanations,
               clear_grading: @review.clear_grading,
               course_format: @review.course_format,
-              course_id: 5,
+              course_id: @course.id,
               course_other_thoughts: @review.course_other_thoughts,
               course_required: @review.course_required,
               difficult: @review.difficult,
@@ -70,13 +70,14 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
               overall_rating: @review.overall_rating,
               professor_id: @professor.id,
               professor_other_thoughts: @review.professor_other_thoughts,
-              semester: @review.semester,
+              semester: "test",
               standardized_course: @review.standardized_course,
               used_textbook: @review.used_textbook,
               year: @review.year
             }
           }
     assert_redirected_to professor_path(@professor)
+
   end
 
   test 'should destroy review' do

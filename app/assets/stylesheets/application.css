@@ -63,6 +63,7 @@ h4 {
  }
  .down-arrow {
      width: 20px;
+     transition: 0.3s;
  }
 
 footer {

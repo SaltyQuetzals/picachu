@@ -3,9 +3,24 @@
         <%= image_tag 'picachu-logo.png', class: 'img-logo'%>
     <% end %>    
 
-    <a href="#" class="nav-user">
+    <a href="javascript:void(0)" class="nav-user" onclick="rotate180();">
         <p>John Doe</p>
-        <%= image_tag 'arr-down.png', class: 'down-arrow'%>
+        <%= image_tag 'arr-down.png', class: 'down-arrow', id: 'nav-arrow'%>
     </a>
 
 </div>
+
+<script>
+rotate = false;
+
+function rotate180() {
+    rotate = !rotate;
+    if (rotate) {
+        document.getElementById('nav-arrow').style.transform = 'rotate(180deg)';
+    }
+    else {
+        document.getElementById('nav-arrow').style.transform = 'rotate(0deg)';
+    }
+}
+
+</script>

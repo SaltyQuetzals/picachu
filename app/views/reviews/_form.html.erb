@@ -14,12 +14,12 @@
 
   <div class="field">
     <%= form.label :professor_id %>
-    <%= select_tag(:professor_id, options_from_collection_for_select(@professors, :id, :full_name), :required => true, :include_blank => true) %>
+    <%= select_tag(:professor_id, options_from_collection_for_select(@professors, :id, :full_name), :required => true, :prompt => 'Select a Professor') %>
   </div>
 
   <div class="field">
     <%= form.label :course_id %>
-    <%= select_tag(:course_id, options_from_collection_for_select(@courses, :id, :full_course_name), :required => true, :include_blank => true) %>
+    <%= select_tag(:course_id, options_from_collection_for_select(@courses, :id, :full_course_name), :required => true, :prompt => 'Select a Course') %>
   </div>
 
   <div class="field">

@@ -1,4 +1,4 @@
-<%= form_for ([@professor, @course, @review]) do |form|%>
+<%= form_for ([@professor, @course, @review]) do |form| %>
   <% if review.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
@@ -10,6 +10,17 @@
       </ul>
     </div>
   <% end %>
+
+
+  <div class="field">
+    <%= form.label :professor_id %>
+    <%= select_tag(:professor_id, options_from_collection_for_select(@professors, :id, :full_name), :required => true, :include_blank => true) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :course_id %>
+    <%= select_tag(:course_id, options_from_collection_for_select(@courses, :id, :full_course_name), :required => true, :include_blank => true) %>
+  </div>
 
   <div class="field">
     <%= form.label :overall_rating %>

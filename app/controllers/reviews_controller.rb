@@ -13,19 +13,10 @@ class ReviewsController < ApplicationController
   # GET /reviews/1.json
   def show; end
 
-  def select
-    @courses = Course.all.order(:dept, :course_num)
-    @professors = Professor.all.order(:full_name)
-    @professor_id = params[:professor_id]
-    @course_id = params[:course_id]
-
-    if @professor_id && @course_id
-      redirect_to new_professor_course_review_path(@professor_id, @course_id)
-    end
-  end
-
   # GET /reviews/new
   def new
+    @courses = Course.all.order(:dept, :course_num)
+    @professors = Professor.all.order(:full_name)
     @review = Review.new
   end
 
@@ -62,7 +53,7 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.update(review_params)
         format.html do
-          redirect_to professor_path(@professor),
+          redirect_to professor_path(@review.professor_id),
                       notice: 'Review was successfully updated.'
         end
         format.json { render :show, status: :ok, location: @review }

@@ -19,7 +19,7 @@
 <%= link_to 'Back', courses_path %>
 
 
-<%= link_to 'Write a Review', new_professor_course_review_path(@professor, @course)%>
+<%= link_to 'Write a Review', new_review_path%>
 <%if(@course.reviews.blank?)%>
   <h3> No Reviews </h3>
 <%else%>
@@ -33,7 +33,7 @@
       Professor: <%= Professor.find(review.professor_id).full_name%>
 
       <%= link_to 'Show', review %> |
-      <%= link_to 'Edit', edit_professor_course_review_path(:id => review.id, :professor_id => @professor.id, :course_id => review.course_id) %> |
+      <%= link_to 'Edit', edit_review_path(:id => review.id) %> |
       <%= link_to 'Delete', review, method: :delete, data: { confirm: 'Are you sure?' } %>
     </p>
   <%end%>

@@ -41,4 +41,26 @@
 </p>
 
 <%= link_to 'Edit', edit_professor_path(@professor) %> |
-<%= link_to 'Back', professors_path %>
+<%= link_to 'Back', professors_path %> |
+
+<%= link_to 'Write a Review', new_review_path %>
+<% if (@professor.reviews.blank?) %>
+  <h3> No Reviews </h3>
+<% else %>
+  <br>
+  <strong> Average Review: </strong>
+  <%= @avg_review %>
+
+  <% @professor.reviews.each do |review| %>
+    <p>
+      Overall Rating: <%= review.overall_rating %>,
+      Course: <%= Course.find(review.course_id).full_course_name %>
+      <%= link_to 'Show', review %> |
+      <%= link_to 'Edit', edit_review_path(:id => review.id) %>
+      |
+      <%= link_to 'Delete', review, method: :delete, data: {confirm: 'Are you sure?'} %>
+
+    </p>
+  <% end %>
+<% end %>
+

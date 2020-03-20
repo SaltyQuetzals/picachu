@@ -3,8 +3,8 @@ name: Push Container to Heroku
 
 on:
   push:
-    branches:
-      - master
+#    branches:
+#      - master
 
 env:
   HEROKU_APP_NAME: picachu-csce431

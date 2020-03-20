@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'login#index'
-  
+
   resources :professors do
     collection { get 'search' }
   end

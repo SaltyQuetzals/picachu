@@ -83,7 +83,6 @@ class ProfessorsController < ApplicationController
   def search
     @search = ransack_params
     @professors = ransack_result
-    render json: @professors
   end
 
   private

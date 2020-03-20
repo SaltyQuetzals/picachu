@@ -14,6 +14,7 @@ COPY . /picachu
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
+RUN bundle config --local build.sassc --disable-march-tune-native
 ENTRYPOINT ["entrypoint.sh"]
 
 # Precompile assets

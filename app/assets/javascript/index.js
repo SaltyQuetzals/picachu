@@ -78,6 +78,7 @@ submit_review.onclick = function() {
   otherReportValue = otherInput.value;
   otherInput.value = "";
   modal.style.display = "none";
+  history.back();
 
 }
 

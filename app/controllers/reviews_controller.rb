@@ -4,10 +4,47 @@ class ReviewsController < ApplicationController
   before_action :set_professor
   before_action :set_course
   before_action :set_review, only: %i[show edit update destroy]
+  after_action :sendemail
+
+
+  # Only allow a list of trusted parameters through.
+  def review_params
+    params.require(:review).permit(
+      :overall_rating,
+      :letter_grade,
+      :semester,
+      :year,
+      :course_required,
+      :interesting,
+      :difficult,
+      :standardized_course,
+      :course_other_thoughts,
+      :used_textbook,
+      :attendance_mandatory,
+      :course_format,
+      :cared_about_material,
+      :open_to_questions,
+      :cared_about_students,
+      :clear_grading,
+      :homework_heavy,
+      :clear_explanations,
+      :fast_grading,
+      :professor_other_thoughts,
+      :professor_id,
+      :course_id,
+      :sendemail
+    )
+    
+  end
 
   # GET /reviews
   # GET /reviews.json
+
   def index; end
+  
+  
+  
+
 
   # GET /reviews/1
   # GET /reviews/1.json
@@ -93,33 +130,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
-  def review_params
-    params.require(:review).permit(
-      :overall_rating,
-      :letter_grade,
-      :semester,
-      :year,
-      :course_required,
-      :interesting,
-      :difficult,
-      :standardized_course,
-      :course_other_thoughts,
-      :used_textbook,
-      :attendance_mandatory,
-      :course_format,
-      :cared_about_material,
-      :open_to_questions,
-      :cared_about_students,
-      :clear_grading,
-      :homework_heavy,
-      :clear_explanations,
-      :fast_grading,
-      :professor_other_thoughts,
-      :professor_id,
-      :course_id
-    )
-  end
+  
 
   def set_professor
     @professor = Professor.find(params[:professor_id]) if params[:professor_id]
@@ -128,4 +139,12 @@ class ReviewsController < ApplicationController
   def set_course
     @course = Course.find(params[:course_id]) if params[:course_id]
   end
+
+  def sendemail
+    if params[:sendemail] != nil 
+      UserMailer.report_email(@review, params[:id]).deliver_now
+    end
+  end
+
+
 end

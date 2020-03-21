@@ -13,12 +13,42 @@
  *= require_tree .
  *= require_self
  */
+ 
+ body {
+     margin: 0;
+ }
+
+ h1, h2, h3, h4, h5, h6, p, a {
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    font-size: 32px;
+    line-height: 36px;
+    font-weight: 400;
+}
+
+h2 {
+    font-size: 24px;
+    line-height: 30px;
+    margin-bottom: 30px;
+}
+
+h4 {
+    font-size: 16px; 
+    margin-bottom: 30px;
+    line-height: 20px;
+}
 
 .navbar {
-    margin: 0 -8px;
-    padding: 10px 80px;
+    margin: 0;
+    padding: 20px 80px 10px;
     border-bottom: 1px solid #DEDEDE;
 }
+.navbar a:hover {
+    background-color: transparent;
+}
+
 .nav-user {
     float: right;
     text-decoration: none;
@@ -33,11 +63,41 @@
  }
  .down-arrow {
      width: 20px;
+     transition: 0.3s;
  }
 
+ .navbar .dropdown {
+     position: absolute;
+     z-index: 2;
+     top: 60px;
+     right: 70px;
+     background-color: white;
+     border: 1px solid #DEDEDE;
+     padding: 20px 40px 20px 20px;
+     min-width: 120px;
+ }
 
+ .navbar .dropdown a{
+    color: #00817E;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    text-align: right;
+ }
 
+ .navbar .dropdown a:hover {
+    color: #00817E;
+    opacity: 0.7;
+    transition: 0.3s;
+ }
 
-
-
-
+footer {
+    background-color: #00817E;
+    color: white;
+    width: 100%;
+    padding: 2px 80px;
+    font-size: 12px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}

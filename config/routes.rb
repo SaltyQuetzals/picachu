@@ -1,15 +1,13 @@
+  
 Rails.application.routes.draw do
+  root 'login#index'
+
   resources :professors do
     collection { get 'search' }
   end
   resources :courses do
     collection { get 'search' }
   end
-
-  get 'reviews/index'
-
-  get 'professor/index'
-
   get 'login' => 'login#index'
   get 'search' => 'search#index'
 

@@ -6,7 +6,6 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: %i[show edit update destroy]
   after_action :sendemail
 
-
   # Only allow a list of trusted parameters through.
   def review_params
     params.require(:review).permit(
@@ -116,13 +115,14 @@ class ReviewsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_review
     @review = Review.find(params[:id])
   end
-  
+
   def set_professor
     @professor = Professor.find(params[:professor_id]) if params[:professor_id]
   end
@@ -132,7 +132,7 @@ class ReviewsController < ApplicationController
   end
 
   def sendemail
-    if params[:sendemail] != nil 
+    if params[:sendemail] != nil
       UserMailer.report_email(@review, params[:id]).deliver_now
     end
   end

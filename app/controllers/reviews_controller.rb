@@ -116,16 +116,13 @@ class ReviewsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_review
     @review = Review.find(params[:id])
   end
-
   
-
   def set_professor
     @professor = Professor.find(params[:professor_id]) if params[:professor_id]
   end
@@ -138,13 +135,5 @@ class ReviewsController < ApplicationController
     if params[:sendemail] != nil 
       UserMailer.report_email(@review, params[:id]).deliver_now
     end
-  end
-
-  def set_professor
-    @professor = Professor.find(params[:professor_id]) if params[:professor_id]
-  end
-
-  def set_course
-    @course = Course.find(params[:course_id]) if params[:course_id]
   end
 end

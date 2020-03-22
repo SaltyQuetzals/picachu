@@ -71,14 +71,18 @@ submit_review.onclick = function() {
   //other test condition
   if(otherInput.value == "" && rad3_selected == true)
   {
-  	alert("Please Specify for 'Other' Option.")
+  	alert("Please Specify for 'Other' Option.");
   	return;
   }
+  else
+  {
+      otherReportValue = otherInput.value;
+      otherInput.value = "";
+      modal.style.display = "none";
+      history.back();
+  }
 
-  otherReportValue = otherInput.value;
-  otherInput.value = "";
-  modal.style.display = "none";
-  history.back();
+
 
 }
 

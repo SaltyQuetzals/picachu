@@ -1,10 +1,40 @@
 <div class="navbar">
-    <%= image_tag 'picachu-logo.png', class: 'img-logo'%>
+    <%= link_to search_path do %>
+        <%= image_tag 'picachu-logo.png', class: 'img-logo'%>
+    <% end %>    
 
-
-    <a href="#" class="nav-user">
+    <a href="javascript:void(0)" class="nav-user" id="navUser" onclick="toggleDropdown();">
         <p>John Doe</p>
-        <%= image_tag 'arr-down.png', class: 'down-arrow'%>
+        <%= image_tag 'arr-down.png', class: 'down-arrow', id: 'nav-arrow'%>
     </a>
+    <div class="dropdown" id="profileDropdown" style='display: none'>
+        <a href="#">Log Out</a>
+    </div>
 
 </div>
+
+<script>
+open = false;
+
+function rotate180(rotate) {
+    if (rotate) {
+        document.getElementById('nav-arrow').style.transform = 'rotate(180deg)';
+    }
+    else {
+        document.getElementById('nav-arrow').style.transform = 'rotate(0deg)';
+    }
+}
+
+function toggleDropdown() {
+    open = !open;
+    rotate180(open);
+
+    if (open) {
+        document.getElementById('profileDropdown').style.display = 'block';
+    }
+    else {
+        document.getElementById('profileDropdown').style.display = 'none';
+    }
+}
+
+</script>

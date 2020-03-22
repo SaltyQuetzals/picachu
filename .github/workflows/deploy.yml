@@ -1,7 +1,7 @@
 # From https://dev.to/heroku/deploying-to-heroku-from-github-actions-29ej
 name: Push Container to Heroku
 
-on: 
+on:
   push:
     branches:
       - master

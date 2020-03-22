@@ -11,32 +11,89 @@ input[type=text] {
     font-size: 16px;
 }
 
+
+input[type=radio] {
+    display: none;
+}
+
+input[type=radio] ~ label {
+    font-size: 16px;
+    display: inline-block;
+    padding-bottom: 4px;
+    &:hover {
+        color: $colour-primary;
+        transition: 0.3s;
+        opacity: 0.3s;
+        cursor: pointer;
+    }
+}
+
+.radio-label {
+    border-bottom: 2px solid transparent;
+    &.active {
+        color: $colour-primary;
+        border-bottom: 2px solid $colour-primary;
+    }
+}
+
 .d-inline {
     display: inline;
 }
 
 .flex-container > .search-pg-container {
     width: 50%;
-    margin: 15vh 10px 10px 10px;
+    margin: 23vh 10px 10px 10px;
     h1 {
         text-align: left;
         margin-bottom: 10px;
+    }
+    h2 {
+        margin-bottom: 20px;
     }
     h4 {
         font-weight: 300;
         font-size: 24px;
         color: #777;
     }
-    input[type=text] {
-        width: 65%;
+    @media (max-width: 991.98px) { 
+        width: 75%;
+    }
+    @media (max-width: 767.98px) { 
+        width: 90%;
     }
 }
 
 .search-container {
     display: block;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    form {
+        display: inline-block;
+        width: 100%;
+    }
     input[type=text] {
-        margin-right: 3%;
+        margin-right: 20px;
+        display: inline-block;
+        width: calc(75% - 30px);
+    }
+    .btn-search {
+        width: calc(25% - 30px);
+        display: inline-block;
+    }
+    @media (max-width: 991.98px) { 
+        input[type=text] {
+            width: calc(65% - 30px);
+        }
+        .btn-search {
+            width: calc(35% - 30px);
+        }
+    }
+}
+
+.radio-container {
+    margin-bottom: 20px;
+    .radio-elem {
+        margin-right: 20px;
+        display: inline;
     }
 }
 

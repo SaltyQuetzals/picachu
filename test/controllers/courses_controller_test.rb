@@ -48,7 +48,7 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
               name: @course.name
             }
           }
-    assert_redirected_to course_url(@course)
+    expect(response).to redirect_to(course_url(@course))
   end
 
   test 'should destroy course' do

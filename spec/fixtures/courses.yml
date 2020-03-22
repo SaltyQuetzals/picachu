@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dept: DDDS
+  course_num: 8380
+  name: Medical Pharmacology
+  description: Lorem Ipsum
+
+two:
+  dept: VIBS
+  course_num: 610
+  name: Epidemiologic Methods II and Data Analysis
+  description: Lorem Ipsum

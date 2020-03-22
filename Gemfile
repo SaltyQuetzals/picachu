@@ -49,7 +49,16 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'cucumber-rails', require: false
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
   gem 'simplecov', require: false
+end
+
+group :development, :test do
+  # Note that rspec-rails 4.0 is still a pre release
+  gem 'rspec-rails', '~> 4.0.0.rc1'
+  gem 'rails-controller-testing'
 end
 
 group :production do

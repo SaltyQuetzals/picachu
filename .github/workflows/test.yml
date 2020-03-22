@@ -1,7 +1,7 @@
 name: Test Rails Application
 on: [push]
 jobs:
-  test:
+  rspec-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -11,3 +11,13 @@ jobs:
         run: docker-compose run web rake db:create
       - name: Test
         run: docker-compose run web rspec spec
+  cucumber-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build the stack
+        run: docker-compose up -d
+      - name: Prepare database
+        run: docker-compose run web rake db:create
+      - name: Test
+        run: docker-compose run web rake cucumber

@@ -38,12 +38,7 @@ class ReviewsController < ApplicationController
 
   # GET /reviews
   # GET /reviews.json
-
   def index; end
-  
-  
-  
-
 
   # GET /reviews/1
   # GET /reviews/1.json
@@ -143,5 +138,13 @@ class ReviewsController < ApplicationController
     if params[:sendemail] != nil 
       UserMailer.report_email(@review, params[:id]).deliver_now
     end
+  end
+
+  def set_professor
+    @professor = Professor.find(params[:professor_id]) if params[:professor_id]
+  end
+
+  def set_course
+    @course = Course.find(params[:course_id]) if params[:course_id]
   end
 end

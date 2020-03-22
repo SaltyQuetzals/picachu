@@ -80,5 +80,4 @@ Rails.application.configure do
     password:             'Ourgroupproject431',
     authentication:       'plain',
     enable_starttls_auto: true }
-
 end

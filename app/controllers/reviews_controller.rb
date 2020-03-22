@@ -38,7 +38,12 @@ class ReviewsController < ApplicationController
 
   # GET /reviews
   # GET /reviews.json
+
   def index; end
+  
+  
+  
+
 
   # GET /reviews/1
   # GET /reviews/1.json

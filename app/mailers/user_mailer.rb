@@ -9,3 +9,4 @@ class UserMailer < ApplicationMailer
     mail(to: 'deshantar99@tamu.edu,gracefan@tamu.edu,gwbritain@tamu.edu,lalu@tamu.edu,minsibo0420@tamu.edu,sahilpalnitkar@tamu.edu', subject: "Review Report")
   end
 end
+

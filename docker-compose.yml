@@ -6,8 +6,6 @@ services:
       - ./tmp/db:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: dev_password
-#    ports:
-#      - "5432:5432"
   web:
     build:
       context: .
@@ -20,6 +18,26 @@ services:
       - "3000:3000"
     depends_on:
       - db
+      - selenium
     environment:
       POSTGRES_PASSWORD: "dev_password"
       PORT: 3000
+      SELENIUM_HOST: selenium
+      SELENIUM_PORT: 4444
+      TEST_APP_HOST: web
+      TEST_PORT: 3001
+    expose:
+      - 3001
+  selenium:
+    # See inside via VNC with the "debug" version
+#    image: selenium/standalone-chrome-debug
+
+    # Slightly faster headless version
+    image: selenium/standalone-chrome
+
+    ports:
+#      - "5900:5900" #for VNC access
+      - "4444:4444" #for webdriver access
+    expose:
+      - 4444
+#      - 5900

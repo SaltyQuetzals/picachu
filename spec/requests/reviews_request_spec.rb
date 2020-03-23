@@ -1,22 +1,22 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require 'rails_helper'
 
-class ReviewsControllerTest < ActionDispatch::IntegrationTest
+RSpec.describe 'Reviews', type: :request do
+  fixtures :courses, :professors, :reviews
   setup do
     @review = reviews(:one)
     @professor = professors(:one)
     @course = courses(:one)
   end
 
-  test 'should get new' do
+  it 'should get the new page' do
     get new_review_url
-    assert_response :success
+    expect(response).to have_http_status(:success)
   end
 
-  test 'should create review' do
-    assert_difference('Review.count', 1) do
-      # puts Review.count
+  it 'should create a new review' do
+    expect {
       post reviews_url(professor_id: @professor.id, course_id: @course.id),
            params: {
              review: {
@@ -44,12 +44,16 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
                year: @review.year
              }
            }
-    end
+    }.to change { Review.count }.by(1)
 
-    assert_redirected_to professor_path(@professor)
+    expect(response).to redirect_to(professor_url(@professor.id))
+    follow_redirect!
+
+    expect(response).to render_template(:show)
+    expect(flash[:notice]).to_not be nil
   end
 
-  test 'should update review' do
+  it 'should update a review' do
     patch review_url @review,
                      params: {
                        review: {
@@ -78,13 +82,11 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
                          year: @review.year
                        }
                      }
-    assert_redirected_to professor_path(@professor)
+    expect(response).to redirect_to(professor_url(@professor))
   end
 
-  test 'should destroy review' do
-    # puts Review.count
-    assert_difference('Review.count', -1) { delete review_url @review }
-    # puts Review.count
-    assert_redirected_to professor_path(@professor)
+  it 'should destroy a review' do
+    expect { delete review_url @review }.to change { Review.count }.by(-1)
+    expect(response).to redirect_to professor_url(@professor)
   end
 end

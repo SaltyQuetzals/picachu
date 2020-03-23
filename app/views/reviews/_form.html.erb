@@ -1,10 +1,10 @@
-<%= form_for ([@professor, @course, @review]) do |form| %>
+<%= form_for @review do |form| %>
   <% if review.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
 
       <ul>
-        <% review.errors.full_messages.each do |message| %>
+        <% review.errors.full_messages.each_with_index do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -32,22 +32,24 @@
 
   <div class="field">
     <%= form.label :overall_rating %>
-    <%= form.number_field :overall_rating %>
+    <% (1..5).each_with_index do |i| %>
+      <%= form.radio_button :overall_rating, i %> <%= i %> <br/>
+    <% end %>
   </div>
 
   <div class="field">
     <%= form.label :letter_grade %>
-    <%= form.text_field :letter_grade %>
+    <%= form.select :letter_grade, %w[A B C D F Q S U] %>
   </div>
 
   <div class="field">
     <%= form.label :semester %>
-    <%= form.text_field :semester %>
+    <%= form.select :semester, %w[Spring Summer Fall] %>
   </div>
 
   <div class="field">
     <%= form.label :year %>
-    <%= form.number_field :year %>
+    <%= form.select :year, 2000..Date.today.year %>
   </div>
 
   <div class="field">
@@ -57,12 +59,17 @@
 
   <div class="field">
     <%= form.label :interesting %>
-    <%= form.number_field :interesting %>
+    <% ['Strongly Disagree', 'Slightly Disagree', 'Neither Disagree nor Agree', 'Slightly Agree', 'Strongly Agree'].each_with_index do | elem, i | %>
+      <%= form.radio_button :interesting, i+1 %> <%= elem %> <br/>
+    <% end %>
+
   </div>
 
   <div class="field">
     <%= form.label :difficult %>
-    <%= form.number_field :difficult %>
+    <% ['Strongly Disagree', 'Slightly Disagree', 'Neither Disagree nor Agree', 'Slightly Agree', 'Strongly Agree'].each_with_index do | elem, i | %>
+      <%= form.radio_button :difficult, i+1 %> <%= elem %> <br/>
+    <% end %>
   </div>
 
   <div class="field">
@@ -87,42 +94,56 @@
 
   <div class="field">
     <%= form.label :course_format %>
-    <%= form.text_field :course_format %>
+    <%= form.select :course_format, %w[Exam Project Homework] %>
   </div>
 
   <div class="field">
     <%= form.label :cared_about_material %>
-    <%= form.number_field :cared_about_material %>
+    <% ['Strongly Disagree', 'Slightly Disagree', 'Neither Disagree nor Agree', 'Slightly Agree', 'Strongly Agree'].each_with_index do | elem, i | %>
+      <%= form.radio_button :cared_about_material, i+1 %> <%= elem %> <br/>
+    <% end %>
   </div>
 
   <div class="field">
     <%= form.label :open_to_questions %>
-    <%= form.number_field :open_to_questions %>
+    <% ['Strongly Disagree', 'Slightly Disagree', 'Neither Disagree nor Agree', 'Slightly Agree', 'Strongly Agree'].each_with_index do | elem, i | %>
+      <%= form.radio_button :open_to_questions, i+1 %> <%= elem %> <br/>
+    <% end %>
   </div>
 
   <div class="field">
     <%= form.label :cared_about_students %>
-    <%= form.number_field :cared_about_students %>
+    <% ['Strongly Disagree', 'Slightly Disagree', 'Neither Disagree nor Agree', 'Slightly Agree', 'Strongly Agree'].each_with_index do | elem, i | %>
+      <%= form.radio_button :cared_about_students, i+1 %> <%= elem %> <br/>
+    <% end %>
   </div>
 
   <div class="field">
     <%= form.label :clear_grading %>
-    <%= form.number_field :clear_grading %>
+    <% ['Strongly Disagree', 'Slightly Disagree', 'Neither Disagree nor Agree', 'Slightly Agree', 'Strongly Agree'].each_with_index do | elem, i | %>
+      <%= form.radio_button :clear_grading, i+1 %> <%= elem %> <br/>
+    <% end %>
   </div>
 
   <div class="field">
     <%= form.label :homework_heavy %>
-    <%= form.number_field :homework_heavy %>
+    <% ['Strongly Disagree', 'Slightly Disagree', 'Neither Disagree nor Agree', 'Slightly Agree', 'Strongly Agree'].each_with_index do | elem, i | %>
+      <%= form.radio_button :homework_heavy, i+1 %> <%= elem %> <br/>
+    <% end %>
   </div>
 
   <div class="field">
     <%= form.label :clear_explanations %>
-    <%= form.number_field :clear_explanations %>
+    <% ['Strongly Disagree', 'Slightly Disagree', 'Neither Disagree nor Agree', 'Slightly Agree', 'Strongly Agree'].each_with_index do | elem, i | %>
+      <%= form.radio_button :clear_explanations, i+1 %> <%= elem %> <br/>
+    <% end %>
   </div>
 
   <div class="field">
     <%= form.label :fast_grading %>
-    <%= form.number_field :fast_grading %>
+    <% ['Strongly Disagree', 'Slightly Disagree', 'Neither Disagree nor Agree', 'Slightly Agree', 'Strongly Agree'].each_with_index do | elem, i | %>
+      <%= form.radio_button :fast_grading, i+1 %> <%= elem %> <br/>
+    <% end %>
   </div>
 
   <div class="field">

@@ -70,7 +70,7 @@ Capybara.register_driver :selenium do |app|
                                  desired_capabilities: caps)
 end
 ip = `/sbin/ip route|awk '/scope/ { print $9 }'`
-ip = ip.gsub "\n", ""
-Capybara.server_port = "3000"
+ip = ip.gsub "\n", ''
+Capybara.server_port = '3000'
 Capybara.server_host = ip
 Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"

@@ -60,16 +60,19 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
-args = %w[--no-default-browser-check --start-maximized]
-caps = Selenium::WebDriver::Remote::Capabilities.chrome('chromeOptions' => { "args": args })
-Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app,
-                                 browser: :remote,
-                                 url: "http://#{ENV['SELENIUM_HOST']}:#{ENV['SELENIUM_PORT']}/wd/hub",
-                                 desired_capabilities: caps)
-end
-Capybara.app_host = "http://#{ENV['TEST_APP_HOST']}:#{ENV['TEST_APP_PORT']}"
-Capybara.javascript_driver = :selenium
-Capybara.run_server = true
-Capybara.server_host = '0.0.0.0'
-Capybara.server_port = ENV['TEST_APP_PORT']
+# args = %w[--no-default-browser-check --start-maximized]
+# caps = Selenium::WebDriver::Remote::Capabilities.chrome('chromeOptions' => { "args": args })
+# Capybara.register_driver :selenium do |app|
+#   Capybara::Selenium::Driver.new(app,
+#                                  browser: :remote,
+#                                  url: "http://#{ENV['SELENIUM_HOST']}:#{ENV['SELENIUM_PORT']}/wd/hub",
+#                                  desired_capabilities: caps)
+# end
+# Capybara.app_host = "http://#{ENV['TEST_APP_HOST']}:#{ENV['TEST_APP_PORT']}"
+# puts 'Capybara.app_host =' + Capybara.app_host
+# Capybara.javascript_driver = :selenium
+# Capybara.run_server = true
+# Capybara.server_host = '0.0.0.0'
+# puts 'Capybara.server_host =' + Capybara.server_host
+# Capybara.server_port = ENV['TEST_PORT']
+# puts 'Capybara.server_port =' + Capybara.server_port

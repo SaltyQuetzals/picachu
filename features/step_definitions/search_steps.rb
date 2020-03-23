@@ -1,6 +1,6 @@
 Given(/^I'm on the search page$/) do
   visit search_path
-  puts page.body
+  # print page.body
 end
 
 When(/^I'm searching for courses$/) do
@@ -16,5 +16,5 @@ And(/^I submit my course search query$/) do
 end
 
 Then(/^I should be redirected to the search results page$/) do
-  pending
+  expect(page.current_path).to eq(search_courses_path)
 end

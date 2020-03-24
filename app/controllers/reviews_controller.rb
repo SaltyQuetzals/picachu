@@ -3,64 +3,61 @@
 class ReviewsController < ApplicationController
   before_action :set_professor
   before_action :set_course
-  before_action :set_review, only: %i[show edit update destroy]
+  before_action :set_review, only: %i[show edit update destroy report]
 
-  def sendemail
-    val = session[:review]
-    reportType = params[:rad]
-    otherInput = params[:other_input]
-    url = request.headers['HTTP_REFERER']
-    profId = val.fetch('professor_id')
-    reviewId = val.fetch('id')
+  def report
+    reason = params[:reason]
+    other_input = params[:other_input]
 
-    if reportType == nil
-      redirect_to review_path(id: reviewId),
-                  notice:
-                    'Please select Radio Option while reporting review!!!.' and
-        return
-    elsif (reportType == 'otherReason' && otherInput == '')
-      redirect_to review_path(id: reviewId),
-                  notice: 'Please write description for selecting OTHER!!!.' and
-        return
-    else
-      UserMailer.report_email(reportType, otherInput, url, profId, reviewId)
-        .deliver_now
-      redirect_to professor_path(profId), notice: 'Review Reported!!!!.' and
-        return
+    if reason.blank?
+      render json: 'You must select a reason for reporting.', status: :bad_request
+      return
     end
+
+    url = review_path(@review.id)
+
+    if reason == 'other' && other_input.blank?
+      render json: 'You must provide more information when reporting for "Other" reasons.', status: :bad_request
+      return
+    end
+
+    UserMailer.report_email(reason, other_input, url, @review.professor_id, @review.course_id)
+        .deliver_now
+    render json: 'Review reported successfully.'
   end
 
   # Only allow a list of trusted parameters through.
   def review_params
     params.require(:review).permit(
-      :overall_rating,
-      :letter_grade,
-      :semester,
-      :year,
-      :course_required,
-      :interesting,
-      :difficult,
-      :standardized_course,
-      :course_other_thoughts,
-      :used_textbook,
-      :attendance_mandatory,
-      :course_format,
-      :cared_about_material,
-      :open_to_questions,
-      :cared_about_students,
-      :clear_grading,
-      :homework_heavy,
-      :clear_explanations,
-      :fast_grading,
-      :professor_other_thoughts,
-      :professor_id,
-      :course_id
+        :overall_rating,
+        :letter_grade,
+        :semester,
+        :year,
+        :course_required,
+        :interesting,
+        :difficult,
+        :standardized_course,
+        :course_other_thoughts,
+        :used_textbook,
+        :attendance_mandatory,
+        :course_format,
+        :cared_about_material,
+        :open_to_questions,
+        :cared_about_students,
+        :clear_grading,
+        :homework_heavy,
+        :clear_explanations,
+        :fast_grading,
+        :professor_other_thoughts,
+        :professor_id,
+        :course_id
     )
   end
 
   # GET /reviews
   # GET /reviews.json
-  def index; end
+  def index;
+  end
 
   # GET /reviews/1
   # GET /reviews/1.json
@@ -145,14 +142,17 @@ class ReviewsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_review
+    # @type [Review]
     @review = Review.find(params[:id])
   end
 
   def set_professor
+    # @type [Professor]
     @professor = Professor.find(params[:professor_id]) if params[:professor_id]
   end
 
   def set_course
+    # @type [Course]
     @course = Course.find(params[:course_id]) if params[:course_id]
   end
 end

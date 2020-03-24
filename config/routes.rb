@@ -9,9 +9,10 @@ Rails.application.routes.draw do
   end
   get 'login' => 'login#index'
   get 'search' => 'search#index'
-  get 'reviews' => 'reviews#sendemail'
 
-  resources :reviews, except: %i[index]
+  resources :reviews, except: %i[index] do
+    post 'report' => 'reviews#report'
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

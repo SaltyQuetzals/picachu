@@ -1,22 +1,22 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require 'rails_helper'
 
-class ProfessorsControllerTest < ActionDispatch::IntegrationTest
+RSpec.describe 'Professors', type: :request do
+  fixtures :professors
   setup { @professor = professors(:one) }
-
-  test 'should get index' do
+  it 'should get the index page' do
     get professors_url
-    assert_response :success
+    expect(response).to have_http_status(:success)
   end
 
-  test 'should get new' do
+  it 'should get the new page' do
     get new_professor_url
-    assert_response :success
+    expect(response).to have_http_status(:success)
   end
 
-  test 'should create professor' do
-    assert_difference('Professor.count') do
+  it 'should create a new professor' do
+    expect {
       post professors_url,
            params: {
              professor: {
@@ -30,22 +30,20 @@ class ProfessorsControllerTest < ActionDispatch::IntegrationTest
                tamu_dir_title: @professor.tamu_dir_title
              }
            }
-    end
-
-    assert_redirected_to professor_url(Professor.last)
+    }.to change { Professor.count }.by(1)
   end
 
-  test 'should show professor' do
+  it 'should get the show page' do
     get professor_url(@professor)
-    assert_response :success
+    expect(response).to have_http_status(:success)
   end
 
-  test 'should get edit' do
+  it 'should get the edit page' do
     get edit_professor_url(@professor)
-    assert_response :success
+    expect(response).to have_http_status(:success)
   end
 
-  test 'should update professor' do
+  it 'should update a professor' do
     patch professor_url(@professor),
           params: {
             professor: {
@@ -59,20 +57,18 @@ class ProfessorsControllerTest < ActionDispatch::IntegrationTest
               tamu_dir_title: @professor.tamu_dir_title
             }
           }
-    assert_redirected_to professor_url(@professor)
+    expect(response).to redirect_to(professor_url(@professor))
   end
 
-  test 'should destroy professor' do
-    assert_difference('Professor.count', -1) do
-      delete professor_url(@professor)
-    end
-
-    assert_redirected_to professors_url
+  it 'should destroy a professor' do
+    expect { delete professor_url(@professor) }.to change {
+      Professor.count
+    }.by(-1)
   end
 
-  test 'should get search' do
+  it 'should get the search page' do
     get search_professors_url,
         params: { q: { full_name_cont: @professor.first_name } }
-    assert_response :success
+    expect(response).to have_http_status(:success)
   end
 end

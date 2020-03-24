@@ -30,7 +30,8 @@ class ReviewsController < ApplicationController
       url,
       @review.professor_id,
       @review.course_id
-    ).deliver_now
+    )
+      .deliver_now
     render json: 'Review reported successfully.'
   end
 

@@ -62,12 +62,17 @@ end
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
 args = %w[--no-default-browser-check --start-maximized]
-caps = Selenium::WebDriver::Remote::Capabilities.chrome('chromeOptions' => { "args": args })
+caps =
+  Selenium::WebDriver::Remote::Capabilities.chrome(
+    'chromeOptions' => { "args": args }
+  )
 Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app,
-                                 browser: :remote,
-                                 url: "http://#{ENV['SELENIUM_HOST']}:#{ENV['SELENIUM_PORT']}/wd/hub",
-                                 desired_capabilities: caps)
+  Capybara::Selenium::Driver.new(
+    app,
+    browser: :remote,
+    url: "http://#{ENV['SELENIUM_HOST']}:#{ENV['SELENIUM_PORT']}/wd/hub",
+    desired_capabilities: caps
+  )
 end
 ip = `/sbin/ip route|awk '/scope/ { print $9 }'`
 ip = ip.gsub "\n", ''

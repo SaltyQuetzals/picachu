@@ -9,32 +9,13 @@ $colour-primary: #00817E;
     justify-content: center;
 }
 
-.flex-container > div {
-    text-align: center;
-    line-height: 75px;
-    font-size: 30px;
-}
-  
 .flex-container > .login-container {
     width: 25%;
     min-width: 300px;
-    margin: 16vh 10px 10px 10px;
-}
-
-h1, h2, h3, h4, h5, h6, p, a {
-    font-family: sans-serif;
-}
-
-h1 {
-    font-size: 24px;
-    line-height: 30px;
-    margin-bottom: 30px;
-}
-
-h3 {
-    font-size: 16px; 
-    margin-bottom: 30px;
-    line-height: 20px;
+    margin: 16vh 10px 80px 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
 }
 
 .w-100 {
@@ -56,7 +37,7 @@ h3 {
 .btn {
     display: block;
     margin: auto;
-    padding: 15px;
+    padding: 12px;
     border-radius: 50px;
     text-transform: capitalize;
     font-weight: 600;
@@ -65,9 +46,10 @@ h3 {
 .btn-primary {
     color: white;
     background-color: $colour-primary;
-    border: 0;
+    border: 3px solid $colour-primary;
     &:hover {
         background-color: #006F6C;
+        border: 3px solid #006F6C;
         transition: 0.3s;
         cursor: pointer;
     }
@@ -102,21 +84,11 @@ h3 {
         .img-tamu {
             max-width: 30px;
             margin-right: 20px;
+            margin-top: -5px;
         }
     }
 }
 
 .img-logo {
     max-width: 100px;
-}
-
-footer {
-    background-color: $colour-primary;
-    padding: 0px 80px;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    color: white;
-    width: 100%;
-    font-size: 12px;
 }

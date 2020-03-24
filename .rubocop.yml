@@ -3,7 +3,11 @@ AllCops:
     - 'db/**/*'
     - 'config/**/*'
     - 'script/**/*'
+<<<<<<< HEAD
     - 'bin/{rails,rake,bundle,setup}'
+=======
+    - 'bin/{rails,rake,bundle}'
+>>>>>>> origin/master
     - 'node_modules/**/*'
     - !ruby/regexp /old_and_unused\.rb$/
     - 'Gemfile*'

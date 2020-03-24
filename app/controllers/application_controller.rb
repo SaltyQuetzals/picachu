@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+<<<<<<< HEAD
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
@@ -17,3 +18,6 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 end
+=======
+class ApplicationController < ActionController::Base; end
+>>>>>>> origin/master

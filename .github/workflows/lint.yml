@@ -14,10 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - uses: ruby/setup-ruby@master
+      - uses: actions/setup-node@master
         with:
-          ruby-version: 2.6.0
+          ruby-version: '10.x.x'
       - run: |
-          gem install bundle
-          bundle install --without production test
-          bundle exec rbprettier --check '{app,config,test,db}/**/*.rb'
+          npm i -g prettier @prettier/plugin-ruby
+          prettier --check '{app,config,test,spec,db,features}/**/*.rb'

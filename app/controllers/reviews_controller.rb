@@ -4,7 +4,24 @@ class ReviewsController < ApplicationController
   before_action :set_professor
   before_action :set_course
   before_action :set_review, only: %i[show edit update destroy]
-  after_action :sendemail
+
+  def sendemail
+    val = session[:review]
+    reportType =params[:rad]
+    otherInput =params[:other_input]
+    url = request.headers["HTTP_REFERER"]
+    profId = val.fetch('professor_id')
+    reviewId = val.fetch('id')
+    
+    if reportType == nil
+      redirect_to review_path(:id => reviewId), notice: 'Please select Radio Option while reporting review!!!.' and return
+    elsif (reportType == 'otherReason' && otherInput == "") 
+      redirect_to review_path(:id => reviewId), notice: 'Please write description for selecting OTHER!!!.' and return
+    else
+      UserMailer.report_email(reportType, otherInput, url, profId, reviewId).deliver_now
+      redirect_to professor_path(profId), notice: 'Review Reported!!!!.' and return
+    end 
+  end
 
   # Only allow a list of trusted parameters through.
   def review_params
@@ -30,8 +47,7 @@ class ReviewsController < ApplicationController
       :fast_grading,
       :professor_other_thoughts,
       :professor_id,
-      :course_id,
-      :sendemail
+      :course_id
     )
   end
 
@@ -41,7 +57,9 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1
   # GET /reviews/1.json
-  def show; end
+  def show
+    session[:review] = @review
+  end
 
   # GET /reviews/new
   def new
@@ -131,9 +149,4 @@ class ReviewsController < ApplicationController
     @course = Course.find(params[:course_id]) if params[:course_id]
   end
 
-  def sendemail
-    if params[:sendemail] != nil
-      UserMailer.report_email(@review, params[:id]).deliver_now
-    end
-  end
 end

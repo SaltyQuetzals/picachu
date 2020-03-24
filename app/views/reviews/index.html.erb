@@ -61,36 +61,8 @@
       </tr>
     <% end %>
     <button class="btn btn-primary" id="myBtn">Report Review</button>
-
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class ="header">
-              <h1>Report Review</h1>
-                <p>Please let us know why this review is being reported.</p>
-
-            </div>
-            
-            <div class="wrapper-class">
-              <input type="radio" id="radio1">
-                   <label for="radio1">It is spam or abusive.</label><br><br>
-              <input type="radio" id="radio2">
-                   <label for="radio2">It uses inappropriate or offensive language.</label><br><br>
-               <input type="radio" id="radio3">
-                    <label for="radio3">Other</label><br>
-            </div>
-            <input id="other_input" type="text"  placeholder="Please specify for 'Other'">
-
-            <button class="btn btn-primary w-80" id="submitReview">Submit Report</button>
-        </div>
-    </div>
+    <%= render "partials/modal" %>
   </tbody>
-</table>
-
-<br>
-
+</table><br>
 <%= link_to 'New Review', new_review_path %>
-<%= javascript_include_tag "index"%>
-
 <%= render "partials/footer" %>
-

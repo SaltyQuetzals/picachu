@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
   get 'login' => 'login#index'
   get 'search' => 'search#index'
+  get 'reviews' => 'reviews#sendemail'
 
   resources :reviews, except: %i[index]
 

@@ -1,9 +1,12 @@
 class UserMailer < ApplicationMailer
-  default from: 'picachu.csce431@gmail.com'
+  default from: ENV['MAILER_USERNAME']
 
-  def report_email(review, reviewid)
-    @review = review
-    @reviewid = reviewid
-    mail(to: 'lalu@tamu.edu', subject: 'Review Report')
+  def report_email(reportType, otherInput, url, profId, reviewId)
+    @reportType = reportType
+    @otherInput = otherInput
+    @url = url
+    @profId = profId
+    @reviewId = reviewId
+    mail(to: ENV['ADMIN_USERNAME'], subject: 'Review Reported')
   end
 end

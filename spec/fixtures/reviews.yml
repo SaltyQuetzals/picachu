@@ -45,5 +45,5 @@ two:
   clear_explanations: 1
   fast_grading: 1
   professor_other_thoughts: MyString
-  professor: two
-  course: two
+  professor: one
+  course: one

@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @professor.display_name %></h1>
+<h2><%= @professor.tamu_dir_title %>
+  <% unless @professor.tamu_dir_dept.nil? %>
+    in <%= @professor.tamu_dir_dept %>
+  <% end %>
+</h2>
+<h2><%= @course.full_course_name %></h2>
+<% if @grouped_courses.empty? %>
+  <p>This professor has not taught any other courses.
+<% else %>
+  <p>Other courses taught by <%= @professor.display_name %></p>
+  <% @grouped_courses.each do |course, _reviews| %>
+    <%= link_to course.dept + ' ' + course.course_num, professor_course_path(@professor, course) %>
+  <% end %>
+<% end %>
+
+<div>
+  <% if @course_reviews.empty? %>
+    <p> This professor hasn't taught this course.</p>
+  <% else %>
+    <h3>Reviews for <%= @course.dept + ' ' + @course.course_num %></h3>
+    <% @course_reviews.each do |review| %>
+      <div class="review">
+        <p><%= review.created_at.to_date.to_formatted_s(:long) %></p>
+        <p>Overall Rating: <%= review.overall_rating %></p>
+        <p>Expected Grade: <%= review.letter_grade %></p>
+        <p>Attendance:
+          <% if review.attendance_mandatory %>
+            Mandatory
+          <% else %>
+            Optional
+          <% end %>
+        </p>
+        <p>Textbook Required:
+          <% if review.used_textbook %>
+            Yes
+          <% else %>
+            No
+          <% end %>
+        </p>
+      </div>
+      <br/>
+    <% end %>
+  <% end %>
+</div>
+<%= link_to 'Write a Review', new_review_path %>

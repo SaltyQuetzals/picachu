@@ -2,7 +2,7 @@
 
 class ProfessorsController < ApplicationController
   before_action :set_professor, only: %i[show edit update destroy]
-  before_action :set_course
+  before_action :set_course, only: %i[show_course]
   # GET /professors
   # GET /professors.json
   def index
@@ -18,6 +18,23 @@ class ProfessorsController < ApplicationController
       else
         @professor.reviews.average(:overall_rating)
       end
+    @grouped_courses = @professor.reviews.group_by(&:course)
+    @courses_with_ratings =
+      @grouped_courses.map do |course, reviews|
+        [course, reviews.sum(&:overall_rating).to_f / reviews.length]
+      end
+    @highest_rated_course, _rating =
+      @courses_with_ratings.max { |a, b| a[1] <=> b[1] }
+    @lowest_rated_course, _rating =
+      @courses_with_ratings.min { |a, b| a[1] <=> b[1] }
+  end
+
+  # GET /professors/1/courses/1
+  # GET /professors/1/courses/1.json
+  def show_course
+    @professor = Professor.find(params[:professor_id])
+    @grouped_courses = @professor.reviews.group_by(&:course)
+    @course_reviews = @professor.reviews.where(course_id: @course.id)
   end
 
   # GET /professors/new
@@ -101,7 +118,7 @@ class ProfessorsController < ApplicationController
   end
 
   def set_course
-    @course = Course.first
+    @course = Course.find(params[:course_id])
   end
 
   # Only allow a list of trusted parameters through.

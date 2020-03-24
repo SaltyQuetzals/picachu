@@ -15,6 +15,10 @@ RSpec.describe 'Reviews', type: :request do
     expect(response).to have_http_status(:success)
   end
 
+  it 'should get the edit page' do
+    get edit_review_url(@review)
+    expect(response).to have_http_status(:success)
+  end
   it 'should create a new review' do
     expect {
       post reviews_url(professor_id: @professor.id, course_id: @course.id),

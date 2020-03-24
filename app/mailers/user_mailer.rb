@@ -7,6 +7,6 @@ class UserMailer < ApplicationMailer
     @url = url
     @profId = profId
     @reviewId = reviewId
-    mail(to: ENV['ADMIN_USERNAME'], subject: 'Review Reported')
+    mail(to: ENV['MAILER_USERNAME'], subject: 'Review Reported')
   end
 end

@@ -7,20 +7,27 @@ class ReviewsController < ApplicationController
 
   def sendemail
     val = session[:review]
-    reportType =params[:rad]
-    otherInput =params[:other_input]
-    url = request.headers["HTTP_REFERER"]
+    reportType = params[:rad]
+    otherInput = params[:other_input]
+    url = request.headers['HTTP_REFERER']
     profId = val.fetch('professor_id')
     reviewId = val.fetch('id')
-    
+
     if reportType == nil
-      redirect_to review_path(:id => reviewId), notice: 'Please select Radio Option while reporting review!!!.' and return
-    elsif (reportType == 'otherReason' && otherInput == "") 
-      redirect_to review_path(:id => reviewId), notice: 'Please write description for selecting OTHER!!!.' and return
+      redirect_to review_path(id: reviewId),
+                  notice:
+                    'Please select Radio Option while reporting review!!!.' and
+        return
+    elsif (reportType == 'otherReason' && otherInput == '')
+      redirect_to review_path(id: reviewId),
+                  notice: 'Please write description for selecting OTHER!!!.' and
+        return
     else
-      UserMailer.report_email(reportType, otherInput, url, profId, reviewId).deliver_now
-      redirect_to professor_path(profId), notice: 'Review Reported!!!!.' and return
-    end 
+      UserMailer.report_email(reportType, otherInput, url, profId, reviewId)
+        .deliver_now
+      redirect_to professor_path(profId), notice: 'Review Reported!!!!.' and
+        return
+    end
   end
 
   # Only allow a list of trusted parameters through.
@@ -148,5 +155,4 @@ class ReviewsController < ApplicationController
   def set_course
     @course = Course.find(params[:course_id]) if params[:course_id]
   end
-
 end

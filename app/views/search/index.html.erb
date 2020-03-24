@@ -2,10 +2,23 @@
 
 <div class="flex-container">
   <div class="search-pg-container">
-    <h2>Search by Professor or Course</h2>
-    
-    <%= render 'partials/searchcontainers' %>
+    <h1>Search by Course</h1>
+    <div class="search-container">
+      <form>
+        <input type="text" placeholder="ex. CSCE 431, Parallel Computing" name="courseID" class="w-50">
+        <button type="submit" class="btn btn-primary w-25 d-inline">Search</button>
+      </form>
+    </div>
 
+    <h4>or</h4>
+
+    <h1>Search by Professor</h1>
+    <div class="search-container">
+      <form>
+        <input type="text" placeholder="ex. John Doe" name="courseID" class="w-50">
+        <button type="submit" class="btn btn-secondary w-25 d-inline">Search</button>
+      </form>
+    </div>
   </div>
 </div>
 

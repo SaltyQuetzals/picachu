@@ -119,8 +119,7 @@ temp/
 *.rbc
 capybara-*.html
 .rspec
-/db/*.sqlite3*
-db/*.sqlite3*
+/db/*.sqlite3
 /db/*.sqlite3-journal
 /public/system
 /coverage/
@@ -320,11 +319,5 @@ fabric.properties
 .idea/**/markdown-navigator.xml
 .idea/**/markdown-navigator/
 
-<<<<<<< HEAD
 # End of https://www.gitignore.io/api/node,code,ruby,rails,rubymine
 coverage
-=======
-.idea/*
-coverage
-/config/master.key
->>>>>>> origin/master

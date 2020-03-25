@@ -9,6 +9,14 @@ require 'simplecov'
 SimpleCov.start 'rails'
 
 
+ENV['RAILS_ENV'] ||= 'test'
+if ENV['RAILS_ENV'] == 'test'
+  require 'simplecov'
+  puts 'Required simplecov'
+  SimpleCov.command_name 'Cucumber'
+  SimpleCov.coverage_dir 'coverage/cucumber'
+end
+
 require 'cucumber/rails'
 require 'socket'
 
@@ -82,6 +90,6 @@ Capybara.register_driver :selenium do |app|
 end
 ip = `/sbin/ip route|awk '/scope/ { print $9 }'`
 ip = ip.gsub "\n", ''
-Capybara.server_port = '3000'
+Capybara.server_port = '3001'
 Capybara.server_host = ip
 Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"

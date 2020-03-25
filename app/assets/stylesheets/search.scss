@@ -11,11 +11,6 @@ input[type=text] {
     font-size: 16px;
 }
 
-
-input[type=radio] {
-    display: none;
-}
-
 input[type=radio] ~ label {
     font-size: 16px;
     display: inline-block;
@@ -90,6 +85,9 @@ input[type=radio] ~ label {
 }
 
 .radio-container {
+    input[type=radio] {
+        display: none;
+    }
     margin-bottom: 20px;
     .radio-elem {
         margin-right: 20px;
@@ -99,7 +97,7 @@ input[type=radio] ~ label {
 
 .autocomplete {
     position: relative;
-  }
+}
  
 .autocomplete-items {
     position: absolute;

@@ -30,7 +30,7 @@
     <% end %>
   </div>
 
-  <div class="field">
+  <div class="field radio-inline">
     <%= form.label :overall_rating %>
     <% (1..5).each_with_index do |i| %>
       <%= form.radio_button :overall_rating, i %> <%= i %> <br/>
@@ -52,10 +52,13 @@
     <%= form.select :year, 2000..Date.today.year %>
   </div>
 
-  <div class="field">
+  <div class="field checkbox-style">
     <%= form.label :course_required %>
     <%= form.check_box :course_required %>
   </div>
+
+  <hr>
+  <h4>Course Review</h4>
 
   <div class="field">
     <%= form.label :interesting %>
@@ -72,22 +75,25 @@
     <% end %>
   </div>
 
-  <div class="field">
+  <div class="field checkbox-style">
     <%= form.label :standardized_course %>
     <%= form.check_box :standardized_course %>
   </div>
 
   <div class="field">
     <%= form.label :course_other_thoughts %>
-    <%= form.text_field :course_other_thoughts %>
+    <%= form.text_field :course_other_thoughts, :placeholder => 'ex. Loved the class' %>
   </div>
 
-  <div class="field">
+  <hr>
+  <h4>Professor Review</h4>
+
+  <div class="field checkbox-style">
     <%= form.label :used_textbook %>
     <%= form.check_box :used_textbook %>
   </div>
 
-  <div class="field">
+  <div class="field checkbox-style">
     <%= form.label :attendance_mandatory %>
     <%= form.check_box :attendance_mandatory %>
   </div>
@@ -148,10 +154,10 @@
 
   <div class="field">
     <%= form.label :professor_other_thoughts %>
-    <%= form.text_field :professor_other_thoughts %>
+    <%= form.text_field :professor_other_thoughts, :placeholder => 'ex. Helpful office hours' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit :class => "btn btn-primary w-50" %>
   </div>
 <% end %>

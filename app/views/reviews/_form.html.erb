@@ -12,7 +12,7 @@
   <% end %>
 
 
-  <div class="field">
+  <div class="selectProfessor">
     <%= form.label :professor_id %>
     <% unless @professor_id.nil? %>
       <%= select_tag(:professor_id, options_from_collection_for_select(@professors, :id, :full_name, :selected => @professor_id), :required => true) %>
@@ -21,7 +21,7 @@
     <% end %>
   </div>
 
-  <div class="field">
+  <div class="selectCourse">
     <%= form.label :course_id %>
     <% unless @course_id.nil? %>
       <%= select_tag(:course_id, options_from_collection_for_select(@courses, :id, :full_course_name, :selected => @course_id), :required => true) %>
@@ -30,107 +30,107 @@
     <% end %>
   </div>
 
-  <div class="field">
+  <div class="overallRating">
     <%= form.label :overall_rating %>
     <%= form.number_field :overall_rating %>
   </div>
 
-  <div class="field">
+  <div class="letterGrade">
     <%= form.label :letter_grade %>
     <%= form.text_field :letter_grade %>
   </div>
 
-  <div class="field">
+  <div class="semester">
     <%= form.label :semester %>
     <%= form.text_field :semester %>
   </div>
 
-  <div class="field">
+  <div class="year">
     <%= form.label :year %>
     <%= form.number_field :year %>
   </div>
 
-  <div class="field">
+  <div class="courseRequired">
     <%= form.label :course_required %>
     <%= form.check_box :course_required %>
   </div>
 
-  <div class="field">
+  <div class="interesting">
     <%= form.label :interesting %>
     <%= form.number_field :interesting %>
   </div>
 
-  <div class="field">
+  <div class="difficult">
     <%= form.label :difficult %>
     <%= form.number_field :difficult %>
   </div>
 
-  <div class="field">
+  <div class="standardizedCourse">
     <%= form.label :standardized_course %>
     <%= form.check_box :standardized_course %>
   </div>
 
-  <div class="field">
+  <div class="courseOtherThoughts">
     <%= form.label :course_other_thoughts %>
     <%= form.text_field :course_other_thoughts %>
   </div>
 
-  <div class="field">
+  <div class="usedTextbook">
     <%= form.label :used_textbook %>
     <%= form.check_box :used_textbook %>
   </div>
 
-  <div class="field">
+  <div class="attendanceMandatory">
     <%= form.label :attendance_mandatory %>
     <%= form.check_box :attendance_mandatory %>
   </div>
 
-  <div class="field">
+  <div class="courseFormat">
     <%= form.label :course_format %>
     <%= form.text_field :course_format %>
   </div>
 
-  <div class="field">
+  <div class="caredAboutMaterial">
     <%= form.label :cared_about_material %>
     <%= form.number_field :cared_about_material %>
   </div>
 
-  <div class="field">
+  <div class="openToQuestions">
     <%= form.label :open_to_questions %>
     <%= form.number_field :open_to_questions %>
   </div>
 
-  <div class="field">
+  <div class="caredAboutStudents">
     <%= form.label :cared_about_students %>
     <%= form.number_field :cared_about_students %>
   </div>
 
-  <div class="field">
+  <div class="clearGrading">
     <%= form.label :clear_grading %>
     <%= form.number_field :clear_grading %>
   </div>
 
-  <div class="field">
+  <div class="homeworkHeavy">
     <%= form.label :homework_heavy %>
     <%= form.number_field :homework_heavy %>
   </div>
 
-  <div class="field">
+  <div class="clearExplanations">
     <%= form.label :clear_explanations %>
     <%= form.number_field :clear_explanations %>
   </div>
 
-  <div class="field">
+  <div class="fastGrading">
     <%= form.label :fast_grading %>
     <%= form.number_field :fast_grading %>
   </div>
 
-  <div class="field">
+  <div class="professorOtherThoughts">
     <%= form.label :professor_other_thoughts %>
     <%= form.text_field :professor_other_thoughts %>
   </div>
 
-  <div class="actions">
+  <div class="submitReview">
     <%= form.submit %>
   </div>
 <% end %>

@@ -19,6 +19,8 @@ Feature: Create and submit reviews
     And I enter "True" in the "Attendance mandatory" field
     And I enter "5" in the "Course format" field
     And I enter "5" in the "Cared about material" field
+    And I enter "1" in the "Open to questions" field
+    And I enter "1" in the "Cared about students" field
     And I enter "5" in the "Clear grading" field
     And I enter "5" in the "Homework heavy" field
     And I enter "5" in the "Clear explanations" field

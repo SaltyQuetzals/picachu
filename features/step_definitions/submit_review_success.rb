@@ -12,7 +12,8 @@ And(/^I select a course$/) do
 end
 
 And(/^I enter "([^"]*)" in the "Overall rating" field$/) do |value|
-  find(:xpath, '//*[@id="review_overall_rating"]').set(value)
+  # find(:xpath, '//*[@id="review_overall_rating"]').set(value)
+  page.choose(:review_overall_rating_1)
 end
 
 And(/^I enter "([^"]*)" in the "Letter grade" field$/) do |value|
@@ -32,11 +33,13 @@ And(/^I enter "([^"]*)" in the "Course required" field$/) do |value|
 end
 
 And(/^I enter "([^"]*)" in the "Interesting" field$/) do |value|
-  find(:xpath, '//*[@id="review_interesting"]').set(value)
+  # find(:xpath, '//*[@id="review_interesting"]').set(value)
+  page.choose(:review_interesting_1)
 end
 
 And(/^I enter "([^"]*)" in the "Difficult" field$/) do |value|
-  find(:xpath, '//*[@id="review_difficult"]').set(value)
+  # find(:xpath, '//*[@id="review_difficult"]').set(value)
+  page.choose(:review_difficult_1)
 end
 
 And(/^I enter "([^"]*)" in the "Standardized course" field$/) do |value|
@@ -60,23 +63,38 @@ And(/^I enter "([^"]*)" in the "Course format" field$/) do |value|
 end
 
 And(/^I enter "([^"]*)" in the "Cared about material" field$/) do |value|
-  find(:xpath, '//*[@id="review_cared_about_material"]').set(value)
+  # find(:xpath, '//*[@id="review_cared_about_material"]').set(value)
+  page.choose(:review_cared_about_material_1)
+end
+
+And(/^I enter "([^"]*)" in the "Open to questions" field$/) do |value|
+  # find(:xpath, '//*[@id="review_cared_about_material"]').set(value)
+  page.choose(:review_open_to_questions_1)
+end
+
+And(/^I enter "([^"]*)" in the "Cared about students" field$/) do |value|
+  # find(:xpath, '//*[@id="review_cared_about_material"]').set(value)
+  page.choose(:review_cared_about_students_1)
 end
 
 And(/^I enter "([^"]*)" in the "Clear grading" field$/) do |value|
-  find(:xpath, '//*[@id="review_clear_grading"]').set(value)
+  # find(:xpath, '//*[@id="review_clear_grading"]').set(value)
+  page.choose(:review_clear_grading_1)
 end
 
 And(/^I enter "([^"]*)" in the "Homework heavy" field$/) do |value|
-  find(:xpath, '//*[@id="review_homework_heavy"]').set(value)
+  # find(:xpath, '//*[@id="review_homework_heavy"]').set(value)
+  page.choose(:review_homework_heavy_1)
 end
 
 And(/^I enter "([^"]*)" in the "Clear explanations" field$/) do |value|
-  find(:xpath, '//*[@id="review_clear_explanations"]').set(value)
+  # find(:xpath, '//*[@id="review_clear_explanations"]').set(value)
+  page.choose(:review_clear_explanations_1)
 end
 
 And(/^I enter "([^"]*)" in the "Fast grading" field$/) do |value|
-  find(:xpath, '//*[@id="review_fast_grading"]').set(value)
+  # find(:xpath, '//*[@id="review_fast_grading"]').set(value)
+  page.choose(:review_fast_grading_1)
 end
 
 And(/^I enter "([^"]*)" in the "Professor other thoughts" field$/) do |value|

@@ -12,7 +12,8 @@ And(/^I select a course from the course menu$/) do
 end
 
 And(/^I fill in "([^"]*)" in the "Overall rating" field$/) do |value|
-  find(:xpath, '//*[@id="review_overall_rating"]').set(value)
+  # find(:xpath, '//*[@id="review_overall_rating"]').set(value)
+  page.choose(:review_overall_rating_1)
 end
 
 And(/^I fill in "([^"]*)" in the "Letter grade" field$/) do |value|

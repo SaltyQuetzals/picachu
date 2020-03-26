@@ -4,11 +4,12 @@
     <% end %>    
 
     <a href="javascript:void(0)" class="nav-user" id="navUser" onclick="toggleDropdown();">
-        <p>John Doe</p>
         <%= image_tag 'arr-down.png', class: 'down-arrow', id: 'nav-arrow'%>
     </a>
     <div class="dropdown" id="profileDropdown" style='display: none'>
-        <a href="#">Log Out</a>
+        
+          <li><%= current_user.name %></li>
+          <li><%= link_to 'Log Out', logout_path, method: :delete %></li>
     </div>
 
 </div>

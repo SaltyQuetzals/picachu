@@ -19,10 +19,10 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'omniauth-google-oauth2'  
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
+gem 'dotenv'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'pg', '~> 0.21' # for Heroku deployment
@@ -59,6 +59,7 @@ group :development, :test do
   # Note that rspec-rails 4.0 is still a pre release
   gem 'rspec-rails', '~> 4.0.0.rc1'
   gem 'rails-controller-testing'
+
 end
 
 group :production do

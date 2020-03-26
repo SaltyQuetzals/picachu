@@ -90,26 +90,26 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
+    @review.professor_id = @professor.id
+    @review.course_id = @course.id
 
     respond_to do |format|
       if @review.save
         format.html do
-          redirect_to professor_path(@review.professor_id),
+          redirect_to professor_path(@professor),
                       notice: 'Review was successfully created.'
         end
         format.json { render :show, status: :created, location: @review }
       else
-        format.html do
-          @courses = load_courses
-          @professors = load_professors
-          render :new
-        end
+        puts @review.errors.full_messages
+        format.html { render :new }
         format.json do
           render json: @review.errors, status: :unprocessable_entity
         end
       end
     end
   end
+
 
   # PATCH/PUT /reviews/1
   # PATCH/PUT /reviews/1.json

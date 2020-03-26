@@ -15,16 +15,16 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/new
   def new
-    @courses = Course.all.order(:dept, :course_num)
-    @professors = Professor.all.order(:full_name)
+    @courses = load_courses
+    @professors = load_professors
     @review = Review.new
   end
 
   # GET /reviews/1/edit
   def edit
-    @courses = Course.all.order(:dept, :course_num)
+    @courses = load_courses
     @course_id = @review.course_id
-    @professors = Professor.all.order(:full_name)
+    @professors = load_professors
     @professor_id = @review.professor_id
   end
 
@@ -32,8 +32,6 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
-    @review.professor_id = @professor.id
-    @review.course_id = @course.id
 
     if @review.overall_rating == '' or @review.letter_grade == '' or
          @review.semester == '' or
@@ -53,6 +51,7 @@ class ReviewsController < ApplicationController
           format.json do
             render json: @review.errors, status: :unprocessable_entity
           end
+
         end
       end
     end
@@ -70,7 +69,11 @@ class ReviewsController < ApplicationController
         format.json { render :show, status: :ok, location: @review }
       else
         puts @review.errors.full_messages
-        format.html { render :edit }
+        format.html do
+          @courses = load_courses
+          @professors = load_professors
+          render :edit
+        end
         format.json do
           render json: @review.errors, status: :unprocessable_entity
         end
@@ -133,5 +136,13 @@ class ReviewsController < ApplicationController
 
   def set_course
     @course = Course.find(params[:course_id]) if params[:course_id]
+  end
+
+  def load_courses
+    Course.all.order(:dept, :course_num)
+  end
+
+  def load_professors
+    Professor.all.order(:full_name)
   end
 end

@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use OAuth 2.0 for Google Sign In
-gem 'omniauth-google-oauth2'
+gem 'omniauth-google-oauth2' 
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

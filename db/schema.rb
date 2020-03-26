@@ -10,16 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_06_224412) do
+ActiveRecord::Schema.define(version: 2020_03_26_044827) do
 
   create_table "authusers", force: :cascade do |t|
     t.string "provider"
     t.string "uid"
+    t.string "name"
     t.string "email"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "picture"
     t.string "hosted_domain"
+    t.string "location"
+    t.string "image_url"
+    t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

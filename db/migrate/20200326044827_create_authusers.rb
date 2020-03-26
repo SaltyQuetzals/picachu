@@ -3,11 +3,12 @@ class CreateAuthusers < ActiveRecord::Migration[6.0]
     create_table :authusers do |t|
       t.string :provider
       t.string :uid
+      t.string :name
       t.string :email
-      t.string :first_name
-      t.string :last_name
-      t.string :picture
       t.string :hosted_domain
+      t.string :location
+      t.string :image_url
+      t.string :url
 
       t.timestamps
     end

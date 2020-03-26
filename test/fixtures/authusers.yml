@@ -3,17 +3,19 @@
 one:
   provider: MyString
   uid: MyString
+  name: MyString
   email: MyString
-  first_name: MyString
-  last_name: MyString
-  picture: MyString
   hosted_domain: MyString
+  location: MyString
+  image_url: MyString
+  url: MyString
 
 two:
   provider: MyString
   uid: MyString
+  name: MyString
   email: MyString
-  first_name: MyString
-  last_name: MyString
-  picture: MyString
   hosted_domain: MyString
+  location: MyString
+  image_url: MyString
+  url: MyString

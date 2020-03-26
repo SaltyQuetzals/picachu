@@ -1,1 +1,8 @@
-<%= render 'form', review: @review %>
+<%= render "partials/nav" %>
+
+<div class="flex-container review-container">
+    <div class="reviewform-container">
+        <h2>Write a Review</h2>
+        <%= render 'form', review: @review %>
+    </div>
+</div>

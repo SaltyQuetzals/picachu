@@ -6,6 +6,14 @@
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
 
+ENV['RAILS_ENV'] ||= 'test'
+if ENV['RAILS_ENV'] == 'test'
+  require 'simplecov'
+  puts 'Required simplecov'
+  SimpleCov.command_name 'Cucumber'
+  SimpleCov.coverage_dir 'coverage/cucumber'
+end
+
 require 'cucumber/rails'
 require 'socket'
 

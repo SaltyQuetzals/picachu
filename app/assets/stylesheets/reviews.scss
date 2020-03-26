@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+
  .header
 {
     text-align: center;
@@ -84,4 +85,94 @@
     margin-top: 15px;
     /*height :20px;*/
     /*padding-top: 5px;*/
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 5px;
+    border: 1px solid #777;
+    padding: 15px;
+    font-size: 14px;
+    background-color: white;
+    background-image: url('arr-down-grey.svg');
+    background-position: calc(100% - 15px) center;
+    background-size: 18px 9px;
+    background-repeat: no-repeat;
+}
+
+.flex-container.review-container {
+    background-color: #fafafa;
+    .reviewform-container {
+        background-color: white;
+        padding: 40px 60px; 
+        border: 1px solid #DEDEDE;
+        margin: 50px 10px 80px;
+        width: 40%;
+        h2 {
+            font-size: 24px;
+            line-height: 32px;
+            margin-bottom: 40px;
+        }
+        input[type=text] {
+            width: 100%;
+            font-size: 14px;
+            box-sizing:border-box;
+            &::placeholder {
+                font-style: italic;
+            }
+        }
+        input[type=radio] {
+            margin-bottom: 10px;
+        }
+        hr {
+            border: 1px solid #dedede;
+            margin: 35px 0;
+        }
+        select {
+            width: 100%;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        .field {
+            margin-bottom: 25px;
+            label {
+                font-size: 14px;
+                font-weight: 500;
+                margin-bottom: 15px;
+            }
+        }
+        .checkbox-style {
+            label {
+                display: inline-block;
+                margin-top: 2px;
+                margin-bottom: 0;
+            }
+            input[type=checkbox] {
+                float: left;
+                margin-right: 10px;
+                left: 9px;
+            }
+        }
+        
+        .radio-inline {
+            br {
+                display: none;
+            }
+            input[type=radio] {
+                margin: 0 10px 0 10%;
+            }
+            input[type=radio]:first-of-type {
+                margin-left: 0;
+            }
+        }
+        @media (max-width: 991.98px) { 
+            width: 75%;
+        }
+        @media (max-width: 767.98px) { 
+            width: 90%;
+        }
+    }
 }

@@ -10,7 +10,7 @@ jobs:
       - name: Prepare database
         run: docker-compose run web rake db:create
       - name: Test
-        run: docker-compose run web rspec spec
+        run: docker-compose run web rake spec
   cucumber-tests:
     runs-on: ubuntu-latest
     steps:

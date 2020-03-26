@@ -18,6 +18,12 @@ class ProfessorsController < ApplicationController
       else
         @professor.reviews.average(:overall_rating)
       end
+    # Needed: number of ratings in total of the professor @num_reviews = 
+    # Needed: number of stars pic according to the overall rating parameter
+    # Needed: highest rating course object
+    # Needed: lowest rating course object
+
+    # side-note: maybe the star rating part should be put into javascript and be used multiple times
   end
 
   # GET /professors/new

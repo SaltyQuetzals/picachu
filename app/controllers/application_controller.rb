@@ -7,17 +7,16 @@ class ApplicationController < ActionController::Base
     redirect_to :login unless user_signed_in?
   end
 
-private
+  private
 
-def current_user
-  @current_user ||= Authuser.find_by(id: session[:user_id])
-end
+  def current_user
+    @current_user ||= Authuser.find_by(id: session[:user_id])
+  end
 
-helper_method :current_user
+  helper_method :current_user
 
   def user_signed_in?
     # converts current_user to a boolean by negating the negation
     !!current_user
   end
 end
-

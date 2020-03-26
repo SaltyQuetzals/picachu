@@ -1,6 +1,7 @@
 class Authuser < ApplicationRecord
   def self.find_or_create_from_auth_hash(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |authuser|
+    where(provider: auth.provider, uid: auth.uid).first_or_initialize
+      .tap do |authuser|
       authuser.provider = auth.provider
       authuser.uid = auth.uid
       authuser.name = auth.info.name
@@ -12,4 +13,3 @@ class Authuser < ApplicationRecord
     end
   end
 end
-

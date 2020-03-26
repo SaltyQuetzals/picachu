@@ -32,22 +32,22 @@
 
   <div class="overallRating">
     <%= form.label :overall_rating %>
-    <%= form.number_field :overall_rating %>
+    <%= form.number_field :overall_rating, required: true %>
   </div>
 
   <div class="letterGrade">
     <%= form.label :letter_grade %>
-    <%= form.text_field :letter_grade %>
+    <%= form.text_field :letter_grade, required: true %>
   </div>
 
   <div class="semester">
     <%= form.label :semester %>
-    <%= form.text_field :semester %>
+    <%= form.text_field :semester, required: true %>
   </div>
 
   <div class="year">
     <%= form.label :year %>
-    <%= form.number_field :year %>
+    <%= form.number_field :year, required: true %>
   </div>
 
   <div class="courseRequired">

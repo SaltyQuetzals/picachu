@@ -1,6 +1,6 @@
 Feature: Create and submit reviews
 
-  Scenario: Successfully create a review for Aakash Tyagi's ACCT 209 course
+  Scenario: Successfully create a review for a Professor's course
     Given A professor exists in the database
     And A course exists in the database
     And I'm on the new review page

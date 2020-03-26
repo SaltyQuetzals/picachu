@@ -35,11 +35,11 @@ class ReviewsController < ApplicationController
     @review.professor_id = @professor.id
     @review.course_id = @course.id
 
-    if @review.overall_rating=="" or @review.letter_grade=="" or @review.semester=="" or @review.year==""
-    
-      redirect_to new_review_path, alert: "Fill in the required fields."
+    if @review.overall_rating == '' or @review.letter_grade == '' or
+         @review.semester == '' or
+         @review.year == ''
+      redirect_to new_review_path, alert: 'Fill in the required fields.'
     else
-
       respond_to do |format|
         if @review.save
           format.html do

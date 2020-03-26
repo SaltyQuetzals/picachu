@@ -111,8 +111,7 @@
 </p>
 
 <%= link_to 'Edit', edit_review_path(@review) %> |
-<%= link_to 'Back', professor_path(@review.professor_id) %> 
+<%= link_to 'Back', professor_path(@review.professor_id) %>
 
-<button class="btn btn-primary" id="myBtn">Report Review</button>
-<%= render "partials/modal" %>
+<%= render partial: "partials/report_modal", locals: {review_id: @review.id} %>
 <%= render "partials/footer" %>

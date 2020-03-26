@@ -50,6 +50,7 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
   gem 'cucumber-rails', require: false
+  gem 'factory_bot_rails'
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
   gem 'simplecov', require: false

@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 
 Given(/^I'm on the search page$/) do
   visit search_path

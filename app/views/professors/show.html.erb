@@ -51,16 +51,49 @@
   <strong> Average Review: </strong>
   <%= @avg_review %>
 
-  <% @professor.reviews.each do |review| %>
-    <p>
-      Overall Rating: <%= review.overall_rating %>,
-      Course: <%= Course.find(review.course_id).full_course_name %>
-      <%= link_to 'Show', review %> |
-      <%= link_to 'Edit', edit_review_path(:id => review.id) %>
-      |
-      <%= link_to 'Delete', review, method: :delete, data: {confirm: 'Are you sure?'} %>
+  <div class="highest-rated-course">
+    <h4>Highest-Rated Course</h4>
+    <h5><%= @highest_rated_course.full_course_name %></h5>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae ligula ac dui viverra egestas at ut arcu.
+      Vivamus venenatis felis a magna gravida auctor et sit amet nulla. Morbi vitae venenatis turpis. Suspendisse
+      vestibulum urna eu commodo mollis. Donec quis hendrerit velit. Donec posuere pharetra leo, ut mollis massa ornare
+      id. Ut justo odio, viverra at felis nec, dignissim aliquam tortor. Integer condimentum ante odio, eu hendrerit
+      augue commodo sit amet. Nulla in ligula aliquam, vulputate sapien id, aliquet nibh. Suspendisse potenti. Fusce
+      vitae gravida ligula. Sed interdum non ante quis gravida. Nunc suscipit auctor ex, eu consectetur augue pretium
+      vitae. Ut at lectus a dui tincidunt ultricies. Pellentesque metus orci, iaculis a varius eget, suscipit ut enim.
+      Aenean eget enim varius, ullamcorper eros vel, elementum justo. </p>
+  </div>
+  <div class="lowest-rated-course">
+    <h4>Lowest-Rated Course</h4>
+    <h5><%= @lowest_rated_course.full_course_name %></h5>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae ligula ac dui viverra egestas at ut arcu.
+      Vivamus venenatis felis a magna gravida auctor et sit amet nulla. Morbi vitae venenatis turpis. Suspendisse
+      vestibulum urna eu commodo mollis. Donec quis hendrerit velit. Donec posuere pharetra leo, ut mollis massa ornare
+      id. Ut justo odio, viverra at felis nec, dignissim aliquam tortor. Integer condimentum ante odio, eu hendrerit
+      augue commodo sit amet. Nulla in ligula aliquam, vulputate sapien id, aliquet nibh. Suspendisse potenti. Fusce
+      vitae gravida ligula. Sed interdum non ante quis gravida. Nunc suscipit auctor ex, eu consectetur augue pretium
+      vitae. Ut at lectus a dui tincidunt ultricies. Pellentesque metus orci, iaculis a varius eget, suscipit ut enim.
+      Aenean eget enim varius, ullamcorper eros vel, elementum justo. </p>
+  </div>
 
-    </p>
-  <% end %>
+  <div class="all-course-container">
+    <% @courses_with_ratings.each do |course, avg_rating| %>
+      <div class="all-course-element">
+        <p><%= course.full_course_name %></p>
+        <p><%= avg_rating %></p>
+      </div>
+    <% end %>
+  </div>
+  <%# @professor.reviews.each do |review| %>
+  <!--        <p>-->
+  <!--          Overall Rating: <%#= review.overall_rating %>,-->
+  <!--          Course: <%#= Course.find(review.course_id).full_course_name %>-->
+  <!--          <%#= link_to 'Show', review %> |-->
+  <%#= link_to 'Edit', edit_review_path(:id => review.id) %>
+  <!--          |-->
+  <%#= link_to 'Delete', review, method: :delete, data: {confirm: 'Are you sure?'} %>
+
+  <!--        </p>-->
+  <%# end %>
 <% end %>
 

@@ -1,3 +1,91 @@
-// Place all the styles related to the professors controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+$colour-primary: #00817E;
+
+.w-90 {
+    width: 90%;
+}
+
+.flex-container {
+    max-width: 90%;
+}
+
+.flex-row {
+    display: flex;
+}
+.flex-row > .flex-col-50 {
+    width: 50%;
+    a {
+        margin-top: 25px;
+        float: right;
+        text-align: center;
+        color: white;
+        text-decoration: none;
+    }
+}
+
+.flex-container > .professor-course-container {
+    width: 60%;
+    display: block;
+    margin: 60px auto; 
+    box-sizing:border-box;
+
+    hr {
+        border: 1px #dedede solid;
+        margin: 40px 0;
+    }
+    h1 {
+        color: $colour-primary;
+        border-bottom: 3px solid $colour-primary;
+        display: inline-block;
+        margin-bottom: 0;
+    }
+    h4 {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    h5 {
+        font-weight: 600;
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    .other-classes {
+        display: flex;
+        a {
+            width: calc(25% - 40px);
+            margin-right: 40px;
+            text-decoration: none;
+            color: $colour-primary;
+            border: 2px solid $colour-primary;
+            padding: 8px;
+            text-align: center;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 14px;
+            &:hover {
+                background-color: $colour-primary;
+                transition: 0.3s;
+                color: white;
+            }
+            &:last-of-type {
+                margin-right: 0;
+            }
+        }
+    }
+    @media (max-width: 991.98px) { 
+        .header-left, .header-right {
+            display: block;
+            width: 100%;
+        }
+        .header-right {
+            a {
+                display: block;
+                margin: auto;
+                width: 100%;
+                box-sizing:border-box;
+
+            }
+        }
+    }
+    @media (max-width: 767.98px) { 
+        width: 90%;
+    }
+}

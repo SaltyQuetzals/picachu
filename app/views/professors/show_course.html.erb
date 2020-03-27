@@ -33,8 +33,6 @@
     <% end %>
 
     <hr>
-
-    <div>
       <% if @course_reviews.empty? %>
         <p> This professor hasn't taught this course.</p>
       <% else %>
@@ -105,32 +103,30 @@
 
             <div class = "dis-in">
 
-            <div style = "float: left; margin-right: 20px;">
-              <button></button>
-              <button></button>
-            </div>
+              <div style = "float: left; margin-right: 20px;">
+                <button></button>
+                <button></button>
+              </div>
           
 
-            <div class = "user-agree-container">
-              <h5># of #</h5>
-              <h4>users agree with this review</h4>
+              <div class = "user-agree-container">
+                <h5># of #</h5>
+                <h4>users agree with this review</h4>
+              </div>
+
+        
+              <div class = "report-container">
+              <!-- image of flag -->
+                <h4>Report</h4>
+        
+              </div>
             </div>
 
-        
-            <div class = "report-container">
-              <!-- image of flag -->
-            <h4>Report</h4>
-        
           </div>
-        </div>
+          </div>
 
-    </div>
-  </div>
-
-  <% end %>
-
-    </div>
-
+        <% end %>
+      <% end %>
 
 </div>
 </div>

@@ -10,6 +10,18 @@ RSpec.describe 'Reviews', type: :request do
     @course = courses(:one)
   end
 
+  it 'should report the review' do
+    post report_review_url,
+                params: {
+                    review: {
+                       reason: 'other',
+                       other_input: 'Its really bad'
+                    }
+                 }
+    expect(params[:reason]).to_not be nil
+    expect(flash[:success]).to be_present
+  end
+
   it 'should get the new page' do
     get new_review_url
     expect(response).to have_http_status(:success)

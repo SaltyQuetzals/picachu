@@ -32,12 +32,11 @@
   </div>
   
   </div>
-  
   <% if @grouped_courses.empty? %>
     <hr>
     <p>This professor has not taught any other courses.
   <% else %>
-  
+
   <!--tags-->
   <div class = "tag-block-container">
     <h2>Top Tags</h2>
@@ -214,8 +213,6 @@
           <h4>Report</h4>
         
         </div>
-
-
       </div>
 
     </div>
@@ -223,81 +220,4 @@
 
 </div>
 </div>
-
-
-<!--
-
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>First name:</strong>
-  <%= @professor.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @professor.last_name %>
-</p>
-
-<p>
-  <strong>Full name:</strong>
-  <%= @professor.full_name %>
-</p>
-
-<p>
-  <strong>Display name:</strong>
-  <%= @professor.display_name %>
-</p>
-
-<p>
-  <strong>Cv url:</strong>
-  <%= @professor.cv_url %>
-</p>
-
-<p>
-  <strong>Tamu dir title:</strong>
-  <%= @professor.tamu_dir_title %>
-</p>
-
-<p>
-  <strong>Tamu dir dept:</strong>
-  <%= @professor.tamu_dir_dept %>
-</p>
-
-<p>
-  <strong>Tamu dir email:</strong>
-  <%= @professor.tamu_dir_email %>
-</p>
-
-<%= link_to 'Edit', edit_professor_path(@professor) %> |
-<%= link_to 'Back', professors_path %> |
-
-<%= link_to 'Write a Review', new_review_path %>
-<% if (@professor.reviews.blank?) %>
-  <h3> No Reviews </h3>
-<% else %>
-  <br>
-  <strong> Average Review: </strong>
-  <%= @avg_review %>
-
-  <% @professor.reviews.each do |review| %>
-    <p>
-      Overall Rating: <%= review.overall_rating %>,
-      Course: <%= Course.find(review.course_id).full_course_name %>
-      <%= link_to 'Show', review %> |
-      <%= link_to 'Edit', edit_review_path(:id => review.id) %>
-      |
-      <%= link_to 'Delete', review, method: :delete, data: {confirm: 'Are you sure?'} %>
-
-    </p>
-  <% end %>
-<% end %>   
-
--->
-
-
-
-
-
-
 

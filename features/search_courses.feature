@@ -1,8 +1,8 @@
-Feature: Courses are searchable
+Feature: Professor and Course Search
   @javascript
   Scenario: Search for 121
     Given I'm on the search page
-    When I'm searching for courses
+    And I'm searching for courses
     And I enter "121" into the course search bar
-    And I submit my course search query
+    When I submit my course search query
     Then I should see course search results

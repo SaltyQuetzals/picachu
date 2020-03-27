@@ -104,22 +104,20 @@ RSpec.configure do |config|
   #   Kernel.srand config.seed
   def stub_omiauth
     OmniAuth.config.test_mode = true
-    OmniAuth.config.mock_auth[:google] = OmniAuth::AuthHash.new({
-    :provider => 'google',
-    :uid => '123545',
-    :info => {
-      :name => 'John Doe',
-      :email => 'johndoe@doe.com',
-      :location => 'Doe World',
-      :image => 'image_url'},
-    :extra => {
-      :raw_info => {
-        :hd => '@tamu.edu'
-      },
-    }
+    OmniAuth.config.mock_auth[:google] =
+      OmniAuth::AuthHash.new(
+        {
+          provider: 'google',
+          uid: '123545',
+          info: {
+            name: 'John Doe',
+            email: 'johndoe@doe.com',
+            location: 'Doe World',
+            image: 'image_url'
+          },
+          extra: { raw_info: { hd: '@tamu.edu' } }
+        }
+      )
     # etc.
-    })
-    
   end
-
 end

@@ -30,8 +30,7 @@ class ReviewsController < ApplicationController
       url,
       @review.professor_id,
       @review.course_id
-    )
-      .deliver_now
+    ).deliver_now
     render json: 'Review reported successfully.'
   end
 
@@ -109,7 +108,6 @@ class ReviewsController < ApplicationController
       end
     end
   end
-
 
   # PATCH/PUT /reviews/1
   # PATCH/PUT /reviews/1.json

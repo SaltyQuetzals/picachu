@@ -8,8 +8,6 @@ Rails.application.routes.draw do
     collection { get 'search' }
   end
   get 'login' => 'login#index'
-  # get 'login', to: redirect('/auth/google_oauth2'), as: 'login'
-  # get 'logout', to: 'sessions#destroy'
   delete '/logout', to: 'sessions#destroy'
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')

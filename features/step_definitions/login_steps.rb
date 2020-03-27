@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-Given(/^I'm on the login page/) do
-  visit root_path
+Given(/^I'm on the login page/) { visit root_path }
 
+When(/^I click the login button/) do
   find(:xpath, '/html/body/div/div/a/button').click
 end
 

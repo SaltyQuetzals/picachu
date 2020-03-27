@@ -19,7 +19,6 @@ Given(
   @course = FactoryBot.create(:course, dept: arg1, course_num: arg2, name: arg3)
 end
 
-
 Given(/^A review exists in the database$/) do
 
   @review = FactoryBot.create(:review)

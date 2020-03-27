@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-Given(/^I'm on the search page$/) do
-  visit search_path
-end
+Given(/^I'm on the search page$/) { visit search_path }
 
 And(/^I'm searching for courses$/) do
   find(:xpath, '//*[@id="labelCourse"]').click

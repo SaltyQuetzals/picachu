@@ -32,29 +32,28 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
-
-    if @review.overall_rating == '' or @review.letter_grade == '' or
-         @review.semester == '' or
-         @review.year == ''
-      redirect_to new_review_path, alert: 'Fill in the required fields.'
-    else
-      respond_to do |format|
-        if @review.save
-          format.html do
-            redirect_to professor_path(@professor),
-                        notice: 'Review was successfully created.'
-          end
-          format.json { render :show, status: :created, location: @review }
-        else
-          puts @review.errors.full_messages
-          format.html { render :new }
-          format.json do
-            render json: @review.errors, status: :unprocessable_entity
-          end
-
+    # @review.course_id = @course.id
+    # @review.professor_id = @professor.id
+       
+    respond_to do |format|
+      if @review.save
+        format.html do
+          redirect_to professor_path(@professor),
+                      notice: 'Review was successfully created.'
         end
+        format.json { render :show, status: :created, location: @review }
+      else
+        puts "==============================="
+        puts @review.errors.full_messages
+        puts "==============================="
+        format.html { render :new }
+        format.json do
+          render json: @review.errors, status: :unprocessable_entity
+        end
+
       end
     end
+    
   end
 
   # PATCH/PUT /reviews/1

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :professors do
     collection { get 'search' }
+    get '/courses/:course_id', to: 'professors#show_course', as: 'course'
   end
   resources :courses do
     collection { get 'search' }

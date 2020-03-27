@@ -5,6 +5,9 @@
 # newer version of cucumber-rails. Consider adding your own code to a new file
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
+require 'simplecov'
+SimpleCov.start 'rails'
+
 
 ENV['RAILS_ENV'] ||= 'test'
 if ENV['RAILS_ENV'] == 'test'
@@ -18,6 +21,9 @@ require 'cucumber/rails'
 require 'socket'
 
 # frozen_string_literal: true
+
+World(FactoryBot::Syntax::Methods)
+World(Rails.application.routes.url_helpers)
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any

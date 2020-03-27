@@ -81,9 +81,32 @@ Capybara.register_driver :selenium do |app|
     url: "http://#{ENV['SELENIUM_HOST']}:#{ENV['SELENIUM_PORT']}/wd/hub",
     desired_capabilities: caps
   )
+  
 end
 ip = `/sbin/ip route|awk '/scope/ { print $9 }'`
 ip = ip.gsub "\n", ''
 Capybara.server_port = '3001'
 Capybara.server_host = ip
 Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
+Before ('@omniauth_test') do
+    OmniAuth.config.test_mode = true
+    Capybara.default_host = 'http://exampl.com'
+    OmniAuth.config.mock_auth(:google_oauth2, {
+    :provider => 'google',
+    :uid => '123545',
+    :info => {
+      :name => 'John Doe',
+      :email => 'johndoe@doe.com',
+      :location => 'Doe World',
+      :image => 'image_url'},
+    :extra => {
+      :raw_info => {
+        :hd => '@tamu.edu'
+      },
+    }
+    # etc.
+    })
+end
+After('@omniauth_test') do
+  OmniAuth.config.test_mode = false
+end

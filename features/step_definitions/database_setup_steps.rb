@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Given(/^A professor exists in the database$/) do
 
   @professor = FactoryBot.create(:professor)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Authuser < ApplicationRecord
   def self.find_or_create_from_auth_hash(auth)
     where(provider: auth['provider'], uid: auth['uid']).first_or_initialize

@@ -136,9 +136,7 @@ class ReviewsController < ApplicationController
   end
 
   def set_course
-    if !params[:course_id].blank?
-      @course = Course.find(params[:course_id])
-    end
+    @course = Course.find(params[:course_id]) if !params[:course_id].blank?
   end
 
   def load_courses

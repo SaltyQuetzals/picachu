@@ -30,7 +30,7 @@ RSpec.describe 'Reviews', type: :request do
                    clear_explanations: @review.clear_explanations,
                    clear_grading: @review.clear_grading,
                    course_format: @review.course_format,
-                   course_id: @course.id,
+                   # course_id: @course.id,
                    course_other_thoughts: @review.course_other_thoughts,
                    course_required: @review.course_required,
                    difficult: @review.difficult,
@@ -40,13 +40,15 @@ RSpec.describe 'Reviews', type: :request do
                    letter_grade: @review.letter_grade,
                    open_to_questions: @review.open_to_questions,
                    overall_rating: @review.overall_rating,
-                   professor_id: @professor.id,
+                   # professor_id: @professor.id,
                    professor_other_thoughts: @review.professor_other_thoughts,
                    semester: @review.semester,
                    standardized_course: @review.standardized_course,
                    used_textbook: @review.used_textbook,
                    year: @review.year
-               }
+               },
+               course_id: @course.id,
+               professor_id: @professor.id
            }
     }.to change { Review.count }.by(1)
 

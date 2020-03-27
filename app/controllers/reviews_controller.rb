@@ -32,28 +32,27 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
-    # @review.course_id = @course.id
-    # @review.professor_id = @professor.id
-       
+
+    @review.course_id = params[:course_id] if @review.course_id.nil?
+    @review.professor_id = params[:professor_id] if @review.professor_id.nil?
+
     respond_to do |format|
       if @review.save
         format.html do
-          redirect_to professor_path(@professor),
+          redirect_to professor_path(@review.professor_id),
                       notice: 'Review was successfully created.'
         end
         format.json { render :show, status: :created, location: @review }
       else
-        puts "==============================="
+        puts '==============================='
         puts @review.errors.full_messages
-        puts "==============================="
+        puts '==============================='
         format.html { render :new }
         format.json do
           render json: @review.errors, status: :unprocessable_entity
         end
-
       end
     end
-    
   end
 
   # PATCH/PUT /reviews/1

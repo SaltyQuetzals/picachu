@@ -2,7 +2,7 @@ Feature: Create and submit reviews
 
   Scenario: Successfully create a review for a Professor's course
     Given A professor exists in the database
-    And A course exists in the database
+    And The course exists
     And I'm on the new review page
     And I select a professor
     And I select a course

@@ -46,6 +46,9 @@ World(Rails.application.routes.url_helpers)
 #
 ActionController::Base.allow_rescue = false
 
+# For FactoryBot
+World(FactoryBot::Syntax::Methods)
+
 # Remove/comment out the lines below if your app doesn't have a database.
 # For some databases (like MongoDB and CouchDB) you may need to use :truncation instead.
 begin

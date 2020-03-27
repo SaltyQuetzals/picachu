@@ -34,34 +34,6 @@ class ReviewsController < ApplicationController
     render json: 'Review reported successfully.'
   end
 
-  # Only allow a list of trusted parameters through.
-  def review_params
-    params.require(:review).permit(
-      :overall_rating,
-      :letter_grade,
-      :semester,
-      :year,
-      :course_required,
-      :interesting,
-      :difficult,
-      :standardized_course,
-      :course_other_thoughts,
-      :used_textbook,
-      :attendance_mandatory,
-      :course_format,
-      :cared_about_material,
-      :open_to_questions,
-      :cared_about_students,
-      :clear_grading,
-      :homework_heavy,
-      :clear_explanations,
-      :fast_grading,
-      :professor_other_thoughts,
-      :professor_id,
-      :course_id
-    )
-  end
-
   # GET /reviews
   # GET /reviews.json
   def index; end
@@ -89,23 +61,27 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
-    @review.professor_id = @professor.id
-    @review.course_id = @course.id
 
-    respond_to do |format|
-      if @review.save
-        format.html do
-          redirect_to professor_path(@professor),
-                      notice: 'Review was successfully created.'
-        end
-        format.json { render :show, status: :created, location: @review }
-      else
-        puts @review.errors.full_messages
-        format.html { render :new }
-        format.json do
-          render json: @review.errors, status: :unprocessable_entity
+    if !params[:course_id].blank? && !params[:professor_id].blank?
+      @review.course_id = params[:course_id] if @review.course_id.nil?
+      @review.professor_id = params[:professor_id] if @review.professor_id.nil?
+
+      respond_to do |format|
+        if @review.save
+          format.html do
+            redirect_to professor_path(@review.professor_id),
+                        notice: 'Review was successfully created.'
+          end
+          format.json { render :show, status: :created, location: @review }
+        else
+          format.html { render :new }
+          format.json do
+            render json: @review.errors, status: :unprocessable_entity
+          end
         end
       end
+    else
+      redirect_to new_review_path, alert: 'Fill out all required fields'
     end
   end
 
@@ -151,18 +127,45 @@ class ReviewsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_review
-    # @type [Review]
     @review = Review.find(params[:id])
   end
 
+  # Only allow a list of trusted parameters through.
+  def review_params
+    params.require(:review).permit(
+      :overall_rating,
+      :letter_grade,
+      :semester,
+      :year,
+      :course_required,
+      :interesting,
+      :difficult,
+      :standardized_course,
+      :course_other_thoughts,
+      :used_textbook,
+      :attendance_mandatory,
+      :course_format,
+      :cared_about_material,
+      :open_to_questions,
+      :cared_about_students,
+      :clear_grading,
+      :homework_heavy,
+      :clear_explanations,
+      :fast_grading,
+      :professor_other_thoughts,
+      :professor_id,
+      :course_id
+    )
+  end
+
   def set_professor
-    # @type [Professor]
-    @professor = Professor.find(params[:professor_id]) if params[:professor_id]
+    if !params[:professor_id].blank?
+      @professor = Professor.find(params[:professor_id])
+    end
   end
 
   def set_course
-    # @type [Course]
-    @course = Course.find(params[:course_id]) if params[:course_id]
+    @course = Course.find(params[:course_id]) if !params[:course_id].blank?
   end
 
   def load_courses

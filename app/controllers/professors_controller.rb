@@ -26,8 +26,11 @@ class ProfessorsController < ApplicationController
       end
     @highest_rated_course, _rating =
       @courses_with_ratings.max { |a, b| a[1] <=> b[1] }
+
     @lowest_rated_course, _rating =
       @courses_with_ratings.min { |a, b| a[1] <=> b[1] }
+
+    # Need overall review rating of particular course caught by the professor 
   end
 
   # GET /professors/1/courses/1

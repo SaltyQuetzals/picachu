@@ -28,13 +28,13 @@
   </div>
   
   <div class = "write-review-container">
-    <button class="btn btn-primary w-100">Write a Review</button>
+        <%= link_to 'Write a Review', new_review_path, :class => 'btn btn-primary w-100' %>
   </div>
   
   </div>
   <% if @grouped_courses.empty? %>
     <hr>
-    <p>This professor has not taught any other courses.
+    <p>This professor does not have any reviews.</p>
   <% else %>
 
   <!--tags-->
@@ -108,115 +108,42 @@
       </div>
     </div>
   </div>
-  
-  <hr>
-  
-  <!--all course-->
-  <div class = "all-course-container">
-    <h2>All Courses</h2>
-    <table class = "course-table-container">
-      <tr>
-        <th>Name</th>
-        <th>Rating</th>
-      </tr>
-      
-  </tbody>
-        <!-- <td>
-          course 1
-        </td>
-        <td>
-          <div class = "review-level-container">
-            <h3><%= @avg_review %></h3>
-            <div class = "rating-star">
-              <%= image_tag 'rating-star.png', class: 'rating-image'%>
-              <%= image_tag 'rating-star.png', class: 'rating-image'%>
-              <%= image_tag 'rating-star.png', class: 'rating-image'%>
-              <%= image_tag 'rating-star.png', class: 'rating-image'%>
-              <%= image_tag 'rating-star.png', class: 'rating-image'%>
-            </div>
-          </div>
-        </td> -->
-    </table>
-  </div>
 
   <% end %>
 
+  <hr>
 
-  <div class = "review-component">
-    <div style = "margin: 10px 20px 10px 20px;">
+  <!--all course-->
+  <div class = "all-course-container">
+    <h2>All Courses</h2>
+    <% if @grouped_courses.empty? %>
+      <p>This professor has not taught any other courses.
+    <% else %>
+    <table class = "course-table-container">
+      <thead>
+        <tr>
+        <th>Name</th>
+        <th>Rating</th>
+        <th colspan="3"></th>
+        </tr>
+      </thead>
 
+  <tbody>
+    
+    <% @grouped_courses.each do |course| %>
+      <tr>
+        <td>
+          <%= link_to course.dept + ' ' + course.course_num, professor_course_path(@professor, course) %>
+        </td>
+        <td>course rating</td>
+      </tr>
+    <% end %>
+    
+  </tbody>
 
-      <h2>dept & course#</h2>
-      <div class = "rating-star">
-        <!-- Needed: js for the star -->
-        <%= image_tag 'rating-star.png', class: 'rating-image'%>
-        <%= image_tag 'rating-star.png', class: 'rating-image'%>
-        <%= image_tag 'rating-star.png', class: 'rating-image'%>
-        <%= image_tag 'rating-star.png', class: 'rating-image'%>
-        <%= image_tag 'rating-star.png', class: 'rating-image'%>
-      </div>
+    </table>
+    <% end %>
 
-      <div class = "dis-in">
-        <!-- expected grade -->
-        <h3><b>Expected Grade:</b></h3>
-        <h3><!-- Grade -->   </h3>
-        <h3><b>Attendace:</b></h3>
-        <h3><!-- Grade -->   </h3>
-        <h3><b>Textbook:</b></h3>
-        <h3><!-- Grade -->   </h3>
-        <h3><b>Would Take Again:</b></h3>
-        <h3><!-- Grade -->   </h3>
-      </div>
-
-        <div class = "tag-group-container">
-          <div class = "border-container">
-            <p>tag1</p>
-          </div>
-          <div class = "border-container">
-            <p>tag22</p>
-          </div>
-          <div class = "border-container">
-            <p>tag333</p>
-          </div>
-          <div class = "border-container">
-            <p>tag4444</p>
-          </div>
-          <div class = "border-container">
-            <p>tag55555</p>
-          </div>
-        </div>
-
-
-
-      <p>example review paragraphs</p>
-
-      <!-- need read more button -->
-
-      <hr>
-
-      <div class = "dis-in">
-
-        <div style = "float: left; margin-right: 20px;">
-          <button></button>
-          <button></button>
-        </div>
-          
-
-        <div class = "user-agree-container">
-          <h5># of #</h5>
-          <h4>users agree with this review</h4>
-        </div>
-
-        
-        <div class = "report-container">
-            <!-- image of flag -->
-          <h4>Report</h4>
-        
-        </div>
-      </div>
-
-    </div>
-  </div>
 
 </div>
 </div>

@@ -66,6 +66,15 @@
     display:inline-block;
     margin: 40px;
 
+    a{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 21px;
+        text-align: center;
+
+        color: #FFFFFF;
+    }
 }
 
 .rating-star{
@@ -228,7 +237,6 @@
     text-align: left;
     line-height: 14px;
     h2{
-        margin-top: 40px;
         font-size: 18px;
         color: #000000;
     }

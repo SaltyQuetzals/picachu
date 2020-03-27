@@ -1,6 +1,4 @@
-Given(/^I'm on the new review page$/) do
-  visit new_review_path
-end
+Given(/^I'm on the new review page$/) { visit new_review_path }
 
 And(/^I enter "([^"]*)" in the "Overall rating" field$/) do |value|
   page.choose(:review_overall_rating_1)
@@ -83,5 +81,5 @@ And(/^I enter "([^"]*)" in the "Professor other thoughts" field$/) do |value|
 end
 
 And (/^I submit my Review form/) do
-  click_button("commit")
+  click_button('commit')
 end

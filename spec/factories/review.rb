@@ -5,7 +5,7 @@ FactoryBot.define do
     overall_rating { 1 }
     letter_grade { 'A' }
     semester { 'Fall' }
-    year { 2020 }
+    year { 2_020 }
     association :professor, factory: :professor
     association :course, factory: :course
   end

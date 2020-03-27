@@ -8,7 +8,6 @@
 require 'simplecov'
 SimpleCov.start 'rails'
 
-
 ENV['RAILS_ENV'] ||= 'test'
 if ENV['RAILS_ENV'] == 'test'
   require 'simplecov'
@@ -93,23 +92,26 @@ ip = ip.gsub "\n", ''
 Capybara.server_port = '3001'
 Capybara.server_host = ip
 Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
-Before ('@omniauth_test') do
+
+Before('@omniauth_test') do
   OmniAuth.config.test_mode = true
-  Capybara.default_host = 'http://exampl.com'
-  OmniAuth.config.mock_auth(
-    :google_oauth2,
-    {
-      provider: 'google',
-      uid: '123545',
-      info: {
-        name: 'John Doe',
-        email: 'johndoe@doe.com',
-        location: 'Doe World',
-        image: 'image_url'
-      },
-      extra: { raw_info: { hd: '@tamu.edu' } }
-    }
-  )
-  # etc.
+  OmniAuth.config.mock_auth[:google_oauth2] = nil
+  OmniAuth.config.mock_auth[:google_oauth2] =
+    OmniAuth::AuthHash.new(
+      {
+        provider: 'google',
+        uid: '123545',
+        info: {
+          name: 'John Doe',
+          email: 'johndoe@doe.com',
+          location: 'Doe World',
+          image: 'image_url'
+        },
+        extra: { raw_info: { hd: '@tamu.edu' } }
+      }
+    )
 end
-After('@omniauth_test') { OmniAuth.config.test_mode = false }
+After('@omniauth_test') do
+  OmniAuth.config.test_mode = false
+  OmniAuth.config.mock_auth[:google_oauth2] = nil
+end

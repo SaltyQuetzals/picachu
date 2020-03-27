@@ -2,7 +2,7 @@ And(/^I don't select a professor from the professor menu$/) do
   find('#professor_id').find(:xpath, 'option[1]').select_option
 end
 
-And(/^I dont' select a course from the course menu$/) do
+And(/^I don't select a course from the course menu$/) do
   find('#course_id').find(:xpath, 'option[1]').select_option
 end
 

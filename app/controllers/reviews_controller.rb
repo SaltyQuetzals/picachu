@@ -33,8 +33,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
 
-    if (params[:course_id] && params[:course_id] != '') &&
-         (params[:professor_id] && params[:professor_id] != '')
+    if !params[:course_id].blank? && !params[:professor_id].blank?
       @review.course_id = params[:course_id] if @review.course_id.nil?
       @review.professor_id = params[:professor_id] if @review.professor_id.nil?
 
@@ -131,13 +130,13 @@ class ReviewsController < ApplicationController
   end
 
   def set_professor
-    if params[:professor_id] && params[:professor_id] != ''
+    if !params[:professor_id].blank?
       @professor = Professor.find(params[:professor_id])
     end
   end
 
   def set_course
-    if params[:course_id] && params[:course_id] != ''
+    if !params[:course_id].blank?
       @course = Course.find(params[:course_id])
     end
   end

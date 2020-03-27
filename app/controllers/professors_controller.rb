@@ -18,7 +18,7 @@ class ProfessorsController < ApplicationController
       else
         @professor.reviews.average(:overall_rating)
       end
-    @num_reviews = Review.all
+    @num_reviews = Review.all # does not work
     @grouped_courses = @professor.reviews.group_by(&:course)
     @courses_with_ratings =
       @grouped_courses.map do |course, reviews|

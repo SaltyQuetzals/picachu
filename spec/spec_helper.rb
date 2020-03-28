@@ -102,4 +102,22 @@ RSpec.configure do |config|
   #   # test failures related to randomization by passing the same `--seed` value
   #   # as the one that triggered the failure.
   #   Kernel.srand config.seed
+  def stub_omiauth
+    OmniAuth.config.test_mode = true
+    OmniAuth.config.mock_auth[:google] =
+      OmniAuth::AuthHash.new(
+        {
+          provider: 'google',
+          uid: '123545',
+          info: {
+            name: 'John Doe',
+            email: 'johndoe@doe.com',
+            location: 'Doe World',
+            image: 'image_url'
+          },
+          extra: { raw_info: { hd: '@tamu.edu' } }
+        }
+      )
+    # etc.
+  end
 end

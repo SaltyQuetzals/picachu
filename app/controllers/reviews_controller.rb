@@ -6,9 +6,9 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: %i[show edit update destroy report]
 
   def report
+
     reason = params[:reason]
     other_input = params[:other_input]
-
     if reason.blank?
       render json: 'You must select a reason for reporting.',
              status: :bad_request
@@ -23,6 +23,8 @@ class ReviewsController < ApplicationController
              status: :bad_request
       return
     end
+
+
 
     UserMailer.report_email(
       reason,

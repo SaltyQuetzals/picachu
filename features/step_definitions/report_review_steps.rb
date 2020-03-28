@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-Given(/^I'm viewing a specific review$/) { visit report_review_path }
+Given(/^I'm viewing a specific review$/) { visit review_path(@review) }
 
 When(/^I click the report button$/) { click_button('open-modal-btn') }
 

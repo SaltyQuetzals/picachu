@@ -6,14 +6,10 @@ When(/^I click the report button$/) { click_button('open-modal-btn') }
 
 And(/^I indicate that the review is spam or abusive$/) { page.choose('spam') }
 
-And(/^I submit my report$/) do
-  click_button('reportReview')
-end
+And(/^I submit my report$/) { click_button('reportReview') }
 
 Then(/^I should receive confirmation that my report was successful$/) do
-  accept_alert(wait: 10) do
-    expect(page.current_path).to eq(review_path(@review))
-  end
+  expect(page.current_path).to eq(review_path(@review))
 end
 
 And(/^I indicate that the review is inappropriate or offensive$/) do
@@ -27,5 +23,5 @@ end
 And(/^I indicate it is "([^"]*)"$/) { |arg| find('#reasonForOther').set(arg) }
 
 Then(/^I should get a notification that my report failed$/) do
-  expect('report failure notification')
+  expect(page.current_path).to eq(review_path(@review))
 end

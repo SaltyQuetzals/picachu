@@ -31,11 +31,11 @@ document.getElementById("close-modal-btn").addEventListener("click", closeModal)
 const form = document.getElementById("reportForm");
 // If reporting was successful, let them know and close the modal.
 form.addEventListener("ajax:success", (event) => {
-    alert("Reported successfully.");
+    // alert("Reported successfully.");
     closeModal();
 });
 // If reporting failed, let them know why
 form.addEventListener("ajax:error", (event) => {
     const [_data, _status, _xhr] = event.detail;
-    alert(_data);
+    // alert(_data);
 });

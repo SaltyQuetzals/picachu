@@ -33,23 +33,26 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
 
-    respond_to do |format|
-      if @review.save
-        format.html do
-          redirect_to professor_path(@review.professor_id),
-                      notice: 'Review was successfully created.'
-        end
-        format.json { render :show, status: :created, location: @review }
-      else
-        format.html do
-          @courses = load_courses
-          @professors = load_professors
-          render :new
-        end
-        format.json do
-          render json: @review.errors, status: :unprocessable_entity
+    if !params[:course_id].blank? && !params[:professor_id].blank?
+      @review.course_id = params[:course_id] if @review.course_id.nil?
+      @review.professor_id = params[:professor_id] if @review.professor_id.nil?
+
+      respond_to do |format|
+        if @review.save
+          format.html do
+            redirect_to professor_path(@review.professor_id),
+                        notice: 'Review was successfully created.'
+          end
+          format.json { render :show, status: :created, location: @review }
+        else
+          format.html { render :new }
+          format.json do
+            render json: @review.errors, status: :unprocessable_entity
+          end
         end
       end
+    else
+      redirect_to new_review_path, alert: 'Fill out all required fields'
     end
   end
 
@@ -127,11 +130,13 @@ class ReviewsController < ApplicationController
   end
 
   def set_professor
-    @professor = Professor.find(params[:professor_id]) if params[:professor_id]
+    if !params[:professor_id].blank?
+      @professor = Professor.find(params[:professor_id])
+    end
   end
 
   def set_course
-    @course = Course.find(params[:course_id]) if params[:course_id]
+    @course = Course.find(params[:course_id]) if !params[:course_id].blank?
   end
 
   def load_courses

@@ -21,3 +21,5 @@ end
 Given(/^A review exists in the database$/) do
   @review = FactoryBot.create(:review)
 end
+
+Given(/^My user data exists in the database$/) { FactoryBot.create(:authuser) }

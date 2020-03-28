@@ -1,40 +1,42 @@
 <div class="navbar">
-    <%= link_to search_path do %>
-        <%= image_tag 'picachu-logo.png', class: 'img-logo'%>
-    <% end %>    
+  <%= link_to search_path do %>
+    <%= image_tag 'picachu-logo.png', class: 'img-logo' %>
+  <% end %>
 
-    <a href="javascript:void(0)" class="nav-user" id="navUser" onclick="toggleDropdown();">
-        <p>John Doe</p>
-        <%= image_tag 'arr-down.png', class: 'down-arrow', id: 'nav-arrow'%>
-    </a>
-    <div class="dropdown" id="profileDropdown" style='display: none'>
-	    <%= link_to 'Log Out', logout_path, method: :delete %>
-    </div>
+  <a href="javascript:void(0)" class="nav-user" id="navUser" onclick="toggleDropdown();">
+    <% if current_user %>
+      <p><%= current_user.name %></p>
+    <% else %>
+      <p>Not Logged In</p>
+    <% end %>
+    <%= image_tag 'arr-down.png', class: 'down-arrow', id: 'nav-arrow' %>
+  </a>
+  <div class="dropdown" id="profileDropdown" style='display: none'>
+    <%= link_to 'Log Out', logout_path, method: :delete %>
+  </div>
 
 </div>
 
 <script>
-open = false;
+    open = false;
 
-function rotate180(rotate) {
-    if (rotate) {
-        document.getElementById('nav-arrow').style.transform = 'rotate(180deg)';
+    function rotate180(rotate) {
+        if (rotate) {
+            document.getElementById('nav-arrow').style.transform = 'rotate(180deg)';
+        } else {
+            document.getElementById('nav-arrow').style.transform = 'rotate(0deg)';
+        }
     }
-    else {
-        document.getElementById('nav-arrow').style.transform = 'rotate(0deg)';
-    }
-}
 
-function toggleDropdown() {
-    open = !open;
-    rotate180(open);
+    function toggleDropdown() {
+        open = !open;
+        rotate180(open);
 
-    if (open) {
-        document.getElementById('profileDropdown').style.display = 'block';
+        if (open) {
+            document.getElementById('profileDropdown').style.display = 'block';
+        } else {
+            document.getElementById('profileDropdown').style.display = 'none';
+        }
     }
-    else {
-        document.getElementById('profileDropdown').style.display = 'none';
-    }
-}
 
 </script>

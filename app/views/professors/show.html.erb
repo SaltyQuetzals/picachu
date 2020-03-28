@@ -7,11 +7,11 @@
 <div class="flex-container">
 <div class="column-container">
   
-  <div class = "row-container">
-    
-  <!--professer general-->
-  <div class="professor-general-container">
-    <h1><%= @professor.full_name %> </h1>
+
+    <div class="flex-row">
+      <div class="flex-col-50" style="display: inline">
+
+        <h1><%= @professor.full_name %> </h1>
     <p><%= @professor.tamu_dir_dept %></p>
     <div class = "review-level-container">
         <h3><%= @avg_review %></h3>
@@ -26,22 +26,24 @@
         <% if @grouped_courses.empty? %>
           <h4>(0 reviews)</h4>
         <% else %>
-          <h4>(<%= @num_reviews %> reviews)</h4>
+          <h4><!--(<%= @num_reviews %> reviews) -->(10 reviews)</h4>
         <% end %>
     </div>
-  </div>
+      </div>
+      <div class="flex-col-50">
+        <%= link_to 'Write a Review', new_review_path, :class => 'btn btn-primary w-50' %>
+      </div>
+    </div>
+
+
+
   
-  <div class = "write-review-container">
-        <%= link_to 'Write a Review', new_review_path, :class => 'btn btn-primary w-100' %>
-  </div>
-  
-  </div>
   <% if @grouped_courses.empty? %>
     <hr>
     <p>This professor does not have any reviews.</p>
   <% else %>
 
-  <!--tags-->
+  <!--
   <div class = "tag-block-container">
     <h2>Top Tags</h2>
     <div class = "tag-group-container">
@@ -65,6 +67,8 @@
       </div>
     </div>
   </div>
+
+  -->
   
   <hr>
   
@@ -72,8 +76,8 @@
   <!--highest rated-->
   <div class = "rating-block-container">
     <div class = "review-container">
-      <h2>Highest Rating Course</h2>
-      <h3><%= @highest_rated_course %></h3>
+      <h2>Highest Rated Course</h2>
+      <h3><!--<%= @highest_rated_course %>--> CSCE 436 • Computer Human Interaction</h3>
       <div class = "rating-star">
           <%= image_tag 'rating-star.png', class: 'rating-image'%>
           <%= image_tag 'rating-star.png', class: 'rating-image'%>
@@ -82,7 +86,7 @@
           <%= image_tag 'rating-star.png', class: 'rating-image'%>
       </div>
       <h4>MM/DD/YYYY</h4>
-      <p>example review paragraphs testttttt tttttttt tttttttttt ttttttttttttttt ttttttttttttt tttttttttttttt tttttttttttt tttttttttttttt ttttttttttttttttttttt tttttttttttttttttttttttt ttttt ttttttttttt tttttttt ttttttttttttttttttttttt</p>
+      <p>“With the 121 assignments and tests recently standardized, the difficulty difference between professors is minimal. Professor Nowak is an excellent teacher who's also down to earth and really cares about your understanding. Highly recommend him”</p>
       <div class = "user-agree-container">
         <h5># of #</h5>
         <h4>users agree with this review</h4>
@@ -96,7 +100,7 @@
   <div class = "rating-block-container">
     <div class = "review-container">
       <h2>Lowest Rating Course</h2>
-      <h3><%= @lowest_rated_course %></h3>
+      <h3><!--<%= @lowest_rated_course %> -->CSCE 431 • Software Engineering</h3>
       <div class = "rating-star">
           <%= image_tag 'rating-star.png', class: 'rating-image'%>
           <%= image_tag 'rating-star.png', class: 'rating-image'%>

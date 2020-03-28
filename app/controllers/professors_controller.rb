@@ -25,7 +25,7 @@ class ProfessorsController < ApplicationController
         [course, reviews.sum(&:overall_rating).to_f / reviews.length]
       end
     @highest_rated_course, _rating =
-      @courses_with_ratings.max { |a, b| a[1] <=> b[1] }
+      @courses_with_ratings.max { |a, b| a[1] <=> b[1] } # does not work so well
 
     @lowest_rated_course, _rating =
       @courses_with_ratings.min { |a, b| a[1] <=> b[1] }

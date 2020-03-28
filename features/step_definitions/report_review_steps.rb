@@ -1,4 +1,3 @@
-
 # frozen_string_literal: true
 
 Given(/^I'm viewing a specific review$/) { visit review_path(@review) }

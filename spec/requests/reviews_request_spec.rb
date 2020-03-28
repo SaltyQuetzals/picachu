@@ -14,6 +14,7 @@ RSpec.describe 'Reviews', type: :request do
     expect { review_report_path @review,
          params: { reason: 'other', other_input: 'Its really bad'}
     }.to change {ActionMailer::Base.deliveries.count}.by(1)
+
   end
 
   it 'should get the new page' do

@@ -3,9 +3,10 @@
 class ReviewsController < ApplicationController
   before_action :set_professor
   before_action :set_course
-  before_action :set_review, only: %i[show edit update destroy report]
+  before_action :set_review, only: %i[show edit update destroy]
 
   def report
+    @review = Review.find(params[:review_id])
     reason = params[:reason]
     other_input = params[:other_input]
     if reason.blank?
@@ -158,13 +159,13 @@ class ReviewsController < ApplicationController
   end
 
   def set_professor
-    if !params[:professor_id].blank?
+    unless params[:professor_id].blank?
       @professor = Professor.find(params[:professor_id])
     end
   end
 
   def set_course
-    @course = Course.find(params[:course_id]) if !params[:course_id].blank?
+    @course = Course.find(params[:course_id]) unless params[:course_id].blank?
   end
 
   def load_courses

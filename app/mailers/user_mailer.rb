@@ -1,12 +1,14 @@
 class UserMailer < ApplicationMailer
-  default from: ENV['MAILER_USERNAME']
+  default from: ENV['MAILER_USERNAME'] || 'test@email.com'
 
-  def report_email(reportType, otherInput, url, profId, reviewId)
-    @reportType = reportType
-    @otherInput = otherInput
+  def report_email(report_type, other_input, url, prof_id, review_id)
+    @report_type = report_type
+    @other_input = other_input
     @url = url
-    @profId = profId
-    @reviewId = reviewId
-    mail(to: ENV['MAILER_USERNAME'], subject: 'Review Reported')
+    @prof_id = prof_id
+    @review_id = review_id
+    mail(
+      to: ENV['MAILER_USERNAME'] || 'test@email.com', subject: 'Review Reported'
+    )
   end
 end

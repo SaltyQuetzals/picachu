@@ -12,10 +12,8 @@ RSpec.describe 'Reviews', type: :request do
 
   it 'should report the review' do
     expect {
-      review_report_path @review,
-                         params: {
-                           reason: 'other', other_input: 'Its really bad'
-                         }
+      post review_report_path(@review),
+           params: { reason: 'other', other_input: 'Its really bad' }
     }.to change { ActionMailer::Base.deliveries.count }.by(1)
   end
 

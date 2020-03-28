@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-Given(/^I'm viewing a specific review$/) { visit review_path(@review) }
+Given(/^I'm viewing a specific review$/) { visit review_report_path }
 
 When(/^I click the report button$/) { click_button('open-modal-btn') }
 
@@ -12,7 +12,7 @@ And(/^I submit my report$/) { click_button('reportReview') }
 
 Then(/^I should receive confirmation that my report was successful$/) do
   expect('report success notification')
-  expect(page.current_path).to eq(review_path(@review))
+  expect(page.current_path).to eq(review_report_path)
 end
 
 And(/^I click the report button$/) { click_button('open-modal-btn') }

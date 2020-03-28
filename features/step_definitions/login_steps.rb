@@ -6,16 +6,13 @@ When(/^I click the login button/) do
   find(:xpath, '/html/body/div/div/a/button').click
 end
 
-Then(/^I should be redirected to the search page$/) do
+Then(/^I should see the Google authentication page$/) do
   expect(page.current_path).to eq('/auth/google_oauth2')
+end
+
+Given(/^I am signed in with Google$/) { visit '/auth/google_oauth2' }
+
+Then(/^I should see that I am logged in$/) do
   visit search_path
-
-  expect(page).to have_content('John Doe')
-  find(:xpath, '/html/body/div/a[1]').click
-
-  expect(page).to have_link('Log Out', visible: false)
-
-  find(:xpath, '//*[@id="navUser"]').click
-  find(:xpath, '//*[@id="profileDropdown"]/a').click
-  expect(page.current_path).to eq('/login')
+  expect(page).to have_content('James Doe')
 end

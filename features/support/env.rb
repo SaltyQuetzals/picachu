@@ -105,8 +105,8 @@ Before('@omniauth_test') do
         provider: 'google',
         uid: '123545',
         info: {
-          name: 'John Doe',
-          email: 'johndoe@doe.com',
+          name: 'James Doe',
+          email: 'jamesdoe@doe.com',
           location: 'Doe World',
           image: 'image_url'
         },

@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   get 'search' => 'search#index'
 
-  resources :reviews, except: %i[index]
+  resources :reviews, except: %i[index] do
+    post '/report' => 'reviews#report'
+  end
   resources :sessions, only: %i[create delete]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

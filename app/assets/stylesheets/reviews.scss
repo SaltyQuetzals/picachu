@@ -2,6 +2,91 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+
+ .header
+{
+    text-align: center;
+    margin-bottom: 10px; 
+}
+
+.w-80{
+    width: 60%;
+    margin-top: 15px;
+    /*height :20px;*/
+    /*padding-top: 5px;*/
+}
+
+#reasonForOther
+{
+    height: 10px;
+    width: 50%;
+    margin-left: 25%;
+    border-radius: 12px;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  /*text-align: center;*/
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 2px solid #888;
+  width: 60%;
+  max-height: 50%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.wrapper-class input[type="radio"] {
+  width: 15px;
+  display: inline;
+  margin-left: 20%;
+}
+
+.wrapper-class label {
+  display: inline;
+  margin-left: 5px;
+}
+
+#other_input
+{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.w-30{
+    width: 30%;
+    margin-top: 15px;
+    /*height :20px;*/
+    /*padding-top: 5px;*/
+}
+
 select {
     -webkit-appearance: none;
     -moz-appearance: none;

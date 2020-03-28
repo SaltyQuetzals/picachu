@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Given(/^A professor exists in the database$/) do
   @professor = FactoryBot.create(:professor)
 end
@@ -19,3 +21,5 @@ end
 Given(/^A review exists in the database$/) do
   @review = FactoryBot.create(:review)
 end
+
+Given(/^My user data exists in the database$/) { FactoryBot.create(:authuser) }

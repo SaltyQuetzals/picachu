@@ -9,11 +9,14 @@ Rails.application.routes.draw do
     collection { get 'search' }
   end
   get 'login' => 'login#index'
+  delete '/logout', to: 'sessions#destroy'
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
   get 'search' => 'search#index'
 
   resources :reviews, except: %i[index] do
     post '/report' => 'reviews#report'
   end
-
+  resources :sessions, only: %i[create delete]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

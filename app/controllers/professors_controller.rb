@@ -18,19 +18,31 @@ class ProfessorsController < ApplicationController
       else
         @professor.reviews.average(:overall_rating)
       end
-    @num_reviews = Review.all # does not work
+
+    @num_reviews = @professor.reviews.length # does not work
     @grouped_courses = @professor.reviews.group_by(&:course)
     @courses_with_ratings =
       @grouped_courses.map do |course, reviews|
         [course, reviews.sum(&:overall_rating).to_f / reviews.length]
       end
+
     @highest_rated_course, _rating =
       @courses_with_ratings.max { |a, b| a[1] <=> b[1] } # does not work so well
+
+    if (!@highest_rated_course.blank? && !@highest_rated_course.reviews.blank?)
+      @highest_rated_course_review =
+        @highest_rated_course.reviews.order('overall_rating').first
+    end
 
     @lowest_rated_course, _rating =
       @courses_with_ratings.min { |a, b| a[1] <=> b[1] }
 
-    # Need overall review rating of particular course caught by the professor 
+    if (!@lowest_rated_course.blank? && !@lowest_rated_course.reviews.blank?)
+      @lowest_rated_course_review =
+        @lowest_rated_course.reviews.order('overall_rating DESC').first
+    end
+
+    # Need overall review rating of particular course caught by the professor
   end
 
   # GET /professors/1/courses/1

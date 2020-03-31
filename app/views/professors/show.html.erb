@@ -6,7 +6,7 @@
 
 <div class="flex-container">
 <div class="column-container">
-  
+
 
     <div class="flex-row">
       <div class="flex-col-50" style="display: inline">
@@ -26,7 +26,7 @@
         <% if @grouped_courses.empty? %>
           <h4>(0 reviews)</h4>
         <% else %>
-          <h4><!--(<%= @num_reviews %> reviews) -->(10 reviews)</h4>
+          <h4>(<%= @num_reviews %> reviews)</h4>
         <% end %>
     </div>
       </div>
@@ -37,7 +37,7 @@
 
 
 
-  
+
   <% if @grouped_courses.empty? %>
     <hr>
     <p>This professor does not have any reviews.</p>
@@ -69,15 +69,16 @@
   </div>
 
   -->
-  
+
   <hr>
-  
+
 
   <!--highest rated-->
   <div class = "rating-block-container">
     <div class = "review-container">
       <h2>Highest Rated Course</h2>
-      <h3><!--<%= @highest_rated_course %>--> CSCE 436 • Computer Human Interaction</h3>
+      <h3><%= @highest_rated_course.full_course_name %></h3>
+      <h4><%= @highest_rated_course_review.overall_rating %></h4>
       <div class = "rating-star">
           <%= image_tag 'rating-star.png', class: 'rating-image'%>
           <%= image_tag 'rating-star.png', class: 'rating-image'%>
@@ -93,14 +94,15 @@
       </div>
     </div>
   </div>
-  
+
   <hr>
-  
+
   <!--lowest rated-->
   <div class = "rating-block-container">
     <div class = "review-container">
       <h2>Lowest Rated Course</h2>
-      <h3><!--<%= @lowest_rated_course %> -->CSCE 431 • Software Engineering</h3>
+      <h3><%= @lowest_rated_course.full_course_name %></h3>
+      <h4><%= @lowest_rated_course_review.overall_rating %></h4>
       <div class = "rating-star">
           <%= image_tag 'rating-star.png', class: 'rating-image'%>
           <%= image_tag 'rating-star.png', class: 'rating-image'%>
@@ -137,7 +139,7 @@
       </thead>
 
   <tbody>
-    
+
     <% @grouped_courses.each do |course, _reviews| %>
       <tr>
         <td>
@@ -146,7 +148,7 @@
         <td>course rating</td>
       </tr>
     <% end %>
-    
+
   </tbody>
 
     </table>
@@ -155,4 +157,3 @@
 
 </div>
 </div>
-

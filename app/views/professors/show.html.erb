@@ -1,6 +1,9 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <div class="w-90">
   <%= render 'partials/nav' %>
 </div>
+
 
 <p id="notice"><%= notice %></p>
 
@@ -77,14 +80,16 @@
   <div class = "rating-block-container">
     <div class = "review-container">
       <h2>Highest Rated Course</h2>
-      <h3><%= @highest_rated_course.full_course_name %></h3>
-      <h4><%= @highest_rated_course_review.overall_rating %></h4>
+      <h3>
+        <%= link_to @highest_rated_course.dept + ' ' + @highest_rated_course.course_num + ' • ' + @highest_rated_course.name, professor_course_path(@professor, @highest_rated_course), :style=> 'color:#00817E;'%>
+      </h3>
       <div class = "rating-star">
-          <%= image_tag 'rating-star.png', class: 'rating-image'%>
-          <%= image_tag 'rating-star.png', class: 'rating-image'%>
-          <%= image_tag 'rating-star.png', class: 'rating-image'%>
-          <%= image_tag 'rating-star.png', class: 'rating-image'%>
-          <%= image_tag 'rating-star.png', class: 'rating-image'%>
+        <% (1..@highest_rating).each do |i| %>
+          <span class="fa fa-star checked"></span>
+        <% end %>
+        <% (1..@highest_rating_compo).each do |i| %>
+          <span class="fa fa-star"></span>
+        <% end %>
       </div>
       <h4>MM/DD/YYYY</h4>
       <p>“With the 121 assignments and tests recently standardized, the difficulty difference between professors is minimal. Professor Nowak is an excellent teacher who's also down to earth and really cares about your understanding. Highly recommend him”</p>
@@ -101,21 +106,27 @@
   <div class = "rating-block-container">
     <div class = "review-container">
       <h2>Lowest Rated Course</h2>
-      <h3><%= @lowest_rated_course.full_course_name %></h3>
-      <h4><%= @lowest_rated_course_review.overall_rating %></h4>
+      <h3>
+        <%= link_to @lowest_rated_course.dept + ' ' + @lowest_rated_course.course_num + ' • ' + @lowest_rated_course.name, professor_course_path(@professor, @lowest_rated_course), :style=> 'color:#00817E;' %>
+      </h3>
       <div class = "rating-star">
-          <%= image_tag 'rating-star.png', class: 'rating-image'%>
-          <%= image_tag 'rating-star.png', class: 'rating-image'%>
-          <%= image_tag 'rating-star.png', class: 'rating-image'%>
-          <%= image_tag 'rating-star.png', class: 'rating-image'%>
-          <%= image_tag 'rating-star.png', class: 'rating-image'%>
+        <div class = "rating-star">
+        <% (1..@lowest_rating).each do |i| %>
+          <span class="fa fa-star checked"></span>
+        <% end %>
+        <% (1..@lowest_rating_compo).each do |i| %>
+          <span class="fa fa-star"></span>
+        <% end %>
+      </div>
       </div>
       <h4>MM/DD/YYYY</h4>
       <p>example review paragraphs</p>
+
       <div class = "user-agree-container">
         <h5># of #</h5>
         <h4>users agree with this review</h4>
       </div>
+      
     </div>
   </div>
 
@@ -132,21 +143,32 @@
     <table class = "course-table-container">
       <thead>
         <tr>
-        <th>Name</th>
-        <th>Rating</th>
-        <th colspan="3"></th>
+          <th>Name</th>
+          <th colspan="5"></th>
+          <th class = "table-padding">Rating</th>
         </tr>
+        <tr> 
+          <td colspan="100%"> <hr /> </td>      
+        </tr>
+
       </thead>
+
 
   <tbody>
 
     <% @grouped_courses.each do |course, _reviews| %>
       <tr>
         <td>
-          <%= link_to course.dept + ' ' + course.course_num, professor_course_path(@professor, course) %>
+          <h3>
+          <%= link_to course.dept + ' ' + course.course_num, professor_course_path(@professor, course), :style=> 'color:#00817E;'%>
+          </h3>
         </td>
-        <td>course rating</td>
+        <td colspan="5"></th>
+        <td class = "table-padding"></td>
       </tr>
+      <tr> 
+          <td colspan="100%"> <hr /> </td>      
+        </tr>
     <% end %>
 
   </tbody>

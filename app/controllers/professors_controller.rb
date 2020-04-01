@@ -27,7 +27,7 @@ class ProfessorsController < ApplicationController
       end
 
     @highest_rated_course, _rating =
-      @courses_with_ratings.max { |a, b| a[1] <=> b[1] } # does not work so well
+      @courses_with_ratings.max { |a, b| a[1] <=> b[1] }
 
     if (!@highest_rated_course.blank? && !@highest_rated_course.reviews.blank?)
       @highest_rated_course_review =
@@ -41,6 +41,11 @@ class ProfessorsController < ApplicationController
       @lowest_rated_course_review =
         @lowest_rated_course.reviews.order('overall_rating DESC').first
     end
+
+    @highest_rating = @highest_rated_course_review.overall_rating.floor
+    @highest_rating_compo = 5 - @highest_rating
+    @lowest_rating = @lowest_rated_course_review.overall_rating.floor
+    @lowest_rating_compo = 5 - @lowest_rating
 
     # Need overall review rating of particular course caught by the professor
   end

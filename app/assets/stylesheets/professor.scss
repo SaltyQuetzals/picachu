@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+
 .flex-container > .row-container {
     
 }
@@ -29,11 +30,14 @@
         line-height: 14px;
     }
     h5{
-        
-        color: #00817E;
-        display: inline;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
         font-size: 12px;
         line-height: 14px;
+
+        color: #00817E;
+        display: inline;
     }
 }
 
@@ -90,7 +94,6 @@
     h3{
         display: inline;
         color: #00817E;
-        line-height: 14px;
         line-height: 14px;
     }
     h4{
@@ -237,11 +240,56 @@
 .all-course-container{
     text-align: left;
     line-height: 14px;
+    table{
+        height: 100%;
+        width:100%;
+    }
     h2{
         font-size: 18px;
         color: #000000;
     }
+    tr{
+    }
+
+    th{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 150%;
+        color: #777777;
+        padding-bottom: 0px;
+        padding-left: 10px;
+    }
+    td{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        text-decoration-line: underline;
+        color: #00817E;
+        padding-bottom: 0px;
+        padding-left: 10px;
+    }
+    hr{
+        margin-top: 2px;
+        margin-bottom: 2px;
+    }
+    h3{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        text-decoration-line: underline;
+        color: #00817E;
+    }
 }
 
+.table-padding{
+    padding:0 15px;
+}
+
+.checked {
+  color: orange;
+}
 
 

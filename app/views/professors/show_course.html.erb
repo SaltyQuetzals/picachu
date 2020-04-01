@@ -59,9 +59,9 @@
             <div class = "dis-in">
               <!-- expected grade -->
               <h3><b>Expected Grade:</b></h3>
-              <h3><%= review.letter_grade %></h3>
+              <h3 style = "padding-right: 20px;"><%= review.letter_grade %></h3>
               <h3><b>Attendace:</b></h3>
-              <h3>
+              <h3 style = "padding-right: 20px;">
                 <% if review.attendance_mandatory %>
                   Mandatory
                 <% else %>
@@ -69,7 +69,7 @@
                 <% end %>
               </h3>
               <h3><b>Textbook:</b></h3>
-              <h3>
+              <h3 style = "padding-right: 20px;">
                 <% if review.used_textbook %>
                   Yes
                 <% else %>
@@ -93,7 +93,7 @@
 
 
 
-            <p>example review paragraphs</p>
+            <p><%= review.course_other_thoughts %></p>
 
             <!-- need read more button -->
 

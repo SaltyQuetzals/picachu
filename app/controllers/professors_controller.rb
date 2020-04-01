@@ -12,15 +12,10 @@ class ProfessorsController < ApplicationController
 
   # GET /professors/1
   # GET /professors/1.json
-  def avg_rev (course)
-      if course.reviews.blank?
-        0
-      else
-        course.reviews.average(:overall_rating).round(2)
-      end
+  def avg_rev(course)
+    course.reviews.blank? ? 0 : course.reviews.average(:overall_rating).round(2)
   end
 
-  
   def show
     @avg_review =
       if @professor.reviews.blank?
@@ -56,11 +51,11 @@ class ProfessorsController < ApplicationController
     @highest_rating_compo = 5
     @lowest_rating = 0
     @lowest_rating_compo = 5
-    if(!@highest_rated_course_review.blank?)
+    if (!@highest_rated_course_review.blank?)
       @highest_rating = @highest_rated_course_review.overall_rating.floor
       @highest_rating_compo = 5 - @highest_rating
     end
-    if(!@lowest_rated_course_review.blank?)
+    if (!@lowest_rated_course_review.blank?)
       @lowest_rating = @lowest_rated_course_review.overall_rating.floor
       @lowest_rating_compo = 5 - @lowest_rating
     end

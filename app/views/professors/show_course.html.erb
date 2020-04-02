@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <%= render 'partials/nav' %>
 
 <p id="notice"><%= notice %></p>
@@ -42,21 +44,22 @@
 
 
             <h2><%= @course.dept + ' ' + @course.course_num %></h2>
+
             <div class = "rating-star">
-            <!-- Needed: js for the star -->
-              <%= image_tag 'rating-star.png', class: 'rating-image'%>
-              <%= image_tag 'rating-star.png', class: 'rating-image'%>
-              <%= image_tag 'rating-star.png', class: 'rating-image'%>
-              <%= image_tag 'rating-star.png', class: 'rating-image'%>
-              <%= image_tag 'rating-star.png', class: 'rating-image'%>
+              <% (1..review.overall_rating.floor).each do |i| %>
+                <span class="fa fa-star checked"></span>
+              <% end %>
+              <% (1..(5-review.overall_rating.floor)).each do |i| %>
+                <span class="fa fa-star"></span>
+              <% end %>
             </div>
 
             <div class = "dis-in">
               <!-- expected grade -->
               <h3><b>Expected Grade:</b></h3>
-              <h3><%= review.letter_grade %></h3>
+              <h3 style = "padding-right: 20px;"><%= review.letter_grade %></h3>
               <h3><b>Attendace:</b></h3>
-              <h3>
+              <h3 style = "padding-right: 20px;">
                 <% if review.attendance_mandatory %>
                   Mandatory
                 <% else %>
@@ -64,7 +67,7 @@
                 <% end %>
               </h3>
               <h3><b>Textbook:</b></h3>
-              <h3>
+              <h3 style = "padding-right: 20px;">
                 <% if review.used_textbook %>
                   Yes
                 <% else %>
@@ -88,7 +91,7 @@
 
 
 
-            <p>example review paragraphs</p>
+            <p><%= review.course_other_thoughts %></p>
 
             <!-- need read more button -->
 

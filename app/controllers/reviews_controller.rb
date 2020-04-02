@@ -86,7 +86,8 @@ class ReviewsController < ApplicationController
     if !params[:course_id].blank? && !params[:professor_id].blank?
       @review.course_id = params[:course_id] if @review.course_id.nil?
       @review.professor_id = params[:professor_id] if @review.professor_id.nil?
-
+      puts current_user.inspect
+      @review.authuser_id = current_user.id
       respond_to do |format|
         if @review.save
           format.html do
@@ -175,7 +176,8 @@ class ReviewsController < ApplicationController
       :fast_grading,
       :professor_other_thoughts,
       :professor_id,
-      :course_id
+      :course_id,
+      :user_id
     )
   end
 

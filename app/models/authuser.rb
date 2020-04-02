@@ -14,6 +14,6 @@ class Authuser < ApplicationRecord
       authuser.save!
     end
   end
-
   acts_as_voter
+  has_many :reviews, dependent: :destroy
 end

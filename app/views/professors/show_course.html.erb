@@ -60,6 +60,13 @@
                 No
               <% end %>
             </p>
+            <p>
+              Review posted by:
+              <% if review.authuser_id %> ID:
+                <%= review.authuser_id %> | Name: 
+                <%= Authuser.find(review.authuser_id).name %>
+                <% end %>
+            </p>
             <p>Upvotes: <%= link_to review_upvote_path(review), method: :put do %>
               <%= review.get_upvotes.size %> <% end %> |
               Downvotes: <%= link_to review_downvote_path(review), method: :put do %>

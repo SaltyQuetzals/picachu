@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <%= render 'partials/nav' %>
 
 <p id="notice"><%= notice %></p>
@@ -31,36 +33,97 @@
     <% end %>
 
     <hr>
-
-    <div>
       <% if @course_reviews.empty? %>
         <p> This professor hasn't taught this course.</p>
       <% else %>
-        <h2>Reviews for <%= @course.dept + ' ' + @course.course_num %></h2>
         <% @course_reviews.each do |review| %>
-          <div class="review">
-            <p><%= review.created_at.to_date.to_formatted_s(:long) %></p>
-            <p>Overall Rating: <%= review.overall_rating %></p>
-            <p>Expected Grade: <%= review.letter_grade %></p>
-            <p>Attendance:
-              <% if review.attendance_mandatory %>
-                Mandatory
-              <% else %>
-                Optional
+
+
+        <div class = "review-component">
+          <div style = "margin: 10px 20px 10px 20px;">
+
+
+            <h2><%= @course.dept + ' ' + @course.course_num %></h2>
+
+            <div class = "rating-star">
+              <% (1..review.overall_rating.floor).each do |i| %>
+                <span class="fa fa-star checked"></span>
               <% end %>
-            </p>
-            <p>Textbook Required:
-              <% if review.used_textbook %>
-                Yes
-              <% else %>
-                No
+              <% (1..(5-review.overall_rating.floor)).each do |i| %>
+                <span class="fa fa-star"></span>
               <% end %>
-            </p>
+            </div>
+
+            <div class = "dis-in">
+              <!-- expected grade -->
+              <h3><b>Expected Grade:</b></h3>
+              <h3 style = "padding-right: 20px;"><%= review.letter_grade %></h3>
+              <h3><b>Attendace:</b></h3>
+              <h3 style = "padding-right: 20px;">
+                <% if review.attendance_mandatory %>
+                  Mandatory
+                <% else %>
+                  Optional
+                <% end %>
+              </h3>
+              <h3><b>Textbook:</b></h3>
+              <h3 style = "padding-right: 20px;">
+                <% if review.used_textbook %>
+                  Yes
+                <% else %>
+                  No
+                <% end %>
+              </h3>
+            </div>
+
+            <div class = "tag-group-container">
+              <div class = "border-container">
+                <p>Friendly</p>
+              </div>
+              <div class = "border-container">
+                <p>Helpful</p>
+              </div>
+              <div class = "border-container">
+                <p>Difficult exam</p>
+              </div>
+              
+            </div>
+
+
+
+            <p><%= review.course_other_thoughts %></p>
+
+            <!-- need read more button -->
+
+            <hr>
+
+            <div class = "dis-in">
+
+              <div style = "float: left; margin-right: 20px;">
+                <button></button>
+                <button></button>
+              </div>
+          
+
+              <div class = "user-agree-container">
+                <h5># of #</h5>
+                <h4>users agree with this review</h4>
+              </div>
+
+        
+              <div class = "report-container">
+              <!-- image of flag -->
+                <h4>Report</h4>
+        
+              </div>
+            </div>
+
+          </div>
           </div>
           <br/>
           <%= render partial: "partials/report_modal", locals: {review_id: review.id} %>
         <% end %>
       <% end %>
-    </div>
+
 </div>
 </div>

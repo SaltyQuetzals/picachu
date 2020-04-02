@@ -3,6 +3,7 @@
 class ProfessorsController < ApplicationController
   before_action :set_professor, only: %i[show edit update destroy]
   before_action :set_course, only: %i[show_course]
+  helper_method :avg_rev
   # GET /professors
   # GET /professors.json
   def index
@@ -11,22 +12,54 @@ class ProfessorsController < ApplicationController
 
   # GET /professors/1
   # GET /professors/1.json
+  def avg_rev(course)
+    course.reviews.blank? ? 0 : course.reviews.average(:overall_rating).round(2)
+  end
+
   def show
     @avg_review =
       if @professor.reviews.blank?
         0
       else
-        @professor.reviews.average(:overall_rating)
+        @professor.reviews.average(:overall_rating).round(2)
       end
+
+    @num_reviews = @professor.reviews.length # does not work
     @grouped_courses = @professor.reviews.group_by(&:course)
     @courses_with_ratings =
       @grouped_courses.map do |course, reviews|
         [course, reviews.sum(&:overall_rating).to_f / reviews.length]
       end
+
     @highest_rated_course, _rating =
       @courses_with_ratings.max { |a, b| a[1] <=> b[1] }
+
+    if (!@highest_rated_course.blank? && !@highest_rated_course.reviews.blank?)
+      @highest_rated_course_review =
+        @highest_rated_course.reviews.order('overall_rating').first
+    end
+
     @lowest_rated_course, _rating =
       @courses_with_ratings.min { |a, b| a[1] <=> b[1] }
+
+    if (!@lowest_rated_course.blank? && !@lowest_rated_course.reviews.blank?)
+      @lowest_rated_course_review =
+        @lowest_rated_course.reviews.order('overall_rating DESC').first
+    end
+
+    @highest_rating = 0
+    @highest_rating_compo = 5
+    @lowest_rating = 0
+    @lowest_rating_compo = 5
+    if (!@highest_rated_course_review.blank?)
+      @highest_rating = @highest_rated_course_review.overall_rating.floor
+      @highest_rating_compo = 5 - @highest_rating
+    end
+    if (!@lowest_rated_course_review.blank?)
+      @lowest_rating = @lowest_rated_course_review.overall_rating.floor
+      @lowest_rating_compo = 5 - @lowest_rating
+    end
+    # Need overall review rating of particular course caught by the professor
   end
 
   # GET /professors/1/courses/1

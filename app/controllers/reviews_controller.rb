@@ -5,6 +5,28 @@ class ReviewsController < ApplicationController
   before_action :set_course
   before_action :set_review, only: %i[show edit update destroy]
 
+
+
+  def upvote
+    @review = Review.find(params[:review_id])
+    if current_user.voted_up_for? @review
+      @review.unliked_by current_user
+    else
+      @review.upvote_from current_user
+    end
+    redirect_to professor_course_path(@review.professor_id, @review.course_id)
+  end
+
+  def downvote
+    @review = Review.find(params[:review_id])
+    if current_user.voted_down_for? @review
+      @review.undisliked_by current_user
+    else
+      @review.downvote_from current_user
+    end
+    redirect_to professor_course_path(@review.professor_id, @review.course_id)
+  end
+
   def report
     @review = Review.find(params[:review_id])
     reason = params[:reason]

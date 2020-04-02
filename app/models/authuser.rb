@@ -14,4 +14,7 @@ class Authuser < ApplicationRecord
       authuser.save!
     end
   end
+
+  acts_as_voter
+
 end

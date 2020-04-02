@@ -6,7 +6,7 @@
   <div class="professor-course-container">
     <div class="flex-row">
       <div class="flex-col-50" style="display: inline">
-        <h1><%= @professor.display_name %></h1>   
+        <h1><%= @professor.display_name %></h1>
         <h4><%= @professor.tamu_dir_title %>
           <% unless @professor.tamu_dir_dept.nil? %>
             <%= @professor.tamu_dir_dept %>
@@ -56,6 +56,12 @@
                 No
               <% end %>
             </p>
+            <p>Upvotes: <%= link_to review_upvote_path(review), method: :put do %>
+              <%= review.get_upvotes.size %> <% end %> |
+              Downvotes: <%= link_to review_downvote_path(review), method: :put do %>
+              <%= review.get_downvotes.size %> <% end %>
+            </p>
+
           </div>
           <br/>
         <% end %>

@@ -1,5 +1,5 @@
-<p id="notice"><%= notice %></p>
-
+<h1 id="notice"><%= notice %></h1>
+<h1>Reviews</h1>
 <p>
   <strong>Overall rating:</strong>
   <%= @review.overall_rating %>
@@ -113,4 +113,5 @@
 <%= link_to 'Edit', edit_review_path(@review) %> |
 <%= link_to 'Back', professor_path(@review.professor_id) %>
 
-
+<%= render partial: "partials/report_modal", locals: {review_id: @review.id} %>
+<%= render "partials/footer" %>

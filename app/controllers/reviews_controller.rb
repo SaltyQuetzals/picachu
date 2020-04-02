@@ -5,8 +5,6 @@ class ReviewsController < ApplicationController
   before_action :set_course
   before_action :set_review, only: %i[show edit update destroy]
 
-
-
   def upvote
     @review = Review.find(params[:review_id])
     if current_user.voted_up_for? @review

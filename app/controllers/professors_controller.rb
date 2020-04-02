@@ -34,7 +34,10 @@ class ProfessorsController < ApplicationController
   def show_course
     @professor = Professor.find(params[:professor_id])
     @grouped_courses = @professor.reviews.group_by(&:course)
-    @course_reviews = @professor.reviews.where(course_id: @course.id)
+    @course_reviews =
+      @professor.reviews.where(course_id: @course.id).order(
+        cached_weighted_average: :desc
+      )
   end
 
   # GET /professors/new

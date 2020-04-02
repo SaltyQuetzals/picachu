@@ -16,5 +16,4 @@ class Authuser < ApplicationRecord
   end
 
   acts_as_voter
-
 end

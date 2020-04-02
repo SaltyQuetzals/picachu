@@ -37,6 +37,10 @@
         <p> This professor hasn't taught this course.</p>
       <% else %>
         <h2>Reviews for <%= @course.dept + ' ' + @course.course_num %></h2>
+        <hr/>
+        <div id="highest_rated_review">
+          <h3>Highest Rated Review</h3>
+        </div>
         <% @course_reviews.each do |review| %>
           <div class="review">
             <p><%= review.created_at.to_date.to_formatted_s(:long) %></p>
@@ -63,7 +67,7 @@
             </p>
 
           </div>
-          <br/>
+          <hr/>
         <% end %>
       <% end %>
     </div>

@@ -17,7 +17,7 @@ And(/^I'm in the professor course overview page/){
 }
 
 When(/^I click the upvote button/){
-  click_link('upvote_link')
+  click_link('upvote_link_' + @review.id.to_s )
 }
 
 Then(/^I should see the number of upvotes equal to "([^"]*)"/) do |value|
@@ -25,7 +25,7 @@ Then(/^I should see the number of upvotes equal to "([^"]*)"/) do |value|
 end
 
 When(/^I click the downvote button/){
-  click_link('downvote_link')
+  click_link('downvote_link_' + @review.id.to_s)
 }
 
 Then(/^I should see the number of downvotes equal to "([^"]*)"/) do |value|

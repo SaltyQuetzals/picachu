@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
                     @review.professor_id,
                     @review.course_id
                   ),
-                  alert: 'You must be logged in.'
+                  notice: 'You must be logged in.'
     else
       if current_user.voted_up_for? @review
         @review.unliked_by current_user
@@ -30,7 +30,7 @@ class ReviewsController < ApplicationController
                     @review.professor_id,
                     @review.course_id
                   ),
-                  alert: 'You must be logged in.'
+                  notice: 'You must be logged in.'
     else
       if current_user.voted_down_for? @review
         @review.undisliked_by current_user
@@ -99,19 +99,25 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
 
-    if current_user.blank?
-      redirect_to professor_path(params[:professor_id]),
-                  alert: 'You must be
-      logged in to create a review.'
-    else
-      if !params[:course_id].blank? && !params[:professor_id].blank?
+    if !params[:course_id].blank? && !params[:professor_id].blank?
+      if current_user.blank?
+        redirect_to professor_course_path(
+                      params[:professor_id],
+                      params[:course_id]
+                    ),
+                    notice: 'You must be
+        logged in to create a review.'
+      else
         @review.course_id = params[:course_id]
         @review.professor_id = params[:professor_id]
         @review.authuser_id = current_user.id
         respond_to do |format|
           if @review.save
             format.html do
-              redirect_to professor_path(@review.professor_id),
+              redirect_to professor_course_path(
+                            @review.professor_id,
+                            @review.course_id
+                          ),
                           notice: 'Review was successfully created.'
             end
             format.json { render :show, status: :created, location: @review }
@@ -122,9 +128,9 @@ class ReviewsController < ApplicationController
             end
           end
         end
-      else
-        redirect_to new_review_path, alert: 'Fill out all required fields'
       end
+    else
+      redirect_to new_review_path, notice: 'Fill out all required fields'
     end
   end
 
@@ -132,27 +138,31 @@ class ReviewsController < ApplicationController
   # PATCH/PUT /reviews/1.json
   def update
     if current_user.blank?
-      redirect_to professor_path(@review.professor_id),
-                  alert: 'You must be
+      redirect_to professor_course_path(
+                    @review.professor_id,
+                    @review.course_id
+                  ),
+                  notice: 'You must be
       logged in to update a review.'
-    end
-    @review.authuser_id = current_user.id
-    respond_to do |format|
-      if @review.update(review_params)
-        format.html do
-          redirect_to professor_path(@review.professor_id),
-                      notice: 'Review was successfully updated.'
-        end
-        format.json { render :show, status: :ok, location: @review }
-      else
-        puts @review.errors.full_messages
-        format.html do
-          @courses = load_courses
-          @professors = load_professors
-          render :edit
-        end
-        format.json do
-          render json: @review.errors, status: :unprocessable_entity
+    else
+      @review.authuser_id = current_user.id
+      respond_to do |format|
+        if @review.update(review_params)
+          format.html do
+            redirect_to professor_path(@review.professor_id),
+                        notice: 'Review was successfully updated.'
+          end
+          format.json { render :show, status: :ok, location: @review }
+        else
+          puts @review.errors.full_messages
+          format.html do
+            @courses = load_courses
+            @professors = load_professors
+            render :edit
+          end
+          format.json do
+            render json: @review.errors, status: :unprocessable_entity
+          end
         end
       end
     end

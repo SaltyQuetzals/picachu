@@ -67,9 +67,9 @@
                 <%= Authuser.find(review.authuser_id).name %>
                 <% end %>
             </p>
-            <p>Upvotes: <%= link_to review_upvote_path(review), method: :put do %>
+            <p>Upvotes: <%= link_to review_upvote_path(review), id: "upvote_link", method: :put do %>
               <%= review.get_upvotes.size %> <% end %> |
-              Downvotes: <%= link_to review_downvote_path(review), method: :put do %>
+              Downvotes: <%= link_to review_downvote_path(review), id: "downvote_link", method: :put do %>
               <%= review.get_downvotes.size %> <% end %>
             </p>
 

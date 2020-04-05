@@ -15,8 +15,9 @@ FactoryBot.define do
     homework_heavy { 1 }
     clear_explanations { 1 }
     fast_grading { 1 }
-    year { 2_020 }
-    association :professor, factory: :professor
-    association :course, factory: :course
+    year { 2020 }
+    association :professor, factory: :professor, strategy: :build
+    association :course, factory: :course, strategy: :build
+    association :authuser, factory: :authuser
   end
 end

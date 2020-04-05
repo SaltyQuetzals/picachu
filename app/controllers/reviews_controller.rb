@@ -7,22 +7,38 @@ class ReviewsController < ApplicationController
 
   def upvote
     @review = Review.find(params[:review_id])
-    if current_user.voted_up_for? @review
-      @review.unliked_by current_user
+    if current_user.blank?
+      redirect_to professor_course_path(
+                    @review.professor_id,
+                    @review.course_id
+                  ),
+                  alert: 'You must be logged in.'
     else
-      @review.upvote_from current_user
+      if current_user.voted_up_for? @review
+        @review.unliked_by current_user
+      else
+        @review.upvote_from current_user
+      end
+      redirect_to professor_course_path(@review.professor_id, @review.course_id)
     end
-    redirect_to professor_course_path(@review.professor_id, @review.course_id)
   end
 
   def downvote
     @review = Review.find(params[:review_id])
-    if current_user.voted_down_for? @review
-      @review.undisliked_by current_user
+    if current_user.blank?
+      redirect_to professor_course_path(
+                    @review.professor_id,
+                    @review.course_id
+                  ),
+                  alert: 'You must be logged in.'
     else
-      @review.downvote_from current_user
+      if current_user.voted_down_for? @review
+        @review.undisliked_by current_user
+      else
+        @review.downvote_from current_user
+      end
+      redirect_to professor_course_path(@review.professor_id, @review.course_id)
     end
-    redirect_to professor_course_path(@review.professor_id, @review.course_id)
   end
 
   def report
@@ -84,10 +100,16 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
 
     if !params[:course_id].blank? && !params[:professor_id].blank?
-      @review.course_id = params[:course_id] if @review.course_id.nil?
-      @review.professor_id = params[:professor_id] if @review.professor_id.nil?
+      @review.course_id = params[:course_id] if @review.course_id.blank?
+      if @review.professor_id.blank?
+        @review.professor_id = params[:professor_id]
+      end
+      puts '___CREATE__'
+      puts @review.inspect
+      puts '[][][]'
       puts current_user.inspect
-      @review.authuser_id = current_user.id
+      @review.authuser_id = current_user.id if @review.authuser_id.blank?
+      puts 'HERE'
       respond_to do |format|
         if @review.save
           format.html do
@@ -110,6 +132,12 @@ class ReviewsController < ApplicationController
   # PATCH/PUT /reviews/1
   # PATCH/PUT /reviews/1.json
   def update
+    puts '__UPDATE'
+    puts @review.inspect
+    puts '[][][]'
+    puts current_user.inspect
+    @review.authuser_id = current_user.id if @review.authuser_id.blank?
+    puts 'HERE LOL'
     respond_to do |format|
       if @review.update(review_params)
         format.html do
@@ -177,7 +205,7 @@ class ReviewsController < ApplicationController
       :professor_other_thoughts,
       :professor_id,
       :course_id,
-      :user_id
+      :authuser_id
     )
   end
 

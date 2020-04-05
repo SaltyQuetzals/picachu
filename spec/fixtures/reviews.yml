@@ -23,6 +23,7 @@ one:
   professor_other_thoughts: MyString
   professor: one
   course: one
+  authuser: one
 
 two:
   overall_rating: 1
@@ -47,3 +48,4 @@ two:
   professor_other_thoughts: MyString
   professor: one
   course: one
+  authuser: one

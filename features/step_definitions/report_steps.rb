@@ -12,9 +12,6 @@ Then(/^I should receive confirmation that my report was successful$/) do
   expect(page.current_path).to eq(review_path(@review))
 end
 
-
-
-
 Given(/^I'm viewing a specific review$/) { visit review_path(@review) }
 
 When(/^I indicate that the review is inappropriate or offensive$/) do

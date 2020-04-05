@@ -9,8 +9,9 @@ RSpec.describe 'Reviews', type: :request do
     @review = reviews(:one)
     @professor = professors(:one)
     @course = courses(:one)
+  end
 
-
+  before do
     auth = {
      'provider' => 'google',
      'uid' => '12345',
@@ -22,10 +23,13 @@ RSpec.describe 'Reviews', type: :request do
      },
      'extra' => { 'raw_info' => { 'hd' => '@tamu.edu' } }
    }
-   Rails.application.env_config['omniauth.auth'] = auth
 
-
+   OmniAuth.config.test_mode = true
+   OmniAuth.config.mock_auth[:google] = auth
+   Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:google]
+   post sessions_path
   end
+
 
   it 'should report the review' do
     expect {
@@ -36,15 +40,35 @@ RSpec.describe 'Reviews', type: :request do
 
 
   it 'should upvote a review' do
+    expect {
+      put review_upvote_path(@review)
+    }.to change {@review.get_upvotes.size}.by(1)
   end
 
   it 'should downvote a review' do
+    expect {
+      put review_downvote_path(@review)
+    }.to change {@review.get_downvotes.size}.by(1)
   end
 
   it 'should undo an upvote' do
+    expect{
+      put review_upvote_path(@review)
+    }.to change {@review.get_upvotes.size}.by(1)
+
+    expect {
+      put review_upvote_path(@review)
+    }.to change {@review.get_upvotes.size}.by(-1)
   end
 
   it 'should undo a downvote' do
+    expect{
+      put review_downvote_path(@review)
+    }.to change {@review.get_downvotes.size}.by(1)
+
+    expect {
+      put review_downvote_path(@review)
+    }.to change {@review.get_downvotes.size}.by(-1)
   end
 
   it 'should get the new page' do
@@ -58,24 +82,6 @@ RSpec.describe 'Reviews', type: :request do
   end
 
   it 'should create a new review' do
-    # auth = {
-    #   provider: 'google',
-    #   uid: '12345',
-    #   info:{
-    #     name: 'John Doe',
-    #     email: 'test_user@tester.com',
-    #     location: 'test_location',
-    #     image: 'test_image_url'
-    #   },
-    #   extra:{
-    #     raw_info:{
-    #       hd: 'tamu.edu'
-    #     }
-    #   }
-    # }
-
-      # Authuser.find_or_create_from_auth_hash(stub_omiauth)
-
     expect {
       post reviews_url,
            params: {
@@ -141,7 +147,6 @@ RSpec.describe 'Reviews', type: :request do
                          standardized_course: @review.standardized_course,
                          used_textbook: @review.used_textbook,
                          year: @review.year,
-                         authuser_id: @authuser.id
                        }
                      }
     expect(response).to redirect_to(professor_url(@professor))

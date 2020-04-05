@@ -99,45 +99,44 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
 
-    if !params[:course_id].blank? && !params[:professor_id].blank?
-      @review.course_id = params[:course_id] if @review.course_id.blank?
-      if @review.professor_id.blank?
+    if current_user.blank?
+      redirect_to professor_path(params[:professor_id]),
+                  alert: 'You must be
+      logged in to create a review.'
+    else
+      if !params[:course_id].blank? && !params[:professor_id].blank?
+        @review.course_id = params[:course_id]
         @review.professor_id = params[:professor_id]
-      end
-      puts '___CREATE__'
-      puts @review.inspect
-      puts '[][][]'
-      puts current_user.inspect
-      @review.authuser_id = current_user.id if @review.authuser_id.blank?
-      puts 'HERE'
-      respond_to do |format|
-        if @review.save
-          format.html do
-            redirect_to professor_path(@review.professor_id),
-                        notice: 'Review was successfully created.'
-          end
-          format.json { render :show, status: :created, location: @review }
-        else
-          format.html { render :new }
-          format.json do
-            render json: @review.errors, status: :unprocessable_entity
+        @review.authuser_id = current_user.id
+        respond_to do |format|
+          if @review.save
+            format.html do
+              redirect_to professor_path(@review.professor_id),
+                          notice: 'Review was successfully created.'
+            end
+            format.json { render :show, status: :created, location: @review }
+          else
+            format.html { render :new }
+            format.json do
+              render json: @review.errors, status: :unprocessable_entity
+            end
           end
         end
+      else
+        redirect_to new_review_path, alert: 'Fill out all required fields'
       end
-    else
-      redirect_to new_review_path, alert: 'Fill out all required fields'
     end
   end
 
   # PATCH/PUT /reviews/1
   # PATCH/PUT /reviews/1.json
   def update
-    puts '__UPDATE'
-    puts @review.inspect
-    puts '[][][]'
-    puts current_user.inspect
-    @review.authuser_id = current_user.id if @review.authuser_id.blank?
-    puts 'HERE LOL'
+    if current_user.blank?
+      redirect_to professor_path(@review.professor_id),
+                  alert: 'You must be
+      logged in to update a review.'
+    end
+    @review.authuser_id = current_user.id
     respond_to do |format|
       if @review.update(review_params)
         format.html do

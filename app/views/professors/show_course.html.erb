@@ -62,8 +62,8 @@
             </p>
             <p>
               Review posted by:
-              <% if review.authuser_id %> ID:
-                <%= review.authuser_id %> | Name: 
+              <% if !review.authuser_id.blank? %> ID:
+                <%= review.authuser_id %> | Name:
                 <%= Authuser.find(review.authuser_id).name %>
                 <% end %>
             </p>

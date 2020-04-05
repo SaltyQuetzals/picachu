@@ -23,8 +23,13 @@ one:
   professor_other_thoughts: MyString
   professor: one
   course: one
-  authuser: one
-
+  cached_votes_total: 0
+  cached_votes_score: 0
+  cached_votes_up: 0
+  cached_votes_down: 0
+  cached_weighted_score: 0
+  cached_weighted_total: 0
+  cached_weighted_average: 0.0
 two:
   overall_rating: 1
   letter_grade: A
@@ -48,4 +53,3 @@ two:
   professor_other_thoughts: MyString
   professor: one
   course: one
-  authuser: one

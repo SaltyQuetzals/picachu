@@ -216,8 +216,7 @@ class ReviewsController < ApplicationController
       :fast_grading,
       :professor_other_thoughts,
       :professor_id,
-      :course_id,
-      :authuser_id
+      :course_id
     )
   end
 

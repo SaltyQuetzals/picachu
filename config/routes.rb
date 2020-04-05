@@ -8,15 +8,17 @@ Rails.application.routes.draw do
   resources :courses do
     collection { get 'search' }
   end
+  post '/report' => 'report#reportReview'
+  get 'report' => 'report#index'
   get 'login' => 'login#index'
   delete '/logout', to: 'sessions#destroy'
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'search' => 'search#index'
 
-  resources :reviews, except: %i[index] do
-    post '/report' => 'reviews#report'
-  end
+  # resources :report, except: %i[index]
+
+  resources :reviews, except: %i[index]
   resources :sessions, only: %i[create delete]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

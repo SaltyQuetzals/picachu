@@ -5,35 +5,7 @@ class ReviewsController < ApplicationController
   before_action :set_course
   before_action :set_review, only: %i[show edit update destroy]
 
-  def report
-    @review = Review.find(params[:review_id])
-    reason = params[:reason]
-    other_input = params[:other_input]
-    if reason.blank?
-      render json: 'You must select a reason for reporting.',
-             status: :bad_request
-      return
-    end
-
-    url = review_path(@review.id)
-
-    if reason == 'other' && other_input.blank?
-      render json:
-               'You must provide more information when reporting for "Other" reasons.',
-             status: :bad_request
-      return
-    end
-
-    UserMailer.report_email(
-      reason,
-      other_input,
-      url,
-      @review.professor_id,
-      @review.course_id
-    )
-      .deliver_now
-    render json: 'Review reported successfully.'
-  end
+  
 
   # GET /reviews
   # GET /reviews.json

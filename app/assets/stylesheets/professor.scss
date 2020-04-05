@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+
 .flex-container > .row-container {
     
 }
@@ -9,24 +10,34 @@
 .column-container{
     flex-direction: column;
     width: 50%;
-    margin: 20vh 10px 10px 10px;
+    margin: 10vh 10px 10px 10px;
+    min-width: 700px;
+    max-width: 100%;
+
+    hr{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 }
 
 .user-agree-container{
+
     h4{
-        display: inline;
+        
         color: #777777;
         display: inline;
         font-size: 12px;
         line-height: 14px;
-        
     }
     h5{
-        display: inline;
-        color: #00817E;
-        display: inline;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
         font-size: 12px;
         line-height: 14px;
+
+        color: #00817E;
+        display: inline;
     }
 }
 
@@ -58,6 +69,21 @@
 
 .write-review-container{
     display:inline-block;
+    margin: 40px;
+
+    a{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 21px;
+        text-align: center;
+
+        color: #FFFFFF;
+    }
+}
+
+.rating-star{
+    
 }
 
 .review-level-container{
@@ -68,7 +94,6 @@
     h3{
         display: inline;
         color: #00817E;
-        line-height: 14px;
         line-height: 14px;
     }
     h4{
@@ -85,6 +110,7 @@
         font-size: 18px;
         line-height: 14px;
         color: #000000;
+        margin-bottom:20px;
     }
     
 }
@@ -96,55 +122,171 @@
         border: 2px solid #00817E;
         border-radius: 25px;
         line-height: 14px;
-        margin-left: 2px;
-        margin-right: 2px;
+        margin: 10px 2px 10px 2px;
     }
     
     p {
         font-size: 14px;
+        line-height: 16px;
+        color: #004055;
+        font-style: normal;
+        font-weight: normal;
         display: inline;
-        line-height: 14px;
+        padding-left: 10px;
+        padding-right:10px;
     }
    
+}
+
+[class*=“review-“]{
+    
+    
 }
 
 .review-container{
     text-align: left;
     line-height: 14px;
     h2{
-        margin-top: 40px;
+        font-weight: 500;
         font-size: 18px;
+        line-height: 21px;
         color: #000000;
+        margin-bottom: 20px;
     }
     h3{
-        display: inline;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        text-decoration-line: underline;
         color: #00817E;
-        text-decoration: underline;
-        font-size: 14px;
     }
-    div{
-        margin-top: 20px;
-    }
-    h6{
-        margin-top: 10px;
-        font-size: 10px;
+    h4{
+        font-size: 12px;
         font-weight: normal;
         color: #777777;
     }
     p{
         margin: 40px 5px 40px 5px;
         font-size: 14px;
-        font-style: italic
+        font-style: italic;
     }
     
 }
 
+.review-component{
+    border: 1px solid #DDDDDD;
+    box-sizing: border-box;
+    border-radius: 5px;
+    flex-shrink: 0;
+    h2{
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 21px;
+        color: #000000;
+        margin-bottom: 20px;
+    }
+    h3{
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 16px;
+        color: #232323;
+    }
+    h4{
+        font-size: 12px;
+        font-weight: normal;
+        color: #777777;
+    }
+    h6{
+
+    }
+    p{
+        margin: 30px 5px 30px 5px;
+        font-size: 14px;
+    }
+}
+
+.dis-in{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    p{
+        display: inline;
+    }
+    div{
+        display: inline;
+    }
+    button{
+        display: inline;
+    }
+    h4{
+        display: inline;
+    }
+    h3{
+        display:inline;
+    }
+}
+
+.report-container{
+    float: right;
+    h4{
+        color: #777777;
+        display: inline;
+        font-size: 12px;
+        line-height: 14px;   
+    }
+}
+
+
 .all-course-container{
     text-align: left;
     line-height: 14px;
+    table{
+        height: 100%;
+        width:100%;
+    }
     h2{
-        margin-top: 40px;
         font-size: 18px;
         color: #000000;
     }
+    tr{
+    }
+
+    th{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 150%;
+        color: #777777;
+        padding-bottom: 0px;
+        padding-left: 10px;
+    }
+    td{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        color: #00817E;
+        padding-bottom: 0px;
+        padding-left: 10px;
+    }
+    hr{
+        margin-top: 2px;
+        margin-bottom: 2px;
+    }
+    h3{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+    }
 }
+
+.table-padding{
+    padding:0 15px;
+}
+
+.checked {
+  color: orange;
+}
+
+

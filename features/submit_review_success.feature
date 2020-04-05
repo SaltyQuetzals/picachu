@@ -27,7 +27,7 @@ Feature: Create and submit reviews
     And I enter "5" in the "Fast grading" field
     And I enter "5" in the "Professor other thoughts" field
     When I submit my Review form
-    Then I should be redirected to the Professor overview page
+    Then I should be redirected to the Professor Course overview page
 
 
   Scenario: Successfully create a review with only the required fields
@@ -57,5 +57,4 @@ Feature: Create and submit reviews
     And I enter "5" in the "Fast grading" field
     And I enter "5" in the "Professor other thoughts" field
     When I submit my Review form
-    Then I should be redirected to the Professor overview page
-
+    Then I should be redirected to the Professor Course overview page

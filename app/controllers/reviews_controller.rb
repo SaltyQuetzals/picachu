@@ -149,7 +149,10 @@ class ReviewsController < ApplicationController
       respond_to do |format|
         if @review.update(review_params)
           format.html do
-            redirect_to professor_path(@review.professor_id),
+            redirect_to professor_course_path(
+                          @review.professor_id,
+                          @review.course_id
+                        ),
                         notice: 'Review was successfully updated.'
           end
           format.json { render :show, status: :ok, location: @review }

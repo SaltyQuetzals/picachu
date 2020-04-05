@@ -112,10 +112,9 @@ RSpec.describe 'Reviews', type: :request do
            }
     }.to change { Review.count }.by(1)
 
-    expect(response).to redirect_to(professor_url(@professor.id))
+    expect(response).to redirect_to(professor_course_path(@professor.id, @course.id))
     follow_redirect!
 
-    expect(response).to render_template(:show)
     expect(flash[:notice]).to_not be nil
   end
 
@@ -149,7 +148,7 @@ RSpec.describe 'Reviews', type: :request do
                          year: @review.year,
                        }
                      }
-    expect(response).to redirect_to(professor_url(@professor))
+    expect(response).to redirect_to(professor_course_path(@professor, @course))
     @review.reload
     expect(@review.semester).to eq new_semester
   end

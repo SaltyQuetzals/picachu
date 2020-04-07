@@ -1,10 +1,13 @@
-
 const modal = document.getElementById("report-modal");
-
-
+const openModal = () => {
+    modal.style.display = "block";
+};
 const closeModal = () => {
-
-    window.history.back();
+    modal.style.display = "none";
+};
+const checkncloseModal = () => {
+    if(reasonForOther.required === true && reasonForOther.value != "" )
+        modal.style.display = "none";
 };
 
 const requireOtherInputIfNeeded = (radioButton) => {
@@ -21,18 +24,23 @@ const requireOtherInputIfNeeded = (radioButton) => {
 
 // If focus leaves the modal, close it
 window.onclick = function (event) {
-    if (event.target === modal) {   
+    if (event.target === modal) {
         closeModal();
     }
 };
 
 document.getElementById("close-modal-btn").addEventListener("click", closeModal);
+document.getElementById("reportReview").addEventListener("click", checkncloseModal);
 
 
 const form = document.getElementById("reportForm");
-
+// If reporting was successful, let them know and close the modal.
+// form.addEventListener("ajax:success", (event) => {
+//     // alert("Reported successfully.");
+//     closeModal();
+// });
 // If reporting failed, let them know why
-form.addEventListener("ajax:error", (event) => {
-    const [_data, _status, _xhr] = event.detail;
-    // alert(_data);
-});
+// form.addEventListener("ajax:error", (event) => {
+//     const [_data, _status, _xhr] = event.detail;
+//     // alert(_data);
+// });

@@ -5,6 +5,29 @@ class ReviewsController < ApplicationController
   before_action :set_course
   before_action :set_review, only: %i[show edit update destroy]
 
+  def report
+    @review = Review.find(params[:review_id])
+    reason = params[:reason]
+    other_input = params[:other_input]
+
+    url = review_path(@review.id)
+    begin
+      UserMailer.report_email(
+      reason,
+      other_input,
+      url,
+      @review.professor_id,
+      @review.course_id).deliver_now
+    rescue
+      redirect_to request.referrer,
+                  notice: 'Unable to complete your request.'
+    else
+      redirect_to request.referrer,
+                  notice: 'Review was successfully created.'
+    ensure
+    end 
+  end
+
   # GET /reviews
   # GET /reviews.json
   def index; end

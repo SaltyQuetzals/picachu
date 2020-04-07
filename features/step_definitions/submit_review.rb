@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 Given(/^I'm on the new review page$/) { visit new_review_path }
 
-And(/^I enter "([^"]*)" in the "Overall rating" field$/) do |value|
+And(/^I enter "([^"]*)" in the "Overall rating" field$/) do |_value|
   page.choose(:review_overall_rating_1)
 end
 
@@ -20,11 +22,11 @@ And(/^I enter "([^"]*)" in the "Course required" field$/) do |value|
   find(:xpath, '//*[@id="review_course_required"]').set(value)
 end
 
-And(/^I enter "([^"]*)" in the "Interesting" field$/) do |value|
+And(/^I enter "([^"]*)" in the "Interesting" field$/) do |_value|
   page.choose(:review_interesting_1)
 end
 
-And(/^I enter "([^"]*)" in the "Difficult" field$/) do |value|
+And(/^I enter "([^"]*)" in the "Difficult" field$/) do |_value|
   page.choose(:review_difficult_1)
 end
 
@@ -48,31 +50,31 @@ And(/^I enter "([^"]*)" in the "Course format" field$/) do |value|
   find(:xpath, '//*[@id="review_course_format"]').set(value)
 end
 
-And(/^I enter "([^"]*)" in the "Cared about material" field$/) do |value|
+And(/^I enter "([^"]*)" in the "Cared about material" field$/) do |_value|
   page.choose(:review_cared_about_material_1)
 end
 
-And(/^I enter "([^"]*)" in the "Open to questions" field$/) do |value|
+And(/^I enter "([^"]*)" in the "Open to questions" field$/) do |_value|
   page.choose(:review_open_to_questions_1)
 end
 
-And(/^I enter "([^"]*)" in the "Cared about students" field$/) do |value|
+And(/^I enter "([^"]*)" in the "Cared about students" field$/) do |_value|
   page.choose(:review_cared_about_students_1)
 end
 
-And(/^I enter "([^"]*)" in the "Clear grading" field$/) do |value|
+And(/^I enter "([^"]*)" in the "Clear grading" field$/) do |_value|
   page.choose(:review_clear_grading_1)
 end
 
-And(/^I enter "([^"]*)" in the "Homework heavy" field$/) do |value|
+And(/^I enter "([^"]*)" in the "Homework heavy" field$/) do |_value|
   page.choose(:review_homework_heavy_1)
 end
 
-And(/^I enter "([^"]*)" in the "Clear explanations" field$/) do |value|
+And(/^I enter "([^"]*)" in the "Clear explanations" field$/) do |_value|
   page.choose(:review_clear_explanations_1)
 end
 
-And(/^I enter "([^"]*)" in the "Fast grading" field$/) do |value|
+And(/^I enter "([^"]*)" in the "Fast grading" field$/) do |_value|
   page.choose(:review_fast_grading_1)
 end
 

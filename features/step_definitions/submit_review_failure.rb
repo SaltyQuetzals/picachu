@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 And(/^I don't select a professor from the professor menu$/) do
   find('#professor_id').find(:xpath, 'option[1]').select_option
 end

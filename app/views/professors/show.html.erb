@@ -38,7 +38,7 @@
 
 
 
-
+<% if current_user && current_user.reviews.exists? %>
   <% if @grouped_courses.empty? %>
     <hr>
     <p>This professor does not have any reviews.</p>
@@ -72,6 +72,7 @@
   -->
 
   <hr>
+<% end %>
 
 
   <!--highest rated-->
@@ -145,10 +146,12 @@
 
   <% end %>
 
+
   <hr>
 
   <!--all course-->
   <div class = "all-course-container">
+  <% if current_user && current_user.reviews.exists? %>
     <h2>All Courses</h2>
     <% if @grouped_courses.empty? %>
       <p>This professor has not taught any other courses.
@@ -203,6 +206,9 @@
 
     </table>
     <% end %>
+<% else %>
+  <h3> Write a review to view other reviews </h3>
+<% end %>
 
 
 </div>

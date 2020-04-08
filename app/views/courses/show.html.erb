@@ -20,25 +20,21 @@
 
 
 <%= link_to 'Write a Review', new_review_path%>
-<% if current_user && current_user.reviews.exists? %>
-  <%if(@course.reviews.blank?)%>
-    <h3> No Reviews </h3>
-  <%else%>
-    <br>
-    <strong> Average Review: </strong>
-    <%= @avg_review %>
+<%if(@course.reviews.blank?)%>
+  <h3> No Reviews </h3>
+<%else%>
+  <br>
+  <strong> Average Review: </strong>
+  <%= @avg_review %>
 
-    <% @course.reviews.each do |review| %>
-      <p>
-        Overall Rating: <%= review.overall_rating%> ,
-        Professor: <%= Professor.find(review.professor_id).full_name%>
+  <% @course.reviews.each do |review| %>
+    <p>
+      Overall Rating: <%= review.overall_rating%> ,
+      Professor: <%= Professor.find(review.professor_id).full_name%>
 
-        <%= link_to 'Show', review %> |
-        <%= link_to 'Edit', edit_review_path(:id => review.id) %> |
-        <%= link_to 'Delete', review, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </p>
-    <%end%>
+      <%= link_to 'Show', review %> |
+      <%= link_to 'Edit', edit_review_path(:id => review.id) %> |
+      <%= link_to 'Delete', review, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
   <%end%>
-  <% else %>
-  <h3> Write a review to view other reviews </h3>
-<% end %>
+<%end%>

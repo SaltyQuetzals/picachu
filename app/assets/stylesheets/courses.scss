@@ -1,3 +1,4 @@
+
 // Place all the styles related to the Courses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
@@ -74,4 +75,116 @@ $colour-primary: #00817E;
 
 .searchbar-container {
     margin: 20px 0 40px;
+}
+
+
+.course-name{
+    h1{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 32px;
+        line-height: 37px;
+        color: #000000;
+    }
+}
+
+.course-rating-des{
+    h2{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 21px;
+        color: #000000;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+}
+
+.course-column-container{
+    flex-direction: column;
+    width: 90%;
+    margin: 10vh 10px 10px 10px;
+    min-width: 700px;
+    max-width: 100%;
+
+}
+
+.course-prof{
+
+    .a-view{
+        a:visited{
+            color: #00817E;
+            text-decoration: none;
+        }
+        a:hover{
+            color: white;
+        }
+    }
+    .a-write{
+        a:visited{
+            color: white;
+            text-decoration: none;
+        }
+    }
+    a{
+        font-size: 16px;
+        text-decoration: none;
+    }
+    
+    h2{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 21px;
+        color: #000000;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+    text-align: left;
+    line-height: 14px;
+    table{
+        height: 100%;
+        width:100%;
+    }
+    h2{
+        font-size: 18px;
+        color: #000000;
+    }
+    tr{
+    
+    }
+    th{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 150%;
+        color: #777777;
+        padding-bottom: 0px;
+    }
+    td{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        color: #00817E;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    hr{
+        width: 100%;
+        margin-top: 2px;
+        margin-bottom: 2px;
+    }
+    h3{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 150%;
+        color: #000000;
+    }
 }

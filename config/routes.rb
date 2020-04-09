@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   resources :reviews, except: %i[index] do
     post '/report' => 'reviews#report'
+    put 'upvote', to: 'reviews#upvote'
+    put 'downvote', to: 'reviews#downvote'
   end
   resources :sessions, only: %i[create delete]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

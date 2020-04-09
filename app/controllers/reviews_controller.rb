@@ -118,7 +118,6 @@ class ReviewsController < ApplicationController
           end
           format.json { render :show, status: :created, location: @review }
         else
-          puts @review.errors.full_messages
           @professors = load_professors
           @courses = load_courses
           format.html { render :new }
@@ -155,7 +154,6 @@ class ReviewsController < ApplicationController
           end
           format.json { render :show, status: :ok, location: @review }
         else
-          puts @review.errors.full_messages
           format.html do
             @courses = load_courses
             @professors = load_professors

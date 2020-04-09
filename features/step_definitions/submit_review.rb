@@ -22,6 +22,14 @@ And(/^I enter "([^"]*)" in the "Course required" field$/) do |value|
   find(:xpath, '//*[@id="review_course_required"]').set(value)
 end
 
+And(/^I enter True in the "Course required" field$/) do 
+  find(:xpath, '//*[@id="review_course_required"]').set(true)
+end
+
+And(/^I enter False in the "Course required" field$/) do 
+  find(:xpath, '//*[@id="review_course_required"]').set(false)
+end
+
 And(/^I enter "([^"]*)" in the "Interesting" field$/) do |_value|
   page.choose(:review_interesting_1)
 end
@@ -34,6 +42,14 @@ And(/^I enter "([^"]*)" in the "Standardized course" field$/) do |value|
   find(:xpath, '//*[@id="review_standardized_course"]').set(value)
 end
 
+And(/^I enter True in the "Standardized course" field$/) do
+  find(:xpath, '//*[@id="review_standardized_course"]').set(true)
+end
+
+And(/^I enter False in the "Standardized course" field$/) do
+  find(:xpath, '//*[@id="review_standardized_course"]').set(false)
+end
+
 And(/^I enter "([^"]*)" in the "Course other thoughts" field$/) do |value|
   find(:xpath, '//*[@id="review_course_other_thoughts"]').set(value)
 end
@@ -42,8 +58,24 @@ And(/^I enter "([^"]*)" in the "Used Textbook" field$/) do |value|
   find(:xpath, '//*[@id="review_used_textbook"]').set(value)
 end
 
+And(/^I enter True in the "Used Textbook" field$/) do
+  find(:xpath, '//*[@id="review_used_textbook"]').set(true)
+end
+
+And(/^I enter False in the "Used Textbook" field$/) do
+  find(:xpath, '//*[@id="review_used_textbook"]').set(false)
+end
+
 And(/^I enter "([^"]*)" in the "Attendance mandatory" field$/) do |value|
   find(:xpath, '//*[@id="review_attendance_mandatory"]').set(value)
+end
+
+And(/^I enter True in the "Attendance mandatory" field$/) do
+  find(:xpath, '//*[@id="review_attendance_mandatory"]').set(true)
+end
+
+And(/^I enter False in the "Attendance mandatory" field$/) do
+  find(:xpath, '//*[@id="review_attendance_mandatory"]').set(false)
 end
 
 And(/^I enter "([^"]*)" in the "Course format" field$/) do |value|

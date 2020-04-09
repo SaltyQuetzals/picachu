@@ -10,12 +10,12 @@ RSpec.describe 'Reviews', type: :request do
     @course = courses(:one)
   end
 
-  # it 'should report the review' do
-  #   expect {
-  #     post review_report_path(@review),
-  #          params: { reason: 'other', other_input: 'Its really bad' }
-  #   }.to change { ActionMailer::Base.deliveries.count }.by(1)
-  # end
+  it 'should report the review' do
+    expect {
+      post review_report_path(@review),
+           params: { reason: 'other', other_input: 'Its really bad' }
+    }.to change { ActionMailer::Base.deliveries.count }.by(1)
+  end
 
   it 'should get the new page' do
     get new_review_url

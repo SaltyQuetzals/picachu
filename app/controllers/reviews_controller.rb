@@ -13,19 +13,20 @@ class ReviewsController < ApplicationController
     url = review_path(@review.id)
     begin
       UserMailer.report_email(
-      reason,
-      other_input,
-      url,
-      @review.professor_id,
-      @review.course_id).deliver_now
-    rescue
-      redirect_to request.referrer,
-                  notice: 'Unable to complete your request.'
+        reason,
+        other_input,
+        url,
+        @review.professor_id,
+        @review.course_id
+      )
+        .deliver_now
+    rescue StandardError
+      redirect_to request.referrer, notice: 'Unable to complete your request.'
     else
-      redirect_to request.referrer,
-                  notice: 'Review was successfully created.'
+      redirect_to request.referrer, notice: 'Review was successfully created.'
     ensure
-    end 
+
+    end
   end
 
   # GET /reviews

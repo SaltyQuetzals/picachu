@@ -42,9 +42,6 @@ Feature: Rate Reviews
     And My user data exists in the database
     And A review exists in the database
     And I'm in the professor course overview page
-    Given I'm logged in
-    And My user data exists in the database
-    And I'm in the professor course overview page
     Given A professor exists in the database
     And I'm on the new review page
     And I select a professor
@@ -81,9 +78,6 @@ Feature: Rate Reviews
     Given I'm logged in
     And My user data exists in the database
     And A review exists in the database
-    And I'm in the professor course overview page
-    Given I'm logged in
-    And My user data exists in the database
     And I'm in the professor course overview page
     Given A professor exists in the database
     And I'm on the new review page
@@ -122,9 +116,6 @@ Feature: Rate Reviews
     Given I'm logged in
     And My user data exists in the database
     And A review exists in the database
-    And I'm in the professor course overview page
-    Given I'm logged in
-    And My user data exists in the database
     And I'm in the professor course overview page
     Given A professor exists in the database
     And I'm on the new review page

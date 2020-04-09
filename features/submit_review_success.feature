@@ -13,13 +13,13 @@ Feature: Create and submit reviews
     And I enter "A" in the "Letter grade" field
     And I enter "Spring" in the "Semester" field
     And I enter "2019" in the "Year" field
-    And I enter "True" in the "Course required" field
+    And I enter True in the "Course required" field
     And I enter "5" in the "Interesting" field
     And I enter "5" in the "Difficult" field
-    And I enter "True" in the "Standardized course" field
+    And I enter True in the "Standardized course" field
     And I enter "5" in the "Course other thoughts" field
-    And I enter "True" in the "Used Textbook" field
-    And I enter "True" in the "Attendance mandatory" field
+    And I enter True in the "Used Textbook" field
+    And I enter True in the "Attendance mandatory" field
     And I enter "5" in the "Course format" field
     And I enter "5" in the "Cared about material" field
     And I enter "1" in the "Open to questions" field
@@ -46,13 +46,13 @@ Feature: Create and submit reviews
     And I enter "A" in the "Letter grade" field
     And I enter "Spring" in the "Semester" field
     And I enter "2019" in the "Year" field
-    And I enter "True" in the "Course required" field
+    And I enter True in the "Course required" field
     And I enter "5" in the "Interesting" field
     And I enter "5" in the "Difficult" field
-    And I enter "" in the "Standardized course" field
+    And I enter True in the "Standardized course" field
     And I enter "5" in the "Course other thoughts" field
-    And I enter "" in the "Used Textbook" field
-    And I enter "" in the "Attendance mandatory" field
+    And I enter True in the "Used Textbook" field
+    And I enter True in the "Attendance mandatory" field
     And I enter "5" in the "Course format" field
     And I enter "5" in the "Cared about material" field
     And I enter "1" in the "Open to questions" field

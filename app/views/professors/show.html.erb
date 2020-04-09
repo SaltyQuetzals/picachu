@@ -38,7 +38,7 @@
 
 
 
-
+<% if current_user && current_user.reviews.exists? %>
   <% if @grouped_courses.empty? %>
     <hr>
     <p>This professor does not have any reviews.</p>
@@ -207,3 +207,8 @@
 
 </div>
 </div>
+<% else %>
+  <h3> Write a review to view other reviews </h3>
+<% end %>
+
+

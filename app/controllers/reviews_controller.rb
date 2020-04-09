@@ -23,7 +23,7 @@ class ReviewsController < ApplicationController
     rescue StandardError
       redirect_to request.referrer, notice: 'Unable to complete your request.'
     else
-      redirect_to request.referrer, notice: 'Review was successfully created.'
+      redirect_to request.referrer, notice: 'Review was successfully reported.'
     ensure
 
     end

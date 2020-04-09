@@ -20,4 +20,4 @@ jobs:
       - run: |
           gem install bundle
           bundle install --without production test
-          bundle exec rbprettier --check '{app,config,test,db}/**/*.rb'
+          bundle exec rbprettier --check '{app,config,db,spec,features}/**/*.rb'

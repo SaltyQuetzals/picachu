@@ -1,5 +1,6 @@
 Given(/^I'm on the new review page$/) { visit new_review_path}
 
+
 And(/^I enter "([^"]*)" in the "Overall rating" field$/) do |_value|
   page.choose(:review_overall_rating_1)
 end

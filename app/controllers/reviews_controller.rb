@@ -7,25 +7,30 @@ class ReviewsController < ApplicationController
 
   def report
     @review = Review.find(params[:review_id])
-    reason = params[:reason]
-    other_input = params[:other_input]
-
-    url = review_path(@review.id)
-    begin
-      UserMailer.report_email(
-        reason,
-        other_input,
-        url,
-        @review.professor_id,
-        @review.course_id
-      )
-        .deliver_now
-    rescue StandardError
-      redirect_to request.referrer, notice: 'Unable to complete your request.'
+    if (params[:reason].blank?)
+      redirect_to review_path(@review),
+                  notice: 'Unable to complete your request.'
     else
-      redirect_to request.referrer, notice: 'Review was successfully reported.'
-    ensure
+      reason = params[:reason]
+      other_input = params[:other_input]
 
+      url = review_path(@review.id)
+      begin
+        UserMailer.report_email(
+          reason,
+          other_input,
+          url,
+          @review.professor_id,
+          @review.course_id
+        )
+          .deliver_now
+      rescue StandardError
+        redirect_to url, notice: 'Unable to complete your request.'
+      else
+        redirect_to url, notice: 'Review was successfully reported.'
+      ensure
+
+      end
     end
   end
 
@@ -91,7 +96,6 @@ class ReviewsController < ApplicationController
         end
         format.json { render :show, status: :ok, location: @review }
       else
-        puts @review.errors.full_messages
         format.html do
           @courses = load_courses
           @professors = load_professors

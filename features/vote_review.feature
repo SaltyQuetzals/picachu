@@ -155,3 +155,4 @@ Feature: Rate Reviews
     Then I should see the number of downvotes equal to "1"
     When I click the downvote button
     Then I should see the number of downvotes equal to "0"
+

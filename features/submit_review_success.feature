@@ -1,10 +1,7 @@
 Feature: Create and submit reviews
-  @javascript
-  @omniauth_test
+
   Scenario: Successfully create a review for a Professor's course
-    Given My user data exists in the database
-    And I'm logged in
-    And A professor exists in the database
+    Given A professor exists in the database
     And The course exists
     And I'm on the new review page
     And I select a professor
@@ -32,12 +29,9 @@ Feature: Create and submit reviews
     When I submit my Review form
     Then I should be redirected to the Professor Course overview page
 
-  @javascript
-  @omniauth_test
+
   Scenario: Successfully create a review with only the required fields
-    Given I'm logged in
-    And My user data exists in the database
-    And A professor exists in the database
+    Given A professor exists in the database
     And The course exists
     And I'm on the new review page
     And I select a professor

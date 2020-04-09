@@ -1,4 +1,4 @@
-Given(/^I'm on the new review page$/) { visit new_review_path}
+Given(/^I'm on the new review page$/) { visit new_review_path }
 
 
 And(/^I enter "([^"]*)" in the "Overall rating" field$/) do |_value|
@@ -17,7 +17,7 @@ And(/^I enter "([^"]*)" in the "Year" field$/) do |value|
   find(:xpath, '//*[@id="review_year"]').set(value)
 end
 
-And(/^I enter "([^"]*)" in the "Course required" field$/) do |value|
+And(/^I enter "([^"]*)" in the "Course required" field$/) do
   check 'review_course_required'
 end
 
@@ -29,7 +29,7 @@ And(/^I enter "([^"]*)" in the "Difficult" field$/) do |_value|
   page.choose(:review_difficult_1)
 end
 
-And(/^I enter "([^"]*)" in the "Standardized course" field$/) do |value|
+And(/^I enter "([^"]*)" in the "Standardized course" field$/) do
   uncheck 'review_standardized_course'
 end
 
@@ -37,11 +37,11 @@ And(/^I enter "([^"]*)" in the "Course other thoughts" field$/) do |value|
   find(:xpath, '//*[@id="review_course_other_thoughts"]').set(value)
 end
 
-And(/^I enter "([^"]*)" in the "Used Textbook" field$/) do |value|
+And(/^I enter "([^"]*)" in the "Used Textbook" field$/) do
   check 'review_used_textbook'
 end
 
-And(/^I enter "([^"]*)" in the "Attendance mandatory" field$/) do |value|
+And(/^I enter "([^"]*)" in the "Attendance mandatory" field$/) do
   check 'review_attendance_mandatory'
 end
 
@@ -82,5 +82,5 @@ And(/^I enter "([^"]*)" in the "Professor other thoughts" field$/) do |value|
 end
 
 And (/^I submit my Review form/) do
-  click_button('commit')
+  click_button 'commit'
 end

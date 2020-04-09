@@ -22,11 +22,11 @@ And(/^I enter "([^"]*)" in the "Course required" field$/) do |value|
   find(:xpath, '//*[@id="review_course_required"]').set(value)
 end
 
-And(/^I enter True in the "Course required" field$/) do 
+And(/^I enter True in the "Course required" field$/) do
   find(:xpath, '//*[@id="review_course_required"]').set(true)
 end
 
-And(/^I enter False in the "Course required" field$/) do 
+And(/^I enter False in the "Course required" field$/) do
   find(:xpath, '//*[@id="review_course_required"]').set(false)
 end
 

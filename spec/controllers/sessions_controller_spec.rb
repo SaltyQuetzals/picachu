@@ -30,6 +30,7 @@ RSpec.describe SessionsController do
 
     it 'should redirect the user to the root url' do
       post :create
+      session[:user_id].should_not be_nil
       response.should redirect_to search_path
     end
   end
@@ -49,3 +50,4 @@ RSpec.describe SessionsController do
     end
   end
 end
+  

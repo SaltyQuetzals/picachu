@@ -81,9 +81,13 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/new
   def new
-    @courses = load_courses
-    @professors = load_professors
-    @review = Review.new
+    if current_user.blank?
+      redirect_to root_path, notice: 'You must be logged in to create a review.'
+    else
+      @courses = load_courses
+      @professors = load_professors
+      @review = Review.new
+    end
   end
 
   # GET /reviews/1/edit
@@ -100,32 +104,26 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
 
     if !params[:course_id].blank? && !params[:professor_id].blank?
-      if current_user.blank?
-        redirect_to professor_course_path(
-                      params[:professor_id],
-                      params[:course_id]
-                    ),
-                    notice: 'You must be
-        logged in to create a review.'
-      else
-        @review.course_id = params[:course_id]
-        @review.professor_id = params[:professor_id]
-        @review.authuser_id = current_user.id
-        respond_to do |format|
-          if @review.save
-            format.html do
-              redirect_to professor_course_path(
-                            @review.professor_id,
-                            @review.course_id
-                          ),
-                          notice: 'Review was successfully created.'
-            end
-            format.json { render :show, status: :created, location: @review }
-          else
-            format.html { render :new }
-            format.json do
-              render json: @review.errors, status: :unprocessable_entity
-            end
+      @review.course_id = params[:course_id]
+      @review.professor_id = params[:professor_id]
+      @review.authuser_id = current_user.id
+      respond_to do |format|
+        if @review.save
+          format.html do
+            redirect_to professor_course_path(
+                          @review.professor_id,
+                          @review.course_id
+                        ),
+                        notice: 'Review was successfully created.'
+          end
+          format.json { render :show, status: :created, location: @review }
+        else
+          puts @review.errors.full_messages
+          @professors = load_professors
+          @courses = load_courses
+          format.html { render :new }
+          format.json do
+            render json: @review.errors, status: :unprocessable_entity
           end
         end
       end

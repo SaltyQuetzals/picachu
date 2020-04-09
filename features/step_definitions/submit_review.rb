@@ -1,4 +1,4 @@
-Given(/^I'm on the new review page$/) { visit new_review_path }
+Given(/^I'm on the new review page$/) { visit new_review_path}
 
 And(/^I enter "([^"]*)" in the "Overall rating" field$/) do |value|
   page.choose(:review_overall_rating_1)
@@ -17,7 +17,7 @@ And(/^I enter "([^"]*)" in the "Year" field$/) do |value|
 end
 
 And(/^I enter "([^"]*)" in the "Course required" field$/) do |value|
-  find(:xpath, '//*[@id="review_course_required"]').set(value)
+  check 'review_course_required'
 end
 
 And(/^I enter "([^"]*)" in the "Interesting" field$/) do |value|
@@ -29,7 +29,7 @@ And(/^I enter "([^"]*)" in the "Difficult" field$/) do |value|
 end
 
 And(/^I enter "([^"]*)" in the "Standardized course" field$/) do |value|
-  find(:xpath, '//*[@id="review_standardized_course"]').set(value)
+  uncheck 'review_standardized_course'
 end
 
 And(/^I enter "([^"]*)" in the "Course other thoughts" field$/) do |value|
@@ -37,11 +37,11 @@ And(/^I enter "([^"]*)" in the "Course other thoughts" field$/) do |value|
 end
 
 And(/^I enter "([^"]*)" in the "Used Textbook" field$/) do |value|
-  find(:xpath, '//*[@id="review_used_textbook"]').set(value)
+  check 'review_used_textbook'
 end
 
 And(/^I enter "([^"]*)" in the "Attendance mandatory" field$/) do |value|
-  find(:xpath, '//*[@id="review_attendance_mandatory"]').set(value)
+  check 'review_attendance_mandatory'
 end
 
 And(/^I enter "([^"]*)" in the "Course format" field$/) do |value|

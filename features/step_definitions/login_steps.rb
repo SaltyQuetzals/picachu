@@ -3,7 +3,8 @@
 Given(/^I'm on the login page/) { visit root_path }
 
 When(/^I click the login button/) do
-  find(:xpath, '/html/body/div/div/a/button').click
+  # find(:xpath, '/html/body/div/div/a/button').click
+  click_button("login_button")
 end
 
 Then(/^I should see the Google authentication page$/) do

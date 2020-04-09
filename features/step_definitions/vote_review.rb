@@ -1,7 +1,7 @@
 Given(/^I'm logged in/) {
   visit root_path
-  find(:xpath, '/html/body/div/div/a/button').click
-  expect(page.current_path).to eq('/auth/google_oauth2')
+  click_button('login_button')
+  # expect(page.current_path).to eq('/auth/google_oauth2')
   visit '/auth/google_oauth2'
   visit search_path
   expect(page).to have_content('James Doe')

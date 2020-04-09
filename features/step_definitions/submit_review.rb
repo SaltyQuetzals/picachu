@@ -16,7 +16,7 @@ And(/^I enter "([^"]*)" in the "Year" field$/) do |value|
   find(:xpath, '//*[@id="review_year"]').set(value)
 end
 
-And(/^I enter "([^"]*)" in the "Course required" field$/) do
+And(/^I enter "([^"]*)" in the "Course required" field$/) do |_value|
   check 'review_course_required'
 end
 
@@ -28,7 +28,7 @@ And(/^I enter "([^"]*)" in the "Difficult" field$/) do |_value|
   page.choose(:review_difficult_1)
 end
 
-And(/^I enter "([^"]*)" in the "Standardized course" field$/) do
+And(/^I enter "([^"]*)" in the "Standardized course" field$/) do |_value|
   uncheck 'review_standardized_course'
 end
 
@@ -36,11 +36,11 @@ And(/^I enter "([^"]*)" in the "Course other thoughts" field$/) do |value|
   find(:xpath, '//*[@id="review_course_other_thoughts"]').set(value)
 end
 
-And(/^I enter "([^"]*)" in the "Used Textbook" field$/) do
+And(/^I enter "([^"]*)" in the "Used Textbook" field$/) do |_value|
   check 'review_used_textbook'
 end
 
-And(/^I enter "([^"]*)" in the "Attendance mandatory" field$/) do
+And(/^I enter "([^"]*)" in the "Attendance mandatory" field$/) do |_value|
   check 'review_attendance_mandatory'
 end
 

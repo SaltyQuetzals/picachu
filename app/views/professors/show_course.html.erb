@@ -24,13 +24,12 @@
       <% if @grouped_courses.empty? %>
         <p>This professor has not taught any other courses.
       <% else %>
-        <h5>Other courses taught by <%= @professor.display_name %></h5>
-          <div class="other-classes">
-            <% @grouped_courses.each do |course, _reviews| %>
-              <%= link_to course.dept + ' ' + course.course_num, professor_course_path(@professor, course) %>
-            <% end %>
-          </div>
-      <% end %>
+        <h2>Reviews for <%= @course.dept + ' ' + @course.course_num %></h2>
+        <hr/>
+        <div id="highest_rated_review">
+          <h3>Highest Rated Review</h3>
+        </div>
+        <% @course_reviews.each do |review| %>
 
       <hr>
         <% if @course_reviews.empty? %>
@@ -93,6 +92,7 @@
                 </div>
 
               </div>
+            </div>
 
 
 
@@ -104,10 +104,17 @@
 
               <div class = "dis-in">
 
-                <div style = "float: left; margin-right: 20px;">
-                  <button></button>
-                  <button></button>
-                </div>
+              <div style = "float: left; margin-right: 20px;">
+                <button></button>
+                <button></button>
+              </div>
+
+              <p>Upvotes: <%= link_to review_upvote_path(review), id: "upvote_link_" + review.id.to_s, method: :put do %>
+                <%= review.get_upvotes.size %> <% end %> |
+                Downvotes: <%= link_to review_downvote_path(review), id: "downvote_link_" + review.id.to_s, method: :put do %>
+                <%= review.get_downvotes.size %> <% end %>
+              </p>
+
 
                 <p>Upvotes: <%= link_to review_upvote_path(review), id: "upvote_link_" + review.id.to_s, method: :put do %>
                   <%= review.get_upvotes.size %> <% end %> |
@@ -122,11 +129,11 @@
                 </div>
 
 
-                <div class = "report-container">
-                <!-- image of flag -->
-                  <h4>Report</h4>
 
-                </div>
+              <div class = "report-container">
+              <!-- image of flag -->
+                <h4>Report</h4>
+
               </div>
 
             </div>
@@ -139,5 +146,6 @@
         <h3> Write a review to view other reviews </h3>
       <% end %>
 
-  </div>
-  </div>
+</div>
+</div>
+

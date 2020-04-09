@@ -2,7 +2,7 @@
 
 Given(/^I'm logged in/) do
   visit root_path
-  find(:xpath, '/html/body/div/div/a/button').click
+  click_button('login_button')
   expect(page.current_path).to eq('/auth/google_oauth2')
   visit '/auth/google_oauth2'
   visit search_path

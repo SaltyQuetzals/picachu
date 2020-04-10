@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
 require 'rails_helper'
 
 RSpec.describe 'Reviews', type: :request do
@@ -10,11 +11,63 @@ RSpec.describe 'Reviews', type: :request do
     @course = courses(:one)
   end
 
+  before do
+    auth = {
+      'provider' => 'google',
+      'uid' => '12345',
+      'info' => {
+        'name' => 'John Doe',
+        'email' => 'johndoe@doe.com',
+        'location' => 'Doe World',
+        'image' => 'image_url'
+      },
+      'extra' => { 'raw_info' => { 'hd' => '@tamu.edu' } }
+    }
+
+    OmniAuth.config.test_mode = true
+    OmniAuth.config.mock_auth[:google] = auth
+    Rails.application.env_config['omniauth.auth'] =
+      OmniAuth.config.mock_auth[:google]
+    post sessions_path
+  end
+
   it 'should report the review' do
     expect {
       post review_report_path(@review),
            params: { reason: 'other', other_input: 'Its really bad' }
     }.to change { ActionMailer::Base.deliveries.count }.by(1)
+  end
+
+  it 'should upvote a review' do
+    expect { put review_upvote_path(@review) }.to change {
+      @review.get_upvotes.size
+    }.by(1)
+  end
+
+  it 'should downvote a review' do
+    expect { put review_downvote_path(@review) }.to change {
+      @review.get_downvotes.size
+    }.by(1)
+  end
+
+  it 'should undo an upvote' do
+    expect { put review_upvote_path(@review) }.to change {
+      @review.get_upvotes.size
+    }.by(1)
+
+    expect { put review_upvote_path(@review) }.to change {
+      @review.get_upvotes.size
+    }.by(-1)
+  end
+
+  it 'should undo a downvote' do
+    expect { put review_downvote_path(@review) }.to change {
+      @review.get_downvotes.size
+    }.by(1)
+
+    expect { put review_downvote_path(@review) }.to change {
+      @review.get_downvotes.size
+    }.by(-1)
   end
 
   it 'should get the new page' do
@@ -26,6 +79,7 @@ RSpec.describe 'Reviews', type: :request do
     get edit_review_url(@review)
     expect(response).to have_http_status(:success)
   end
+
   it 'should create a new review' do
     expect {
       post reviews_url,
@@ -37,7 +91,6 @@ RSpec.describe 'Reviews', type: :request do
                clear_explanations: @review.clear_explanations,
                clear_grading: @review.clear_grading,
                course_format: @review.course_format,
-               # course_id: @course.id,
                course_other_thoughts: @review.course_other_thoughts,
                course_required: @review.course_required,
                difficult: @review.difficult,
@@ -47,7 +100,6 @@ RSpec.describe 'Reviews', type: :request do
                letter_grade: @review.letter_grade,
                open_to_questions: @review.open_to_questions,
                overall_rating: @review.overall_rating,
-               # professor_id: @professor.id,
                professor_other_thoughts: @review.professor_other_thoughts,
                semester: @review.semester,
                standardized_course: @review.standardized_course,
@@ -59,10 +111,11 @@ RSpec.describe 'Reviews', type: :request do
            }
     }.to change { Review.count }.by(1)
 
-    expect(response).to redirect_to(professor_url(@professor.id))
+    expect(response).to redirect_to(
+      professor_course_path(@professor.id, @course.id)
+    )
     follow_redirect!
 
-    expect(response).to render_template(:show)
     expect(flash[:notice]).to_not be nil
   end
 
@@ -96,7 +149,7 @@ RSpec.describe 'Reviews', type: :request do
                          year: @review.year
                        }
                      }
-    expect(response).to redirect_to(professor_url(@professor))
+    expect(response).to redirect_to(professor_course_path(@professor, @course))
     @review.reload
     expect(@review.semester).to eq new_semester
   end

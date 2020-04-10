@@ -8,5 +8,6 @@ FactoryBot.define do
     email { 'jamesdoe@doe.com' }
     location { 'Doe World' }
     image_url { 'image_url' }
+    url { 'test_url' }
   end
 end

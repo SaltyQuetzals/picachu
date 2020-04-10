@@ -1,100 +1,214 @@
-<h1 id="notice"><%= notice %></h1>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<%= render 'partials/nav' %>
 
 
-<p>
-  <strong>First name:</strong>
-  <%= @professor.first_name %>
-</p>
+<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @professor.last_name %>
-</p>
+<div class="flex-container">
+<div class="column-container">
 
-<p>
-  <strong>Full name:</strong>
-  <%= @professor.full_name %>
-</p>
 
-<p>
-  <strong>Display name:</strong>
-  <%= @professor.display_name %>
-</p>
+    <div class="flex-row">
+      <div class="flex-col-50" style="display: inline">
 
-<p>
-  <strong>Cv url:</strong>
-  <%= @professor.cv_url %>
-</p>
-
-<p>
-  <strong>Tamu dir title:</strong>
-  <%= @professor.tamu_dir_title %>
-</p>
-
-<p>
-  <strong>Tamu dir dept:</strong>
-  <%= @professor.tamu_dir_dept %>
-</p>
-
-<p>
-  <strong>Tamu dir email:</strong>
-  <%= @professor.tamu_dir_email %>
-</p>
-
-<%= link_to 'Edit', edit_professor_path(@professor) %> |
-<%= link_to 'Back', professors_path %> |
-
-<%= link_to 'Write a Review', new_review_path %>
-<% if (@professor.reviews.blank?) %>
-  <h3> No Reviews </h3>
-<% else %>
-  <br>
-  <strong> Average Review: </strong>
-  <%= @avg_review %>
-
-  <div class="highest-rated-course">
-    <h4>Highest-Rated Course</h4>
-    <h5><%= @highest_rated_course.full_course_name %></h5>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae ligula ac dui viverra egestas at ut arcu.
-      Vivamus venenatis felis a magna gravida auctor et sit amet nulla. Morbi vitae venenatis turpis. Suspendisse
-      vestibulum urna eu commodo mollis. Donec quis hendrerit velit. Donec posuere pharetra leo, ut mollis massa ornare
-      id. Ut justo odio, viverra at felis nec, dignissim aliquam tortor. Integer condimentum ante odio, eu hendrerit
-      augue commodo sit amet. Nulla in ligula aliquam, vulputate sapien id, aliquet nibh. Suspendisse potenti. Fusce
-      vitae gravida ligula. Sed interdum non ante quis gravida. Nunc suscipit auctor ex, eu consectetur augue pretium
-      vitae. Ut at lectus a dui tincidunt ultricies. Pellentesque metus orci, iaculis a varius eget, suscipit ut enim.
-      Aenean eget enim varius, ullamcorper eros vel, elementum justo. </p>
-  </div>
-  <div class="lowest-rated-course">
-    <h4>Lowest-Rated Course</h4>
-    <h5><%= @lowest_rated_course.full_course_name %></h5>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae ligula ac dui viverra egestas at ut arcu.
-      Vivamus venenatis felis a magna gravida auctor et sit amet nulla. Morbi vitae venenatis turpis. Suspendisse
-      vestibulum urna eu commodo mollis. Donec quis hendrerit velit. Donec posuere pharetra leo, ut mollis massa ornare
-      id. Ut justo odio, viverra at felis nec, dignissim aliquam tortor. Integer condimentum ante odio, eu hendrerit
-      augue commodo sit amet. Nulla in ligula aliquam, vulputate sapien id, aliquet nibh. Suspendisse potenti. Fusce
-      vitae gravida ligula. Sed interdum non ante quis gravida. Nunc suscipit auctor ex, eu consectetur augue pretium
-      vitae. Ut at lectus a dui tincidunt ultricies. Pellentesque metus orci, iaculis a varius eget, suscipit ut enim.
-      Aenean eget enim varius, ullamcorper eros vel, elementum justo. </p>
-  </div>
-
-  <div class="all-course-container">
-    <% @courses_with_ratings.each do |course, avg_rating| %>
-      <div class="all-course-element">
-        <p><%= course.full_course_name %></p>
-        <p><%= avg_rating %></p>
+        <h1><%= @professor.full_name %> </h1>
+        <p><%= @professor.tamu_dir_dept %></p>
+    <div class = "review-level-container">
+        <h3><%= @avg_review %></h3>
+        <div class = "rating-star">
+        <% (1..@avg_review.floor).each do |i| %>
+          <span class="fa fa-star checked"></span>
+        <% end %>
+        <% (1..(5-@avg_review.floor)).each do |i| %>
+          <span class="fa fa-star"></span>
+        <% end %>
       </div>
-    <% end %>
-  </div>
-  <%# @professor.reviews.each do |review| %>
-  <!--        <p>-->
-  <!--          Overall Rating: <%#= review.overall_rating %>,-->
-  <!--          Course: <%#= Course.find(review.course_id).full_course_name %>-->
-  <!--          <%#= link_to 'Show', review %> |-->
-  <%#= link_to 'Edit', edit_review_path(:id => review.id) %>
-  <!--          |-->
-  <%#= link_to 'Delete', review, method: :delete, data: {confirm: 'Are you sure?'} %>
+        <% if @grouped_courses.empty? %>
+          <h4>(0 reviews)</h4>
+        <% else %>
+          <h4>(<%= @num_reviews %> reviews)</h4>
+        <% end %>
+    </div>
+      </div>
+      <div class="flex-col-50">
+        <%= link_to 'Write a Review', new_review_path, :class => 'btn btn-primary w-50' %>
+      </div>
+    </div>
 
-  <!--        </p>-->
-  <%# end %>
+
+
+<% if current_user && current_user.reviews.exists? %>
+  <% if @grouped_courses.empty? %>
+    <hr>
+    <p>This professor does not have any reviews.</p>
+  <% else %>
+
+  <!--
+  <div class = "tag-block-container">
+    <h2>Top Tags</h2>
+    <div class = "tag-group-container">
+      <div class = "border-container">
+        <p>tag1</p>
+      </div>
+      <div class = "border-container">
+        <p>tag22</p>
+      </div>
+      <div class = "border-container">
+        <p>tag333</p>
+      </div>
+      <div class = "border-container">
+        <p>tag4444</p>
+      </div>
+      <div class = "border-container">
+        <p>tag55555</p>
+      </div>
+      <div class = "border-container">
+        <p>tag666666</p>
+      </div>
+    </div>
+  </div>
+
+  -->
+
+  <hr>
+
+
+  <!--highest rated-->
+  <div class = "rating-block-container">
+    <div class = "review-container">
+      <h2>Highest Rated Course</h2>
+      <h3>
+        <%= link_to @highest_rated_course.dept + ' ' + @highest_rated_course.course_num + ' • ' + @highest_rated_course.name, professor_course_path(@professor, @highest_rated_course), :style=> 'color:#00817E;'%>
+      </h3>
+      <div class = "rating-star">
+        <% (1..@highest_rating).each do |i| %>
+          <span class="fa fa-star checked"></span>
+        <% end %>
+        <% (1..@highest_rating_compo).each do |i| %>
+          <span class="fa fa-star"></span>
+        <% end %>
+      </div>
+      <h4>
+        <%= @highest_rated_course_review.semester + ' ' + @highest_rated_course_review.year.to_s %>
+      </h4>
+      <p>
+        <% if @highest_rated_course_review.professor_other_thoughts.blank? %>
+          The reviewer did not leave any thoughts.
+        <% else %>
+          <%= @highest_rated_course_review.professor_other_thoughts %>
+        <% end %>
+      </p>
+      <div class = "user-agree-container">
+        <h5># of #</h5>
+        <h4>users agree with this review</h4>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!--lowest rated-->
+  <div class = "rating-block-container">
+    <div class = "review-container">
+      <h2>Lowest Rated Course</h2>
+      <h3>
+        <%= link_to @lowest_rated_course.dept + ' ' + @lowest_rated_course.course_num + ' • ' + @lowest_rated_course.name, professor_course_path(@professor, @lowest_rated_course), :style=> 'color:#00817E;' %>
+      </h3>
+      <div class = "rating-star">
+        <div class = "rating-star">
+        <% (1..@lowest_rating).each do |i| %>
+          <span class="fa fa-star checked"></span>
+        <% end %>
+        <% (1..@lowest_rating_compo).each do |i| %>
+          <span class="fa fa-star"></span>
+        <% end %>
+      </div>
+      </div>
+      <h4>
+        <%= @lowest_rated_course_review.semester + ' ' + @lowest_rated_course_review.year.to_s %>
+      </h4>
+      <p>
+        <% if @lowest_rated_course_review.professor_other_thoughts.blank? %>
+          The reviewer did not leave any thoughts.
+        <% else %>
+          <%= @lowest_rated_course_review.professor_other_thoughts %>
+        <% end %>
+      </p>
+      <div class = "user-agree-container">
+        <h5># of #</h5>
+        <h4>users agree with this review</h4>
+      </div>
+
+    </div>
+  </div>
+
+  <% end %>
+
+  <hr>
+
+  <!--all course-->
+  <div class = "all-course-container">
+    <h2>All Courses</h2>
+    <% if @grouped_courses.empty? %>
+      <p>This professor has not taught any other courses.
+    <% else %>
+    <table class = "course-table-container">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <td colspan="5"></th>
+          <td class = "table-padding"></td>
+          <th>Rating</th>
+        </tr>
+        <tr> 
+          <td colspan="100%"> <hr /> </td>      
+        </tr>
+
+      </thead>
+
+
+  <tbody>
+
+    <% @grouped_courses.each do |course, _reviews| %>
+      <tr>
+        <td>
+          <h3>
+          <%= link_to course.dept + ' ' + course.course_num, professor_course_path(@professor, course), :style=> 'color:#00817E;'%>
+          </h3>
+        </td>
+        <td colspan="5"></th>
+        <td class = "table-padding"></td>
+        <td>  
+          <div class = "review-level-container">
+            <h3 style = "text-decoration: none;"><%= avg_rev(course) %></h3>
+            <div class = "rating-star">
+              <% (1..avg_rev(course).floor).each do |i| %>
+                <span class="fa fa-star checked"></span>
+              <% end %>
+              <% (1..(5-avg_rev(course).floor)).each do |i| %>
+                <span class="fa fa-star"></span>
+              <% end %>
+            </div>
+          </div> 
+        </td>
+      </tr>
+      <tr> 
+        <td colspan="100%"> <hr /> </td>  
+
+      </tr>
+    <% end %>
+
+  </tbody>
+
+    </table>
+    <% end %>
+
+
+</div>
+</div>
+<% else %>
+  <h3> Write a review to view other reviews </h3>
 <% end %>
+
 

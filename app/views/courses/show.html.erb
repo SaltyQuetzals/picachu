@@ -20,6 +20,7 @@
 
 
 <%= link_to 'Write a Review', new_review_path%>
+<% if current_user && current_user.reviews.exists? %>
 <%if(@course.reviews.blank?)%>
   <h3> No Reviews </h3>
 <%else%>
@@ -38,3 +39,7 @@
     </p>
   <%end%>
 <%end%>
+<% else %>
+  <h3> Write a review to view other reviews </h3>
+<% end %>
+

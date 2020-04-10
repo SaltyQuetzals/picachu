@@ -2,13 +2,13 @@
 
 <%= render 'partials/nav' %>
 
-<h1 id="notice"><%= notice %></h1>
+<p id="notice"><%= notice %></p>
 
 <div class="flex-container help">
   <div class="professor-course-container">
     <div class="flex-row">
       <div class="flex-col-50" style="display: inline">
-        <h1><%= @professor.display_name %></h1>   
+        <h1><%= @professor.display_name %></h1>
         <h4><%= @professor.tamu_dir_title %>
           <% unless @professor.tamu_dir_dept.nil? %>
             <%= @professor.tamu_dir_dept %>
@@ -20,7 +20,7 @@
       </div>
     </div>
     <h2><%= @course.full_course_name %></h2>
-
+  <% if current_user && current_user.reviews.exists? %>
     <% if @grouped_courses.empty? %>
       <p>This professor has not taught any other courses.
     <% else %>
@@ -36,6 +36,11 @@
       <% if @course_reviews.empty? %>
         <p> This professor hasn't taught this course.</p>
       <% else %>
+        <h2>Reviews for <%= @course.dept + ' ' + @course.course_num %></h2>
+        <hr/>
+        <div id="highest_rated_review">
+          <h3>Highest Rated Review</h3>
+        </div>
         <% @course_reviews.each do |review| %>
 
 
@@ -86,7 +91,7 @@
               <div class = "border-container">
                 <p>Difficult exam</p>
               </div>
-              
+
             </div>
 
 
@@ -103,26 +108,35 @@
                 <button></button>
                 <button></button>
               </div>
-          
+
+              <p>Upvotes: <%= link_to review_upvote_path(review), id: "upvote_link_" + review.id.to_s, method: :put do %>
+                <%= review.get_upvotes.size %> <% end %> |
+                Downvotes: <%= link_to review_downvote_path(review), id: "downvote_link_" + review.id.to_s, method: :put do %>
+                <%= review.get_downvotes.size %> <% end %>
+              </p>
+
 
               <div class = "user-agree-container">
                 <h5># of #</h5>
                 <h4>users agree with this review</h4>
               </div>
 
-        
+
               <div class = "report-container">
               <!-- image of flag -->
               <%= render partial: "partials/report_modal", locals: {review_id: review.id} %>
-        
+
               </div>
             </div>
 
           </div>
           </div>
           <br/>
-          
+
         <% end %>
+      <% end %>
+      <% else %>
+        <h3> Write a review to view other reviews </h3>
       <% end %>
 
 </div>

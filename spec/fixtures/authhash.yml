@@ -3,22 +3,20 @@
 
 one:
   provider: google
-  uid: '12345'
-  info: 
-    email: 'test_user@tester.com'
-    image: 'test_image_url'
-  extra:
-    raw_info:
-      hd: 'tamu.edu'
-      location: 'Test World'
+  uid: 12345
+  name: John Smith
+  email: test_user@tester.com
+  hosted_domain: test_hosted_domain
+  location: test_location
+  image_url: test_image_url
+  url: test_url
 
 two:
   provider: google
   uid: '12345'
-  info: 
-    email: 'test_user@tester.com'
-    image: 'test_image_url'
-  extra:
-    raw_info:
-      hd: ''
-      location: 'Test World'
+  name: "Tom Hanks"
+  email: 'test_user@tester.com'
+  hosted_domain: 'test_hosted_domain'
+  location: 'test_location'
+  image_url: 'test_image_url'
+  url: 'test_url'

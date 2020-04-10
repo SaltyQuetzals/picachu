@@ -5,6 +5,42 @@ class ReviewsController < ApplicationController
   before_action :set_course
   before_action :set_review, only: %i[show edit update destroy]
 
+  def upvote
+    @review = Review.find(params[:review_id])
+    if current_user.blank?
+      redirect_to professor_course_path(
+                    @review.professor_id,
+                    @review.course_id
+                  ),
+                  notice: 'You must be logged in.'
+    else
+      if current_user.voted_up_for? @review
+        @review.unliked_by current_user
+      else
+        @review.upvote_from current_user
+      end
+      redirect_to professor_course_path(@review.professor_id, @review.course_id)
+    end
+  end
+
+  def downvote
+    @review = Review.find(params[:review_id])
+    if current_user.blank?
+      redirect_to professor_course_path(
+                    @review.professor_id,
+                    @review.course_id
+                  ),
+                  notice: 'You must be logged in.'
+    else
+      if current_user.voted_down_for? @review
+        @review.undisliked_by current_user
+      else
+        @review.downvote_from current_user
+      end
+      redirect_to professor_course_path(@review.professor_id, @review.course_id)
+    end
+  end
+
   def report
     @review = Review.find(params[:review_id])
     if (params[:reason].blank?)
@@ -44,9 +80,13 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/new
   def new
-    @courses = load_courses
-    @professors = load_professors
-    @review = Review.new
+    if current_user.blank?
+      redirect_to root_path, notice: 'You must be logged in to create a review.'
+    else
+      @courses = load_courses
+      @professors = load_professors
+      @review = Review.new
+    end
   end
 
   # GET /reviews/1/edit
@@ -63,17 +103,22 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
 
     if !params[:course_id].blank? && !params[:professor_id].blank?
-      @review.course_id = params[:course_id] if @review.course_id.nil?
-      @review.professor_id = params[:professor_id] if @review.professor_id.nil?
-
+      @review.course_id = params[:course_id]
+      @review.professor_id = params[:professor_id]
+      @review.authuser_id = current_user.id
       respond_to do |format|
         if @review.save
           format.html do
-            redirect_to professor_path(@review.professor_id),
+            redirect_to professor_course_path(
+                          @review.professor_id,
+                          @review.course_id
+                        ),
                         notice: 'Review was successfully created.'
           end
           format.json { render :show, status: :created, location: @review }
         else
+          @professors = load_professors
+          @courses = load_courses
           format.html { render :new }
           format.json do
             render json: @review.errors, status: :unprocessable_entity
@@ -81,28 +126,41 @@ class ReviewsController < ApplicationController
         end
       end
     else
-      redirect_to new_review_path, alert: 'Fill out all required fields'
+      redirect_to new_review_path, notice: 'Fill out all required fields'
     end
   end
 
   # PATCH/PUT /reviews/1
   # PATCH/PUT /reviews/1.json
   def update
-    respond_to do |format|
-      if @review.update(review_params)
-        format.html do
-          redirect_to professor_path(@review.professor_id),
-                      notice: 'Review was successfully updated.'
-        end
-        format.json { render :show, status: :ok, location: @review }
-      else
-        format.html do
-          @courses = load_courses
-          @professors = load_professors
-          render :edit
-        end
-        format.json do
-          render json: @review.errors, status: :unprocessable_entity
+    if current_user.blank?
+      redirect_to professor_course_path(
+                    @review.professor_id,
+                    @review.course_id
+                  ),
+                  notice: 'You must be
+      logged in to update a review.'
+    else
+      @review.authuser_id = current_user.id
+      respond_to do |format|
+        if @review.update(review_params)
+          format.html do
+            redirect_to professor_course_path(
+                          @review.professor_id,
+                          @review.course_id
+                        ),
+                        notice: 'Review was successfully updated.'
+          end
+          format.json { render :show, status: :ok, location: @review }
+        else
+          format.html do
+            @courses = load_courses
+            @professors = load_professors
+            render :edit
+          end
+          format.json do
+            render json: @review.errors, status: :unprocessable_entity
+          end
         end
       end
     end

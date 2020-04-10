@@ -16,16 +16,7 @@ Feature: Review Lock
     And The course exists
     And I'm on the professor course overview page
     Then I should see locked reviews
-
-
-  @javascript
-  @omniauth_test
-  Scenario: Check if review is locked on course overview if not logged in
-    Given I'm not logged in
-    And The course exists
-    And I'm on the course overview page
-    Then I should see locked reviews
-
+	
 
   @javascript
   @omniauth_test

@@ -93,14 +93,12 @@
 
 
               <div class="report-container">
-                <%= image_tag 'flag.svg' %>
-                <h4>Report</h4>
+                <%= render partial: "partials/report_modal", locals: {review_id: review.id} %>
               </div>
             </div>
 
         </div>
           <br/>
-          <%= render partial: "partials/report_modal", locals: {review_id: review.id} %>
         <% end %>
       <% end %>
       <% else %>

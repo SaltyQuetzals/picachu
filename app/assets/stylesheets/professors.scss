@@ -1,5 +1,26 @@
 $colour-primary: #00817E;
 
+.btn-report {
+    border: none;
+    background-color: none;
+    padding: 0px;
+    margin-top: 5px;
+    img {
+        margin-right: 5px; 
+        vertical-align: middle;
+    }
+    &:hover {
+        cursor: pointer;
+        opacity: 0.7;
+        transition: 0.3s;
+    }
+    p {
+        color: #777;
+        font-size: 14px;
+    }
+
+}
+
 .w-90 {
     width: 90%;
 }
@@ -23,6 +44,9 @@ $colour-primary: #00817E;
     display: block;
     margin: 60px auto; 
     box-sizing:border-box;
+    h2 {
+        margin-bottom: 35px;
+    }
 
     hr {
         border: 1px #dedede solid;
@@ -41,7 +65,7 @@ $colour-primary: #00817E;
     h5 {
         font-weight: 600;
         font-size: 18px;
-        margin-bottom: 20px;
+        margin-bottom: 25px;
     }
     .other-classes {
         display: flex;
@@ -64,7 +88,13 @@ $colour-primary: #00817E;
             &:last-of-type {
                 margin-right: 0;
             }
+            @media (max-width: 767.98px) { 
+                margin-right: 10px;
+                width: calc(25% - 10px);
+            }
         }
+
+
     }
     @media (max-width: 991.98px) { 
         .header-left, .header-right {

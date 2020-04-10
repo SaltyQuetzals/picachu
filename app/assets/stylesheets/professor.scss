@@ -162,7 +162,7 @@
         font-size: 18px;
         line-height: 21px;
         color: #000000;
-        margin-bottom: 10px;
+        margin-bottom: 10px!important;
     }
     h3{
         font-weight: 500;
@@ -182,12 +182,6 @@
     .report-container{
         display: inline-block;
         float: right;
-        h4{
-            color: #777777;
-            display: inline;
-            font-size: 12px;
-            line-height: 14px;
-        }
     }
     .review-body {
         padding-top: 20px;
@@ -196,10 +190,10 @@
 
 .review-footer {
     border-top: 1px solid #DDD;
-    padding: 20px 0;
+    padding: 20px 0 10px;
     p, h5, h4 {
         display: inline-block;
-        margin: 0!important;
+        margin: 0;
         font-size: 14px;
     }
 }

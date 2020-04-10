@@ -37,6 +37,12 @@ $colour-primary: #00817E;
             padding: 15px 0 5px;
         }
     }
+    .search-prof-results {
+        th, td {
+            vertical-align: top;
+            padding: 10px;
+        }
+    }
     
     .view-btn {
         text-align: right;
@@ -219,4 +225,8 @@ $colour-primary: #00817E;
 
 .mr-1 {
     margin-right: 10px;
+}
+
+.mt-3 {
+    margin-top: 30px;
 }

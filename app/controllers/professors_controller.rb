@@ -12,9 +12,11 @@ class ProfessorsController < ApplicationController
 
   # GET /professors/1
   # GET /professors/1.json
-  def avg_rev(course)
-    course.reviews.blank? ? 0 : course.reviews.average(:overall_rating).round(2)
-  end
+  def avg_rev(reviews)
+    sum = 0
+    reviews.each { |a| sum += a.overall_rating }
+    sum.to_f / reviews.length
+  end	
 
   def show
     @avg_review =
@@ -24,7 +26,7 @@ class ProfessorsController < ApplicationController
         @professor.reviews.average(:overall_rating).round(2)
       end
 
-    @num_reviews = @professor.reviews.length # does not work
+    @num_reviews = @professor.reviews.length
     @grouped_courses = @professor.reviews.group_by(&:course)
     @courses_with_ratings =
       @grouped_courses.map do |course, reviews|
@@ -44,7 +46,7 @@ class ProfessorsController < ApplicationController
 
     if !@lowest_rated_course.blank? && !@lowest_rated_course.reviews.blank?
       @lowest_rated_course_review =
-        @lowest_rated_course.reviews.order('overall_rating DESC').first
+        @lowest_rated_course.reviews.order('overall_rating').first
     end
 
     @highest_rating = 0

@@ -23,7 +23,7 @@ When(/^I click the upvote button/) do
 end
 
 Then(/^I should see the number of upvotes equal to "([^"]*)"/) do |value|
-  expect(page).to have_content(value + " of " + value + " users agree")
+  expect(page).to have_content(value + ' of ' + value + ' users agree')
 end
 
 When(/^I click the downvote button/) do

@@ -10,9 +10,7 @@ end
 
 And(/^I'm on the course overview page/) { visit course_path(@course) }
 
-Then(/^I should see Report Review$/) do
-  expect(page).to have_content('Report')
-end
+Then(/^I should see Report Review$/) { expect(page).to have_content('Report') }
 
 And(/^I should not see locked reviews$/) do
   page.should have_no_content('Review to View')

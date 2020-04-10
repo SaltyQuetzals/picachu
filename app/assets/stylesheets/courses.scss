@@ -7,8 +7,11 @@
 $colour-primary: #00817E;
 
 .flex-container > .courses-search {
-    width: 50%;
-    margin-bottom: 80px;
+    width: 60%;
+    margin: 60px auto;
+    @media (max-width: 767.98px) { 
+        width: 90%;
+    }
     h1 {
         text-align: left;
     }
@@ -25,15 +28,6 @@ $colour-primary: #00817E;
     }
     th {
         padding-bottom: 10px;
-    }
-    td {
-        padding: 15px 0;
-        vertical-align: top;
-        p.course-description {
-            font-size: 14px;
-            color: #888;
-            margin: 5px 0 0;
-        }
     }
     .view-btn {
         text-align: right;
@@ -111,28 +105,21 @@ $colour-primary: #00817E;
 
 }
 
-.course-prof{
-    
-    .a-view{
-        a:visited{
-            color: #00817E;
-            text-decoration: none;
-        }
-        a:hover{
-            color: white;
-        }
+.d-sm-none {
+    @media (max-width: 767.98px) { 
+        display: none!important;
     }
-    .a-write{
-        a:visited{
-            color: white;
-            text-decoration: none;
-        }
+}
+
+.course-prof{
+    .a-write a {
+        color: white;
+        text-decoration: none;
     }
     a{
         font-size: 16px;
         text-decoration: none;
     }
-    
     h2{
         font-family: Roboto;
         font-style: normal;
@@ -140,22 +127,22 @@ $colour-primary: #00817E;
         font-size: 18px;
         line-height: 21px;
         color: #000000;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
         margin-top: 20px;
         padding-top: 20px;
     }
     text-align: left;
     line-height: 14px;
     table{
-        height: 100%;
         width:100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border-bottom: 1px solid #ddd;
     }
     h2{
         font-size: 18px;
         color: #000000;
-    }
-    tr{
-    
     }
     th{
         font-style: normal;
@@ -163,7 +150,7 @@ $colour-primary: #00817E;
         font-size: 14px;
         line-height: 150%;
         color: #777777;
-        padding-bottom: 0px;
+        padding-bottom: 10px;
     }
     td{
         font-style: normal;
@@ -181,12 +168,18 @@ $colour-primary: #00817E;
         margin-bottom: 2px;
     }
     h3{
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 18px;
-        line-height: 150%;
-        color: #000000;
+        padding: 8px 0;
+        a {
+            color: #00817E;
+            font-weight: 500;
+            font-size: 18px;
+            text-decoration: underline;
+            &:hover {
+                color: #00524F;
+                background-color: transparent;
+                transition: 0.3s;
+            }
+        }
     }
 }
 
@@ -216,4 +209,8 @@ $colour-primary: #00817E;
         color: white;
         text-decoration: none;
     }
+}
+
+.mr-1 {
+    margin-right: 10px;
 }

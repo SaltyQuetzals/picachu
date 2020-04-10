@@ -13,23 +13,6 @@
             <%= @professor.tamu_dir_dept %>
           <% end %>
         </h4>
-
-    <div class = "review-level-container">
-        <h3><%= @avg_review %></h3>
-        <div class = "rating-star">
-        <% (1..@avg_review.floor).each do |i| %>
-          <span class="fa fa-star checked"></span>
-        <% end %>
-        <% (1..(5-@avg_review.floor)).each do |i| %>
-          <span class="fa fa-star"></span>
-        <% end %>
-      </div>
-        <% if @grouped_courses.empty? %>
-          <h4>(0 reviews)</h4>
-        <% else %>
-          <h4>(<%= @num_reviews %> reviews)</h4>
-        <% end %>
-    </div>
       </div>
       <div class="flex-col-50">
         <%= link_to 'Write a Review', new_review_path, :class => 'btn btn-primary w-50' %>

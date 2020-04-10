@@ -39,7 +39,7 @@ $colour-primary: #00817E;
     .search-prof-results {
         th, td {
             vertical-align: top;
-            padding: 10px;
+            padding: 10px 0;
         }
     }
     
@@ -197,7 +197,6 @@ $colour-primary: #00817E;
 #notice {
     text-align: center;
     color: #3E733C;
-    background-color: #E3F2DC;
     margin-top: 0;
     padding: 10px;
     font-size: 14px;

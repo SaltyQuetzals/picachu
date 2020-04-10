@@ -64,8 +64,6 @@ class ReviewsController < ApplicationController
         redirect_to url, notice: 'Unable to complete your request.'
       else
         redirect_to url, notice: 'Review was successfully reported.'
-      ensure
-
       end
     end
   end

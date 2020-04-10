@@ -81,6 +81,7 @@
               </h3>
             </div>
 
+            <!--
             <div class = "tag-group-container">
               <div class = "border-container">
                 <p>Friendly</p>
@@ -93,10 +94,15 @@
               </div>
 
             </div>
+          -->
 
 
 
-            <p><%= review.course_other_thoughts %></p>
+              <% if review.course_other_thoughts.blank? %>
+                <p style="color: #777777;">The reviewer did not leave any thoughts.</p>
+              <% else %>
+                <p><%= review.course_other_thoughts %></p>
+              <% end %>
 
             <!-- need read more button -->
 

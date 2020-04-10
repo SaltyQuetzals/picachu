@@ -25,10 +25,19 @@ $colour-primary: #00817E;
         font-size: 16px;
         text-align: left;
         border-bottom: 1px solid #ddd;
+        padding: 5px 0;
     }
     th {
         padding-bottom: 10px;
+        font-size: 14px;
     }
+    .search-results {
+        th, td {
+            vertical-align: top;
+            padding: 15px 0 5px;
+        }
+    }
+    
     .view-btn {
         text-align: right;
         a {
@@ -158,9 +167,6 @@ $colour-primary: #00817E;
         font-size: 16px;
         line-height: 19px;
         color: #00817E;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
     }
     hr{
         width: 100%;

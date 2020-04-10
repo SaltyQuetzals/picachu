@@ -16,7 +16,7 @@ class ProfessorsController < ApplicationController
     sum = 0
     reviews.each { |a| sum += a.overall_rating }
     sum.to_f / reviews.length
-  end	
+  end
 
   def show
     @avg_review =

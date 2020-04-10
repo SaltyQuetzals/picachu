@@ -27,7 +27,7 @@ class CoursesController < ApplicationController
       end
     @grouped_prof = @course.reviews.group_by(&:professor)
   end
-  
+
   # GET /courses/new
   def new
     @course = Course.new

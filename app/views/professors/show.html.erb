@@ -72,7 +72,7 @@
         <% end %>
       </p>
       <div class = "user-agree-container">
-        <h5># of #</h5>
+        <h5><%= @highest_rated_course_review.get_upvotes.size %> of <%= @highest_rated_course_review.get_upvotes.size+@highest_rated_course_review.get_downvotes.size %></h5>
         <h4>users agree with this review</h4>
       </div>
     </div>
@@ -106,8 +106,8 @@
         <% end %>
       </p>
       <div class = "user-agree-container">
-        <h5>0 of 0 users</h5>
-        <h4>users agree</h4>
+        <h5><%= @highest_rated_course_review.get_upvotes.size %> of <%= @highest_rated_course_review.get_upvotes.size+@highest_rated_course_review.get_downvotes.size %></h5>
+        <h4>users agree with this review</h4>
       </div>
 
     </div>

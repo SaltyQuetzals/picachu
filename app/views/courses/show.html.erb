@@ -64,8 +64,7 @@
       
       <h2>Professors</h2>
         
-      <table class = "course-table-container">
-          
+      <table>
         <thead>
           <tr>
             <th>Name</th>
@@ -75,12 +74,8 @@
           <tr> 
             <td colspan="100%"> <hr /> </td>      
           </tr>
-
         </thead>
-
-
         <tbody>
-
           <% if @grouped_prof.blank? %>
             <tr>
               <td>
@@ -100,8 +95,6 @@
 
               <td>  
                 <div class = "review-level-container">
-
-
                   <div class = "rating-star">
                     <% (1..avg_rev(_reviews).floor).each do |i| %>
                       <span class="fa fa-star checked"></span>
@@ -111,15 +104,11 @@
                       <span class="fa fa-star"></span>
                     <% end %>
                   </div>
-
-        
                   <% if @grouped_prof.empty? %>
                     <h4>(0 reviews)</h4>
                   <% else %>
                     <h4>(<%= _reviews.length %> reviews)</h4>
                   <% end %>
-
-
                 </div>
               </td>
 

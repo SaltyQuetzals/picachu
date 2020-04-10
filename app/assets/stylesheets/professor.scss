@@ -2,11 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-
-.flex-container > .row-container {
-    
-}
-
 .column-container{
     flex-direction: column;
     width: 50%;
@@ -74,6 +69,10 @@
         display: inline;
         color: #00817E;
         line-height: 14px;
+        margin-right: 10px;
+        @media (max-width: 767.98px) { 
+            display: none;
+        }
     }
     h4{
         color: #777777;
@@ -81,6 +80,7 @@
         font-size: 12px;
         line-height: 14px;
     }
+
 }
 
 .tag-block-container{
@@ -117,11 +117,6 @@
    
 }
 
-[class*=“review-“]{
-    
-    
-}
-
 .review-container{
     text-align: left;
     line-height: 14px;
@@ -150,7 +145,14 @@
         font-size: 14px;
         font-style: italic;
     }
-    
+    .course-title {
+        color: #00817E;
+        &:hover {
+            color: #00524F;
+            background-color: transparent;
+            transition: 0.3s;
+        }
+    }
 }
 
 .review-component{
@@ -202,6 +204,7 @@
         margin: 0!important;
         font-size: 14px;
     }
+}
 
 .user-agree-container{
     display: inline-block;
@@ -229,31 +232,30 @@
         color: #00817E;
         display: inline;
     }
-    }
 }
 
 .all-course-container{
     text-align: left;
     line-height: 14px;
     table{
-        height: 100%;
         width:100%;
+        border-collapse: collapse;
+    }
+    table, th, td {
+        border-bottom: 1px solid #ddd;
+
     }
     h2{
         font-size: 18px;
         color: #000000;
     }
-    tr{
-    
-    }
-
     th{
         font-style: normal;
         font-weight: 500;
         font-size: 14px;
         line-height: 150%;
         color: #777777;
-        padding-bottom: 0px;
+        padding-bottom: 10px;
     }
     td{
         font-style: normal;
@@ -261,9 +263,15 @@
         font-size: 16px;
         line-height: 19px;
         color: #00817E;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
+        padding: 10px 0;
+        a {
+            color: #00817E;
+            &:hover {
+                color: #00524F;
+                background-color: transparent;
+                transition: 0.3s;
+            }
+        }
     }
     hr{
         width: 100%;
@@ -284,11 +292,6 @@
         line-height: 150%;
         color: #000000;
     }
-}
-
-.table-padding{
-    padding-left:0px; 
-    padding-right: 100px;
 }
 
 .checked {

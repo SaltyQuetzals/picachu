@@ -19,7 +19,7 @@
         <%= link_to 'Write a Review', new_review_path, :class => 'btn btn-primary w-50' %>
       </div>
     </div>
-    <h2><%= @course.full_course_name %></h2>
+    <h2>  <%= @course.dept + " " + @course.course_num + " " + "•" + " " + @course.name %></h2>
   <% if current_user && current_user.reviews.exists? %>
     <% if @grouped_courses.empty? %>
       <p>This professor has not taught any other courses.

@@ -63,6 +63,7 @@ $colour-primary: #00817E;
     color: white;
     background-color: $colour-primary;
     border: 3px solid $colour-primary;
+    text-decoration: none;
     &:hover {
         background-color: #006F6C;
         border: 3px solid #006F6C;

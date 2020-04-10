@@ -3,67 +3,56 @@
 <%= render 'partials/nav' %>
 
 <p id="notice"><%= notice %></p>
-
 <div class="flex-container">
-  <div class="column-container">
+  <div class="professor-course-container">
     <div class="flex-row">
       <div class="flex-col-50" style="display: inline">
-
-        <h1>
-          <%= @professor.full_name %> 
-        </h1>
-
-        <p>
-          <%= @professor.tamu_dir_dept %>
-        </p>
-
-        <div class = "review-level-container">
-          
-          <h3>
-            <%= @avg_review %>
-          </h3>
-
-          <div class = "rating-star">
-            
-            <% (1..@avg_review.floor).each do |i| %>
-              <span class="fa fa-star checked"></span>
-            <% end %>
-            
-            <% (1..(5-@avg_review.floor)).each do |i| %>
-              <span class="fa fa-star"></span>
-            <% end %>
-          </div>
-        
-          <% if @grouped_courses.empty? %>
-            <h4>(0 reviews)</h4>
-          <% else %>
-            <h4>(<%= @num_reviews %> reviews)</h4>
+        <h1><%= @professor.display_name %></h1>
+        <h4><%= @professor.tamu_dir_title %>
+          <% unless @professor.tamu_dir_dept.nil? %>
+            <%= @professor.tamu_dir_dept %>
           <% end %>
-        </div>
+        </h4>
       </div>
-      
       <div class="flex-col-50">
         <%= link_to 'Write a Review', new_review_path, :class => 'btn btn-primary w-50' %>
       </div>
     </div>
+    <div class="flex-row">
+      <div class = "review-level-container">
+        <h3><%= @avg_review %></h3>
 
-
-
-<% if current_user && current_user.reviews.exists? %>
-  <% if @grouped_courses.empty? %>
-    <hr>
-    <p>This professor does not have any reviews.</p>
-  <% else %>
+        <div class = "rating-star">
+          <% (1..@avg_review.floor).each do |i| %>
+            <span class="fa fa-star checked"></span>
+          <% end %>
+          <% (1..(5-@avg_review.floor)).each do |i| %>
+            <span class="fa fa-star"></span>
+          <% end %>
+        </div>
+      
+        <% if @grouped_courses.empty? %>
+          <h4>(0 reviews)</h4>
+        <% else %>
+          <h4>(<%= @num_reviews %> reviews)</h4>
+        <% end %>
+      </div>
+    </div>
+  
+  <% if current_user && current_user.reviews.exists? %>
+    <% if @grouped_courses.empty? %>
+      <hr>
+      <p>This professor does not have any reviews.</p>
+    <% else %>
 
   <hr>
-
 
   <!--highest rated-->
   <div class = "rating-block-container">
     <div class = "review-container">
       <h2>Highest Rated Course</h2>
       <h3>
-        <%= link_to @highest_rated_course.dept + ' ' + @highest_rated_course.course_num + ' • ' + @highest_rated_course.name, professor_course_path(@professor, @highest_rated_course), :style=> 'color:#00817E;'%>
+        <%= link_to @highest_rated_course.dept + ' ' + @highest_rated_course.course_num + ' • ' + @highest_rated_course.name, professor_course_path(@professor, @highest_rated_course), :class=> 'course-title' %>
       </h3>
       <div class = "rating-star">
         <% (1..@highest_rating).each do |i| %>
@@ -97,7 +86,7 @@
     <div class = "review-container">
       <h2>Lowest Rated Course</h2>
       <h3>
-        <%= link_to @lowest_rated_course.dept + ' ' + @lowest_rated_course.course_num + ' • ' + @lowest_rated_course.name, professor_course_path(@professor, @lowest_rated_course), :style=> 'color:#00817E;' %>
+        <%= link_to @lowest_rated_course.dept + ' ' + @lowest_rated_course.course_num + ' • ' + @lowest_rated_course.name, professor_course_path(@professor, @lowest_rated_course), :class=> 'course-title' %>
       </h3>
       <div class = "rating-star">
         <div class = "rating-star">
@@ -120,8 +109,8 @@
         <% end %>
       </p>
       <div class = "user-agree-container">
-        <h5># of #</h5>
-        <h4>users agree with this review</h4>
+        <h5>0 of 0 users</h5>
+        <h4>users agree</h4>
       </div>
 
     </div>
@@ -133,58 +122,42 @@
 
   <!--all course-->
   <div class = "all-course-container">
-    <h2>All Courses</h2>
+    <h2>All Courses Taught By <%= @professor.display_name %></h2>
     <% if @grouped_courses.empty? %>
       <p>This professor has not taught any other courses.
     <% else %>
-    <table class = "course-table-container">
+    <table>
       <thead>
         <tr>
           <th>Name</th>
-          <td colspan="5"></th>
-          <td class = "table-padding"></td>
-          <th>Rating</th>
+          <th>Professor Course Rating</th>
         </tr>
-        <tr> 
-          <td colspan="100%"> <hr /> </td>      
-        </tr>
-
       </thead>
 
-
-  <tbody>
-
-    <% @grouped_courses.each do |course, _reviews| %>
-      <tr>
-        
-        <td>
-          <h3>
-          <%= link_to course.dept + ' ' + course.course_num, professor_course_path(@professor, course), :style=> 'color:#00817E;'%>
-          </h3>
-        </td>
-        <td colspan="5"></th>
-        <td class = "table-padding"></td>
-        <td>  
-          <div class = "review-level-container">
-            <h3 style = "text-decoration: none;"><%= avg_rev(_reviews) %></h3>
-            <div class = "rating-star">
-              <% (1..avg_rev(_reviews).floor).each do |i| %>
-                <span class="fa fa-star checked"></span>
-              <% end %>
-              <% (1..(5-avg_rev(_reviews).floor)).each do |i| %>
-                <span class="fa fa-star"></span>
-              <% end %>
-            </div>
-          </div> 
-        </td>
-      </tr>
-      <tr> 
-        <td colspan="100%"> <hr /> </td>  
-
-      </tr>
-    <% end %>
-
-  </tbody>
+    <tbody>
+      <% @grouped_courses.each do |course, _reviews| %>
+        <tr>
+          <td>
+            <h3>
+            <%= link_to  course.dept + " " + course.course_num + " " + "•" + " " + course.name, professor_course_path(@professor, course)%>
+            </h3>
+          </td>
+          <td>  
+            <div class = "review-level-container">
+              <h3><%= avg_rev(_reviews) %></h3>
+              <div class = "rating-star">
+                <% (1..avg_rev(_reviews).floor).each do |i| %>
+                  <span class="fa fa-star checked"></span>
+                <% end %>
+                <% (1..(5-avg_rev(_reviews).floor)).each do |i| %>
+                  <span class="fa fa-star"></span>
+                <% end %>
+              </div>
+            </div> 
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
 
     </table>
     <% end %>

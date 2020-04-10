@@ -114,7 +114,7 @@ class ReviewsController < ApplicationController
                           @review.professor_id,
                           @review.course_id
                         ),
-                        notice: 'Review was successfully created.'
+                        notice: 'Your review was submitted'
           end
           format.json { render :show, status: :created, location: @review }
         else

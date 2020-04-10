@@ -68,7 +68,7 @@ Feature: Rate Reviews
     And I enter "5" in the "Professor other thoughts" field
     When I submit my Review form
     When I click the downvote button
-    Then I should see the number of downvotes equal to "1"
+    Then I should see the number of upvotes equal to "0"
 
 
 
@@ -143,7 +143,6 @@ Feature: Rate Reviews
     And I enter "5" in the "Professor other thoughts" field
     When I submit my Review form
     When I click the downvote button
-    Then I should see the number of downvotes equal to "1"
+    Then I should see the number of upvotes equal to "0"
     When I click the downvote button
-    Then I should see the number of downvotes equal to "0"
-
+    Then I should see the number of upvotes equal to "0"

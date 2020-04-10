@@ -87,7 +87,7 @@
                   <%= link_to review_downvote_path(review), id: "downvote_link_" + review.id.to_s, method: :put do %>
                   <%= image_tag 'thumb-down.svg' %> <% end %>
                 </p>
-                <h5><%= review.get_upvotes.size %> of <%= review.get_upvotes.size+review.get_downvotes.size %></h5>
+                <h5><%= review.get_upvotes.size %> of <%= review.votes_for.size %></h5>
                 <h4>users agree</h4>
               </div>
 

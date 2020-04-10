@@ -32,8 +32,8 @@
     h5{
         font-family: Roboto;
         font-style: normal;
-        font-weight: 500 !important;
-        font-size: 12px !important;
+        font-weight: 500;
+        font-size: 12px;
         line-height: 14px;
 
         color: #00817E;
@@ -83,7 +83,7 @@
 }
 
 .rating-star{
-    color: #333;
+    
 }
 
 .review-level-container{
@@ -184,7 +184,7 @@
         font-size: 18px;
         line-height: 21px;
         color: #000000;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
     }
     h3{
         font-weight: 500;
@@ -193,7 +193,7 @@
         color: #232323;
     }
     h4{
-        font-size: 12px !important;
+        font-size: 12px;
         font-weight: normal;
         color: #777777;
     }
@@ -204,21 +204,6 @@
         margin: 30px 5px 30px 5px;
         font-size: 14px;
     }
-    hr{
-        width: 100%;
-        margin-top: 2px !important;
-        margin-bottom: 2px !important;
-    }
-    .report-container{
-        float: right;
-        h4{
-            color: #777777;
-            display: inline;
-            font-size: 12px;
-            line-height: 14px;
-            text-decoration: underline;
-        }
-}
 }
 
 .dis-in{
@@ -241,7 +226,15 @@
     }
 }
 
-
+.report-container{
+    float: right;
+    h4{
+        color: #777777;
+        display: inline;
+        font-size: 12px;
+        line-height: 14px;   
+    }
+}
 
 
 .all-course-container{
@@ -256,7 +249,6 @@
         color: #000000;
     }
     tr{
-    
     }
 
     th{
@@ -266,6 +258,7 @@
         line-height: 150%;
         color: #777777;
         padding-bottom: 0px;
+        padding-left: 10px;
     }
     td{
         font-style: normal;
@@ -274,11 +267,9 @@
         line-height: 19px;
         color: #00817E;
         padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 10px;
     }
     hr{
-        width: 100%;
         margin-top: 2px;
         margin-bottom: 2px;
     }
@@ -288,19 +279,10 @@
         font-size: 16px;
         line-height: 19px;
     }
-    h4{
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 18px;
-        line-height: 150%;
-        color: #000000;
-    }
 }
 
 .table-padding{
-    padding-left:0px; 
-    padding-right: 100px;
+    padding:0 15px;
 }
 
 .checked {

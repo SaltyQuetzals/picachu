@@ -16,7 +16,7 @@ Feature: Review Lock
     And The course exists
     And I'm on the professor course overview page
     Then I should see locked reviews
-
+	
 
   @javascript
   @omniauth_test

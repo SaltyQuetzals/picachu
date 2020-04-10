@@ -38,7 +38,7 @@ class ProfessorsController < ApplicationController
     @highest_rated_course, _rating =
       @courses_with_ratings.max { |a, b| a[1] <=> b[1] }
 
-    if (!@highest_rated_course.blank? && !@highest_rated_course.reviews.blank?)
+    if !@highest_rated_course.blank? && !@highest_rated_course.reviews.blank?
       @highest_rated_course_review =
         @highest_rated_course.reviews.order('overall_rating').first
     end
@@ -46,7 +46,7 @@ class ProfessorsController < ApplicationController
     @lowest_rated_course, _rating =
       @courses_with_ratings.min { |a, b| a[1] <=> b[1] }
 
-    if (!@lowest_rated_course.blank? && !@lowest_rated_course.reviews.blank?)
+    if !@lowest_rated_course.blank? && !@lowest_rated_course.reviews.blank?
       @lowest_rated_course_review =
         @lowest_rated_course.reviews.order('overall_rating').first
     end
@@ -55,11 +55,11 @@ class ProfessorsController < ApplicationController
     @highest_rating_compo = 5
     @lowest_rating = 0
     @lowest_rating_compo = 5
-    if (!@highest_rated_course_review.blank?)
+    unless @highest_rated_course_review.blank?
       @highest_rating = @highest_rated_course_review.overall_rating.floor
       @highest_rating_compo = 5 - @highest_rating
     end
-    if (!@lowest_rated_course_review.blank?)
+    unless @lowest_rated_course_review.blank?
       @lowest_rating = @lowest_rated_course_review.overall_rating.floor
       @lowest_rating_compo = 5 - @lowest_rating
     end
@@ -71,7 +71,10 @@ class ProfessorsController < ApplicationController
   def show_course
     @professor = Professor.find(params[:professor_id])
     @grouped_courses = @professor.reviews.group_by(&:course)
-    @course_reviews = @professor.reviews.where(course_id: @course.id)
+    @course_reviews =
+      @professor.reviews.where(course_id: @course.id).order(
+        cached_weighted_average: :desc
+      )
   end
 
   # GET /professors/new

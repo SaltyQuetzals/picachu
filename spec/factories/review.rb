@@ -16,7 +16,8 @@ FactoryBot.define do
     clear_explanations { 1 }
     fast_grading { 1 }
     year { 2_020 }
-    association :professor, factory: :professor
-    association :course, factory: :course
+    association :professor, factory: :professor, strategy: :build
+    association :course, factory: :course, strategy: :build
+    association :authuser, factory: :authuser
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_26_165953) do
+ActiveRecord::Schema.define(version: 2020_04_02_183247) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -76,6 +76,14 @@ ActiveRecord::Schema.define(version: 2020_03_26_165953) do
     t.bigint 'course_id'
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
+    t.integer 'cached_votes_total', default: 0
+    t.integer 'cached_votes_score', default: 0
+    t.integer 'cached_votes_up', default: 0
+    t.integer 'cached_votes_down', default: 0
+    t.integer 'cached_weighted_score', default: 0
+    t.integer 'cached_weighted_total', default: 0
+    t.float 'cached_weighted_average', default: 0.0
+    t.integer 'authuser_id'
     t.index %w[course_id], name: 'index_reviews_on_course_id'
     t.index %w[professor_id], name: 'index_reviews_on_professor_id'
   end
@@ -89,6 +97,26 @@ ActiveRecord::Schema.define(version: 2020_03_26_165953) do
     t.string 'name', null: false
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
+  end
+
+  create_table 'votes', force: :cascade do |t|
+    t.string 'votable_type'
+    t.bigint 'votable_id'
+    t.string 'voter_type'
+    t.bigint 'voter_id'
+    t.boolean 'vote_flag'
+    t.string 'vote_scope'
+    t.integer 'vote_weight'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index %w[votable_id votable_type vote_scope],
+            name: 'index_votes_on_votable_id_and_votable_type_and_vote_scope'
+    t.index %w[votable_type votable_id],
+            name: 'index_votes_on_votable_type_and_votable_id'
+    t.index %w[voter_id voter_type vote_scope],
+            name: 'index_votes_on_voter_id_and_voter_type_and_vote_scope'
+    t.index %w[voter_type voter_id],
+            name: 'index_votes_on_voter_type_and_voter_id'
   end
 
   add_foreign_key 'reviews', 'courses', on_delete: :cascade

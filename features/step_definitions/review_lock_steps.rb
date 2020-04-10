@@ -1,5 +1,5 @@
 Then(/^I should see locked reviews$/) do
-  expect(page).to have_content('Write a review to view other reviews')
+  expect(page).to have_content('Review to View')
 end
 
 And(/^I'm on the professor overview page$/) { visit professor_path(@professor) }
@@ -15,5 +15,5 @@ Then(/^I should see Report Review$/) do
 end
 
 And(/^I should not see locked reviews$/) do
-  page.should have_no_content('Write a review to view other reviews')
+  page.should have_no_content('Review to View')
 end

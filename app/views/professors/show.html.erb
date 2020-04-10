@@ -6,9 +6,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="flex-container">
-<div class="column-container">
-
-
+  <div class="column-container">
     <div class="flex-row">
       <div class="flex-col-50" style="display: inline">
 
@@ -48,7 +46,6 @@
       <div class="flex-col-50">
         <%= link_to 'Write a Review', new_review_path, :class => 'btn btn-primary w-50' %>
       </div>
-
     </div>
 
 
@@ -58,33 +55,6 @@
     <hr>
     <p>This professor does not have any reviews.</p>
   <% else %>
-
-  <!--
-  <div class = "tag-block-container">
-    <h2>Top Tags</h2>
-    <div class = "tag-group-container">
-      <div class = "border-container">
-        <p>tag1</p>
-      </div>
-      <div class = "border-container">
-        <p>tag22</p>
-      </div>
-      <div class = "border-container">
-        <p>tag333</p>
-      </div>
-      <div class = "border-container">
-        <p>tag4444</p>
-      </div>
-      <div class = "border-container">
-        <p>tag55555</p>
-      </div>
-      <div class = "border-container">
-        <p>tag666666</p>
-      </div>
-    </div>
-  </div>
-
-  -->
 
   <hr>
 
@@ -224,7 +194,12 @@
 </div>
 </div>
 <% else %>
-  <h3> Write a review to view other reviews </h3>
+    <div class="reviews-locked">
+      <%= image_tag 'lock.svg' %>
+      <h3>Review to View</h3>
+      <p>Leave a review for your professors to view reviews for this professor.</p>
+      <%= link_to 'Write a Review', new_review_path, :class => 'btn btn-primary w-50' %>
+    </div>
 <% end %>
 
 

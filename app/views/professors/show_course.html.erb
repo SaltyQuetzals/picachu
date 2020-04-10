@@ -142,7 +142,12 @@
         <% end %>
       <% end %>
       <% else %>
-        <h3> Write a review to view other reviews </h3>
+        <div class="reviews-locked">
+          <%= image_tag 'lock.svg' %>
+          <h3>Review to View</h3>
+          <p>Leave a review for your professors to view reviews for this professor.</p>
+          <%= link_to 'Write a Review', new_review_path, :class => 'btn btn-primary w-50' %>
+        </div>
       <% end %>
 
 </div>

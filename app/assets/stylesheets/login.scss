@@ -34,10 +34,6 @@ $colour-primary: #00817E;
     width: 25%;
 }
 
-.w-120-px{
-    width: 120px;
-}
-
 .btn {
     display: block;
     margin: auto;
@@ -47,18 +43,6 @@ $colour-primary: #00817E;
     font-weight: 600;
     font-size: 18px;
 }
-
-.btn-table {
-    text-align: center;
-    display: block;
-    margin-right: 0px;
-    padding: 12px;
-    border-radius: 50px;
-    text-transform: capitalize;
-    font-weight: 600;
-    font-size: 18px;
-}
-
 .btn-primary {
     color: white;
     background-color: $colour-primary;

@@ -1,45 +1,113 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Dept:</strong>
-  <%= @course.dept %>
-</p>
-
-<p>
-  <strong>Course num:</strong>
-  <%= @course.course_num %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @course.name %>
-</p>
-
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<div class="flex-container">
+  <div class="courses-search">
+    <!--course name-->
+    <div class="course-name">
+      <h1>
+        <%= @course.dept + " " + @course.course_num + " " + "•" + " " + @course.name %>
+      </h1> 
+    </div>
 
 
-<%= link_to 'Write a Review', new_review_path%>
-<% if current_user && current_user.reviews.exists? %>
-<%if(@course.reviews.blank?)%>
-  <h3> No Reviews </h3>
-<%else%>
-  <br>
-  <strong> Average Review: </strong>
-  <%= @avg_review %>
+    <!--course rating & description-->
+    <div class="course-rating-des">
+      <div class="flex-row">
+        <!--rating-->
+        <div class="flex-col-50" style="display: inline">
 
-  <% @course.reviews.each do |review| %>
-    <p>
-      Overall Rating: <%= review.overall_rating%> ,
-      Professor: <%= Professor.find(review.professor_id).full_name%>
+          <h2>
+            Course Ratings
+          </h2>
 
-      <%= link_to 'Show', review %> |
-      <%= link_to 'Edit', edit_review_path(:id => review.id) %> |
-      <%= link_to 'Delete', review, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </p>
-  <%end%>
-<%end%>
-<% else %>
-  <h3> Write a review to view other reviews </h3>
-<% end %>
+          <div class = "rating-star">
+            <% (1..@avg_course.floor).each do |i| %>
+              <span class="fa fa-star checked"></span>
+            <% end %>
+            
+            <% (1..(5-@avg_course.floor)).each do |i| %>
+              <span class="fa fa-star"></span>
+            <% end %>
+          </div>
+        </div>
+      
+
+        <!--description-->
+        <div class="flex-col-50">
+          <h2>
+            Course Description
+          </h2>
+          <p> <%= @course.description %> </p>
+        </div>
+      </div>
+    </div>
+    <!--professors-->
+    <div class="course-prof">
+      
+      <h2>Professors</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th colspan="5">Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @grouped_prof.blank? %>
+            <tr>
+              <td>
+                <p>No reviews have been submitted for this course.</p>
+              </td>
+            </tr>
+          <% else %>
+          <% @grouped_prof.each do |professor, _reviews| %>
+            <tr>
+              <td>
+                <h3>
+                <%= link_to professor.full_name, professor_course_path(professor, @course) %>
+                </h3>
+              </td>
+
+              <td class="table-padding">   </td>
+
+              <td>  
+                <div class = "review-level-container">
+                  <div class = "rating-star mr-1">
+                    <% (1..avg_rev(_reviews).floor).each do |i| %>
+                      <span class="fa fa-star checked"></span>
+                    <% end %>
+            
+                    <% (1..(5-avg_rev(_reviews).floor)).each do |i| %>
+                      <span class="fa fa-star"></span>
+                    <% end %>
+                  </div>
+                  <% if @grouped_prof.empty? %>
+                    <h4 class="d-sm-none">(0 reviews)</h4>
+                  <% else %>
+                    <h4 class="d-sm-none">(<%= _reviews.length %> reviews)</h4>
+                  <% end %>
+                </div>
+              </td>
+              <td class="a-write">
+                <%= link_to 'Write a Review', new_review_path, :class => 'btn-table btn-primary w-90' %>
+              </td>
+            </tr>
+          <% end %>
+
+        </tbody>
+        <% end %>
+
+      </table>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
 

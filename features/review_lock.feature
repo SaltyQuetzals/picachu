@@ -16,7 +16,7 @@ Feature: Review Lock
     And The course exists
     And I'm on the professor course overview page
     Then I should see locked reviews
-	
+
 
   @javascript
   @omniauth_test
@@ -51,5 +51,4 @@ Feature: Review Lock
     And I enter "5" in the "Professor other thoughts" field
     When I submit my Review form
     Then I should be redirected to the Professor Course overview page
-    Then I should see Report Review
     Then I should not see locked reviews

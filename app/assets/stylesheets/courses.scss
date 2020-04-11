@@ -6,8 +6,11 @@
 $colour-primary: #00817E;
 
 .flex-container > .courses-search {
-    width: 50%;
-    margin-bottom: 80px;
+    width: 60%;
+    margin: 60px auto;
+    @media (max-width: 767.98px) { 
+        width: 90%;
+    }
     h1 {
         text-align: left;
     }
@@ -21,19 +24,25 @@ $colour-primary: #00817E;
         font-size: 16px;
         text-align: left;
         border-bottom: 1px solid #ddd;
+        padding: 5px 0;
     }
     th {
         padding-bottom: 10px;
+        font-size: 14px;
     }
-    td {
-        padding: 15px 0;
-        vertical-align: top;
-        p.course-description {
-            font-size: 14px;
-            color: #888;
-            margin: 5px 0 0;
+    .search-results {
+        th, td {
+            vertical-align: top;
+            padding: 15px 0 5px;
         }
     }
+    .search-prof-results {
+        th, td {
+            vertical-align: top;
+            padding: 10px 0;
+        }
+    }
+    
     .view-btn {
         text-align: right;
         a {
@@ -74,4 +83,148 @@ $colour-primary: #00817E;
 
 .searchbar-container {
     margin: 20px 0 40px;
+}
+
+
+.course-name{
+    h1{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 32px;
+        line-height: 37px;
+        color: #000000;
+    }
+}
+
+.course-rating-des{
+    h2{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 21px;
+        color: #000000;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+}
+
+.course-column-container{
+    flex-direction: column;
+    width: 90%;
+    margin: 10vh 10px 10px 10px;
+    min-width: 700px;
+    max-width: 100%;
+
+}
+
+.d-sm-none {
+    @media (max-width: 767.98px) { 
+        display: none!important;
+    }
+}
+
+.course-prof{
+    .a-write a {
+        color: white;
+        text-decoration: none;
+    }
+    a{
+        font-size: 16px;
+        text-decoration: none;
+    }
+    h2{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 21px;
+        color: #000000;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        padding-top: 20px;
+    }
+    text-align: left;
+    line-height: 14px;
+    table{
+        width:100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border-bottom: 1px solid #ddd;
+    }
+    h2{
+        font-size: 18px;
+        color: #000000;
+    }
+    th{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 150%;
+        color: #777777;
+        padding-bottom: 10px;
+    }
+    td{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        color: #00817E;
+    }
+    hr{
+        width: 100%;
+        margin-top: 2px;
+        margin-bottom: 2px;
+    }
+    h3{
+        padding: 8px 0;
+        a {
+            color: #00817E;
+            font-weight: 500;
+            font-size: 18px;
+            text-decoration: underline;
+            &:hover {
+                color: #00524F;
+                background-color: transparent;
+                transition: 0.3s;
+            }
+        }
+    }
+}
+
+#notice {
+    text-align: center;
+    color: #3E733C;
+    margin-top: 0;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.reviews-locked {
+    margin-top: 40px;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    background-color: #FAFAFA;
+    text-align: center;
+    padding: 60px 20px;
+    h3 {
+        font-size: 18px;
+    }
+    p {
+        margin-bottom: 30px; 
+    }
+    .btn.btn-primary {
+        color: white;
+        text-decoration: none;
+    }
+}
+
+.mr-1 {
+    margin-right: 10px;
+}
+
+.mt-3 {
+    margin-top: 30px;
 }

@@ -115,6 +115,10 @@ select {
             line-height: 32px;
             margin-bottom: 40px;
         }
+        h4 {
+            font-size: 18px;
+            color: black;
+        }
         input[type=text] {
             width: 100%;
             font-size: 14px;
@@ -136,15 +140,13 @@ select {
                 cursor: pointer;
             }
         }
-        .field {
-            margin-bottom: 25px;
-            label {
-                font-size: 14px;
-                font-weight: 500;
-                margin-bottom: 15px;
-            }
+        label {
+            font-size: 14px;
+            font-weight: 500;
+            margin: 25px 0 10px;
         }
         .checkbox-style {
+            margin: 25px 0;
             label {
                 display: inline-block;
                 margin-top: 2px;

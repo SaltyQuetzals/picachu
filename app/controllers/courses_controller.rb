@@ -12,7 +12,21 @@ class CoursesController < ApplicationController
 
   # GET /courses/1
   # GET /courses/1.json
-  def show; end
+  def avg_rev(reviews)
+    sum = 0
+    reviews.each { |a| sum += a.overall_rating }
+    sum.to_f / reviews.length
+  end
+
+  def show
+    @avg_course =
+      if @course.reviews.blank?
+        0
+      else
+        @course.reviews.average(:overall_rating).round(2)
+      end
+    @grouped_prof = @course.reviews.group_by(&:professor)
+  end
 
   # GET /courses/new
   def new

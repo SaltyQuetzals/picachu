@@ -22,14 +22,14 @@ When(/^I click the upvote button/) do
   click_link('upvote_link_' + @review.id.to_s)
 end
 
-Then(/^I should see the number of upvotes equal to "([^"]*)"/) do |value|
-  expect(page).to have_content('Upvotes: ' + value)
+Then(
+  /^I should see the number of upvotes equal to "([^"]*)" and total votes equal to "([^"]*)"/
+) do |upvotes, totalVotes|
+  expect(page).to have_content(upvotes + ' of ' + totalVotes + ' users agree')
 end
+
+# Then(/^I should see the number of upvote)
 
 When(/^I click the downvote button/) do
   click_link('downvote_link_' + @review.id.to_s)
-end
-
-Then(/^I should see the number of downvotes equal to "([^"]*)"/) do |value|
-  expect(page).to have_content('Downvotes: ' + value)
 end

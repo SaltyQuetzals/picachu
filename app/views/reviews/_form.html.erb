@@ -55,7 +55,7 @@
     <%= form.select :year, 2000..Date.today.year %>
   </div>
 
-  <div id="field checkbox-style">
+  <div id="field" class="checkbox-style">
     <%= form.label :course_required %>
     <%= form.check_box :course_required %>
   </div>
@@ -79,7 +79,7 @@
     <% end %>
   </div>
 
-  <div id="field checkbox-style">
+  <div id="field" class="checkbox-style">
     <%= form.label :standardized_course %>
     <%= form.check_box :standardized_course %>
   </div>
@@ -93,12 +93,12 @@
   <hr>
   <h4>Professor Review</h4>
 
-  <div id="field checkbox-style">
+  <div id="field" class="checkbox-style">
     <%= form.label :used_textbook %>
     <%= form.check_box :used_textbook %>
   </div>
 
-  <div id="field checkbox-style">
+  <div id="field"  class="checkbox-style">
     <%= form.label :attendance_mandatory %>
     <%= form.check_box :attendance_mandatory %>
   </div>
@@ -163,7 +163,7 @@
   </div>
 
 
-  <div id="actions">
+  <div id="actions" class="mt-3">
     <%= form.submit :class => "btn btn-primary w-50" %>
   </div>
 <% end %>

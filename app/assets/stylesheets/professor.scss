@@ -2,42 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-
-.flex-container > .row-container {
-    
-}
-
 .column-container{
     flex-direction: column;
     width: 50%;
     margin: 10vh 10px 10px 10px;
-    min-width: 700px;
-    max-width: 100%;
 
     hr{
         margin-top: 20px;
         margin-bottom: 20px;
-    }
-}
-
-.user-agree-container{
-
-    h4{
-        
-        color: #777777;
-        display: inline;
-        font-size: 12px;
-        line-height: 14px;
-    }
-    h5{
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 12px;
-        line-height: 14px;
-
-        color: #00817E;
-        display: inline;
     }
 }
 
@@ -95,6 +67,10 @@
         display: inline;
         color: #00817E;
         line-height: 14px;
+        margin-right: 10px;
+        @media (max-width: 767.98px) { 
+            display: none;
+        }
     }
     h4{
         color: #777777;
@@ -102,6 +78,7 @@
         font-size: 12px;
         line-height: 14px;
     }
+
 }
 
 .tag-block-container{
@@ -138,11 +115,6 @@
    
 }
 
-[class*=“review-“]{
-    
-    
-}
-
 .review-container{
     text-align: left;
     line-height: 14px;
@@ -171,94 +143,111 @@
         font-size: 14px;
         font-style: italic;
     }
-    
+    .course-title {
+        color: #00817E;
+        &:hover {
+            color: #00524F;
+            background-color: transparent;
+            transition: 0.3s;
+        }
+    }
 }
 
 .review-component{
     border: 1px solid #DDDDDD;
-    box-sizing: border-box;
-    border-radius: 5px;
-    flex-shrink: 0;
+    border-radius: 4px;
+    padding: 15px 30px;
     h2{
         font-weight: 500;
         font-size: 18px;
         line-height: 21px;
         color: #000000;
-        margin-bottom: 20px;
+        margin-bottom: 10px!important;
     }
     h3{
         font-weight: 500;
         font-size: 14px;
         line-height: 16px;
         color: #232323;
+        display: inline;
     }
     h4{
-        font-size: 12px;
         font-weight: normal;
         color: #777777;
-    }
-    h6{
-
     }
     p{
         margin: 30px 5px 30px 5px;
         font-size: 14px;
     }
-}
-
-.dis-in{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    p{
-        display: inline;
+    .report-container{
+        display: inline-block;
+        float: right;
     }
-    div{
-        display: inline;
-    }
-    button{
-        display: inline;
-    }
-    h4{
-        display: inline;
-    }
-    h3{
-        display:inline;
+    .review-body {
+        padding-top: 20px;
     }
 }
 
-.report-container{
-    float: right;
-    h4{
+.review-footer {
+    border-top: 1px solid #DDD;
+    padding: 20px 0 10px;
+    p, h5, h4 {
+        display: inline-block;
+        margin: 0;
+        font-size: 14px;
+    }
+}
+
+.user-agree-container{
+    display: inline-block;
+    a {
+        text-decoration: none;
+        margin-right: 20px;
+        &:hover {
+            opacity: 0.7;
+            transition: 0.3s;
+            background-color: transparent;
+        }
+    }
+
+    h4{ 
         color: #777777;
         display: inline;
-        font-size: 12px;
-        line-height: 14px;   
+        line-height: 14px;
+    }
+    h5{
+        font-family: Roboto;
+        font-style: normal;
+        line-height: 14px;
+        font-size: 14px!important;
+
+        color: #00817E;
+        display: inline;
     }
 }
-
 
 .all-course-container{
     text-align: left;
     line-height: 14px;
     table{
-        height: 100%;
         width:100%;
+        border-collapse: collapse;
+    }
+    table, th, td {
+        border-bottom: 1px solid #ddd;
+
     }
     h2{
         font-size: 18px;
         color: #000000;
     }
-    tr{
-    }
-
     th{
         font-style: normal;
         font-weight: 500;
         font-size: 14px;
         line-height: 150%;
         color: #777777;
-        padding-bottom: 0px;
-        padding-left: 10px;
+        padding-bottom: 10px;
     }
     td{
         font-style: normal;
@@ -266,8 +255,15 @@
         font-size: 16px;
         line-height: 19px;
         color: #00817E;
-        padding-bottom: 0px;
-        padding-left: 10px;
+        padding: 10px 0;
+        a {
+            color: #00817E;
+            &:hover {
+                color: #00524F;
+                background-color: transparent;
+                transition: 0.3s;
+            }
+        }
     }
     hr{
         margin-top: 2px;
@@ -279,10 +275,6 @@
         font-size: 16px;
         line-height: 19px;
     }
-}
-
-.table-padding{
-    padding:0 15px;
 }
 
 .checked {

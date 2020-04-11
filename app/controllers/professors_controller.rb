@@ -38,7 +38,7 @@ class ProfessorsController < ApplicationController
 
     if !@highest_rated_course.blank? && !@highest_rated_course.reviews.blank?
       @highest_rated_course_review =
-        @highest_rated_course.reviews.order('overall_rating').first
+        @highest_rated_course.reviews.order('overall_rating DESC').first
     end
 
     @lowest_rated_course, _rating =

@@ -43,32 +43,29 @@ class ReviewsController < ApplicationController
 
   def report
     @review = Review.find(params[:review_id])
-    reason = params[:reason]
-    other_input = params[:other_input]
-    if reason.blank?
-      render json: 'You must select a reason for reporting.',
-             status: :bad_request
-      return
+    if params[:reason].blank?
+      redirect_to review_path(@review),
+                  notice: 'Unable to complete your request.'
+    else
+      reason = params[:reason]
+      other_input = params[:other_input]
+
+      url = review_path(@review.id)
+      begin
+        UserMailer.report_email(
+          reason,
+          other_input,
+          url,
+          @review.professor_id,
+          @review.course_id
+        )
+          .deliver_now
+      rescue StandardError
+        redirect_to url, notice: 'Unable to complete your request.'
+      else
+        redirect_to url, notice: 'Review was successfully reported.'
+      end
     end
-
-    url = review_path(@review.id)
-
-    if reason == 'other' && other_input.blank?
-      render json:
-               'You must provide more information when reporting for "Other" reasons.',
-             status: :bad_request
-      return
-    end
-
-    UserMailer.report_email(
-      reason,
-      other_input,
-      url,
-      @review.professor_id,
-      @review.course_id
-    )
-      .deliver_now
-    render json: 'Review reported successfully.'
   end
 
   # GET /reviews

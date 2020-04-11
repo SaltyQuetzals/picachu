@@ -20,19 +20,19 @@
       </div>
     </div>
     <h2>  <%= @course.dept + " " + @course.course_num + " " + "•" + " " + @course.name %></h2>
-  <% if current_user && current_user.reviews.exists? %>
-    <% if @grouped_courses.empty? %>
-      <p>This professor has not taught any other courses.
-    <% else %>
-      <h5>Other courses taught by <%= @professor.display_name %></h5>
+    <% if current_user && current_user.reviews.exists? %>
+      <% if @grouped_courses.empty? %>
+        <p>This professor has not taught any other courses.
+      <% else %>
+        <h5>Other courses taught by <%= @professor.display_name %></h5>
         <div class="other-classes">
           <% @grouped_courses.each do |course, _reviews| %>
             <%= link_to course.dept + ' ' + course.course_num, professor_course_path(@professor, course) %>
           <% end %>
         </div>
-    <% end %>
+      <% end %>
 
-    <hr>
+      <hr>
       <% if @course_reviews.empty? %>
         <p> This professor hasn't taught this course.</p>
       <% else %>
@@ -40,14 +40,14 @@
         <% @course_reviews.each do |review| %>
 
 
-        <div class = "review-component">
+          <div class="review-component">
             <h2><%= @course.dept + ' ' + @course.course_num %></h2>
 
-            <div class = "rating-star">
+            <div class="rating-star">
               <% (1..review.overall_rating.floor).each do |i| %>
                 <span class="fa fa-star checked"></span>
               <% end %>
-              <% (1..(5-review.overall_rating.floor)).each do |i| %>
+              <% (1..(5 - review.overall_rating.floor)).each do |i| %>
                 <span class="fa fa-star"></span>
               <% end %>
             </div>
@@ -55,9 +55,9 @@
             <div class="review-body">
               <!-- expected grade -->
               <h3><b>Expected Grade:</b></h3>
-              <h3 style = "padding-right: 20px;"><%= review.letter_grade %></h3>
+              <h3 style="padding-right: 20px;"><%= review.letter_grade %></h3>
               <h3><b>Attendance:</b></h3>
-              <h3 style = "padding-right: 20px;">
+              <h3 style="padding-right: 20px;">
                 <% if review.attendance_mandatory %>
                   Mandatory
                 <% else %>
@@ -65,7 +65,7 @@
                 <% end %>
               </h3>
               <h3><b>Textbook:</b></h3>
-              <h3 style = "padding-right: 20px;">
+              <h3 style="padding-right: 20px;">
                 <% if review.used_textbook %>
                   Yes
                 <% else %>
@@ -81,34 +81,34 @@
             <% end %>
 
             <div class="review-footer">
-              <div class = "user-agree-container">
+              <div class="user-agree-container">
                 <p><%= link_to review_upvote_path(review), id: "upvote_link_" + review.id.to_s, method: :put do %>
-                  <%= image_tag 'thumb-up.svg' %> <% end %>
+                    <%= image_tag 'thumb-up.svg' %>
+                  <% end %>
                   <%= link_to review_downvote_path(review), id: "downvote_link_" + review.id.to_s, method: :put do %>
-                  <%= image_tag 'thumb-down.svg' %> <% end %>
+                    <%= image_tag 'thumb-down.svg' %>
+                  <% end %>
                 </p>
                 <h5><%= review.get_upvotes.size %> of <%= review.votes_for.size %></h5>
                 <h4>users agree</h4>
               </div>
-
-
               <div class="report-container">
                 <%= render partial: "partials/report_modal", locals: {review_id: review.id} %>
               </div>
             </div>
 
-        </div>
+          </div>
           <br/>
         <% end %>
       <% end %>
-      <% else %>
-        <div class="reviews-locked">
-          <%= image_tag 'lock.svg' %>
-          <h3>Review to View</h3>
-          <p>Leave a review for your professors to view reviews for this professor.</p>
-          <%= link_to 'Write a Review', new_review_path, :class => 'btn btn-primary w-50' %>
-        </div>
-      <% end %>
+    <% else %>
+      <div class="reviews-locked">
+        <%= image_tag 'lock.svg' %>
+        <h3>Review to View</h3>
+        <p>Leave a review for your professors to view reviews for this professor.</p>
+        <%= link_to 'Write a Review', new_review_path, :class => 'btn btn-primary w-50' %>
+      </div>
+    <% end %>
 
-</div>
+  </div>
 </div>

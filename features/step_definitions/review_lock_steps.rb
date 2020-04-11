@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Then(/^I should see locked reviews$/) do
   expect(page).to have_content('Review to View')
 end

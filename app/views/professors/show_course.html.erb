@@ -120,19 +120,14 @@
                 <h5># of #</h5>
                 <h4>users agree with this review</h4>
               </div>
-
-
               <div class = "report-container">
               <!-- image of flag -->
-              <%= render partial: "partials/report_modal", locals: {review_id: review.id} %>
-
               </div>
             </div>
-
           </div>
           </div>
           <br/>
-
+          <%= render partial: "partials/report_modal", locals: {review_id: review.id} %>
         <% end %>
       <% end %>
       <% else %>

@@ -2,8 +2,8 @@
 
 Given(/^I'm on the new review page$/) { visit new_review_path }
 
-And(/^I enter "([^"]*)" in the "Overall rating" field$/) do |_value|
-  page.choose('review_overall_rating_' + _value)
+And(/^I enter "([^"]*)" in the "Overall rating" field$/) do |value|
+  page.choose('review_overall_rating_' + value)
 end
 
 And(/^I enter "([^"]*)" in the "Letter grade" field$/) do |value|
@@ -30,8 +30,8 @@ And(/^I enter False in the "Course required" field$/) do
   find(:xpath, '//*[@id="review_course_required"]').set(false)
 end
 
-And(/^I enter "([^"]*)" in the "Interesting" field$/) do |_value|
-  page.choose(:review_interesting_1)
+And(/^I enter "([^"]*)" in the "Interesting" field$/) do |value|
+  page.choose('review_interesting_' + value)
 end
 
 And(/^I enter "([^"]*)" in the "Difficult" field$/) do |_value|

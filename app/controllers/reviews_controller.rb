@@ -43,7 +43,7 @@ class ReviewsController < ApplicationController
 
   def report
     @review = Review.find(params[:review_id])
-    if (params[:reason].blank?)
+    if params[:reason].blank?
       redirect_to review_path(@review),
                   notice: 'Unable to complete your request.'
     else

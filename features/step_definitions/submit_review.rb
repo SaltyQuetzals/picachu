@@ -3,7 +3,7 @@
 Given(/^I'm on the new review page$/) { visit new_review_path }
 
 And(/^I enter "([^"]*)" in the "Overall rating" field$/) do |value|
-  page.choose('review_overall_rating_' + value) if !value.blank?
+  page.choose('review_overall_rating_' + value) unless value.blank?
 end
 
 And(/^I enter "([^"]*)" in the "Letter grade" field$/) do |value|
@@ -31,11 +31,11 @@ And(/^I enter False in the "Course required" field$/) do
 end
 
 And(/^I enter "([^"]*)" in the "Interesting" field$/) do |value|
-  page.choose('review_interesting_' + value) if !value.blank?
+  page.choose('review_interesting_' + value) unless value.blank?
 end
 
 And(/^I enter "([^"]*)" in the "Difficult" field$/) do |value|
-  page.choose('review_difficult_' + value) if !value.blank?
+  page.choose('review_difficult_' + value) unless value.blank?
 end
 
 And(/^I enter "([^"]*)" in the "Standardized course" field$/) do |value|
@@ -83,31 +83,31 @@ And(/^I enter "([^"]*)" in the "Course format" field$/) do |value|
 end
 
 And(/^I enter "([^"]*)" in the "Cared about material" field$/) do |value|
-  page.choose('review_cared_about_material_' + value) if !value.blank?
+  page.choose('review_cared_about_material_' + value) unless value.blank?
 end
 
 And(/^I enter "([^"]*)" in the "Open to questions" field$/) do |value|
-  page.choose('review_open_to_questions_' + value) if !value.blank?
+  page.choose('review_open_to_questions_' + value) unless value.blank?
 end
 
 And(/^I enter "([^"]*)" in the "Cared about students" field$/) do |value|
-  page.choose('review_cared_about_students_' + value) if !value.blank?
+  page.choose('review_cared_about_students_' + value) unless value.blank?
 end
 
 And(/^I enter "([^"]*)" in the "Clear grading" field$/) do |value|
-  page.choose('review_clear_grading_' + value) if !value.blank?
+  page.choose('review_clear_grading_' + value) unless value.blank?
 end
 
 And(/^I enter "([^"]*)" in the "Homework heavy" field$/) do |value|
-  page.choose('review_homework_heavy_' + value) if !value.blank?
+  page.choose('review_homework_heavy_' + value) unless value.blank?
 end
 
 And(/^I enter "([^"]*)" in the "Clear explanations" field$/) do |value|
-  page.choose('review_clear_explanations_' + value) if !value.blank?
+  page.choose('review_clear_explanations_' + value) unless value.blank?
 end
 
 And(/^I enter "([^"]*)" in the "Fast grading" field$/) do |value|
-  page.choose('review_fast_grading_' + value) if !value.blank?
+  page.choose('review_fast_grading_' + value) unless value.blank?
 end
 
 And(/^I enter "([^"]*)" in the "Professor other thoughts" field$/) do |value|

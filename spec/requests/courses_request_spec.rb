@@ -11,11 +11,10 @@ RSpec.describe 'Courses', type: :request do
     expect(response).to render_template(:index)
   end
 
-  ##REMOVED UNTIL avg_review fix
-  # it 'should get the show page' do
-  #   get course_url(@course)
-  #   expect(response).to render_template(:show)
-  # end
+  it 'should get the show page' do
+    get course_url(@course)
+    expect(response).to render_template(:show)
+  end
 
   it 'should get the search page' do
     get search_courses_url, params: { q: { full_name_cont: @course.name } }

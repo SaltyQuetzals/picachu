@@ -3,6 +3,7 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: %i[show edit update destroy]
   before_action :set_professor
+  helper_method :avg_rev
 
   # GET /courses
   # GET /courses.json

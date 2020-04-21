@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     collection { get 'search' }
     get '/courses/:course_id', to: 'professors#show_course', as: 'course'
   end
-  resources :courses ,except: %i[edit create update destroy]do
+  resources :courses ,except: %i[edit create update destroy] do
     collection { get 'search' }
   end
   get 'login' => 'login#index'

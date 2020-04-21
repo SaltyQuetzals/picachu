@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   root 'login#index'
 
-  resources :professors do
+  resources :professors, except: %i[edit create update destroy] do
     collection { get 'search' }
     get '/courses/:course_id', to: 'professors#show_course', as: 'course'
   end
-  resources :courses do
+  resources :courses ,except: %i[edit create update destroy]do
     collection { get 'search' }
   end
   get 'login' => 'login#index'

@@ -30,7 +30,7 @@ RSpec.describe SessionsController do
 
     it 'should redirect the user to the root url' do
       post :create
-      expect(session[:user_id]).not_to be_nil      
+      expect(session[:user_id]).not_to be_nil
       expect(response).to redirect_to search_path
     end
   end
@@ -39,9 +39,9 @@ RSpec.describe SessionsController do
     before { post :create }
 
     it 'should clear the session' do
-      expect(session[:user_id]).not_to be_nil      
+      expect(session[:user_id]).not_to be_nil
       delete :destroy
-      expect(session[:user_id]).to be_nil      
+      expect(session[:user_id]).to be_nil
     end
 
     it 'should redirect to the home page' do

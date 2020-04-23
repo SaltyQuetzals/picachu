@@ -16,6 +16,13 @@ $colour-primary: #00817E;
     text-align: center;
     line-height: 75px;
     font-size: 30px;
+    a {
+        text-decoration: none;
+    }
+    hr {
+        border: 0.5px solid #DEDEDE;
+        margin: 35px 0;
+    }
 }
 
 .w-100 {
@@ -89,6 +96,7 @@ $colour-primary: #00817E;
         }
     }
 }
+
 
 .img-logo {
     max-width: 100px;

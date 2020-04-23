@@ -6,7 +6,7 @@
     <span id="close-modal-btn" class="close">&times;</span>
     <div class="header">
       <h1>Report Review</h1>
-      <h3>Why are you reporting this review?</h3>
+      <h3>Please let us know why this review is being reported.</h3>
     </div>
     <form class="wrapper-class" accept-charset="UTF-8" id="reportForm" data-remote="true" method="post" action="<%= review_report_path(review_id) %>">
       <input type="hidden" id="review-id" name="id" value="<%= review_id %>">
@@ -20,8 +20,8 @@
       <input type="radio" id="other" name="reason" value="other" onclick="requireOtherInputIfNeeded(this)"
              required>
       <label for="other">Other</label><br>
-      <input type="text" id="reasonForOther" name="other_input" disabled><br><br>
-      <input class="btn btn-primary w-30" type="submit" value="Report" id="reportReview"/>
+      <input type="text" id="reasonForOther" name="other_input" placeholder="Please specify for 'Other'" disabled><br><br>
+      <input class="btn btn-primary w-30" type="submit" value="Submit Report" id="reportReview"/>
     </form>
   </div>
 </div>

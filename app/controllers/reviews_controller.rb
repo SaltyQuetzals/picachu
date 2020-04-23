@@ -62,7 +62,7 @@ class ReviewsController < ApplicationController
           .deliver_now
       rescue StandardError => e
         print 'Error delivering mail:'
-        raise e
+        puts e
         redirect_to url, notice: 'Unable to complete your request.'
       else
         redirect_to url, notice: 'Review was successfully reported.'
